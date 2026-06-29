@@ -1,0 +1,4844 @@
+[
+  {
+    "req_id": "AXI_REQ_0001",
+    "page": 27,
+    "category": "Functional",
+    "text": "There must be no combinatorial paths between input and output signals on an interface."
+  },
+  {
+    "req_id": "AXI_REQ_0002",
+    "page": 27,
+    "category": "Reset",
+    "text": "Signals that are required to be deasserted during reset must remain deasserted at least until the rising ACLK edge"
+  },
+  {
+    "req_id": "AXI_REQ_0003",
+    "page": 28,
+    "category": "Functional",
+    "text": "• Connected Manager and Subordinate interfaces must have the same value for the AXI_Transport property."
+  },
+  {
+    "req_id": "AXI_REQ_0004",
+    "page": 29,
+    "category": "Reset",
+    "text": "VALID signals must be LOW during reset."
+  },
+  {
+    "req_id": "AXI_REQ_0005",
+    "page": 29,
+    "category": "Handshake/Timing",
+    "text": "receiver asserts the READY signal after edge 2. The transmitter must keep its information stable until the transfer"
+  },
+  {
+    "req_id": "AXI_REQ_0006",
+    "page": 29,
+    "category": "Handshake/Timing",
+    "text": "When VALID is asserted, it must remain asserted until the handshake occurs, at a rising clock edge when VALID"
+  },
+  {
+    "req_id": "AXI_REQ_0007",
+    "page": 30,
+    "category": "Handshake/Timing",
+    "text": "Subordinate must be able to accept any valid request that is presented to it."
+  },
+  {
+    "req_id": "AXI_REQ_0008",
+    "page": 31,
+    "category": "Functional",
+    "text": "• Double-headed arrows point to signals that must be asserted only after assertion of the signal at the start of"
+  },
+  {
+    "req_id": "AXI_REQ_0009",
+    "page": 31,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must not wait for the Subordinate to assert AWREADY or WREADY before asserting"
+  },
+  {
+    "req_id": "AXI_REQ_0010",
+    "page": 31,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must wait for AWVALID, AWREADY, WVALID, and WREADY to be asserted before"
+  },
+  {
+    "req_id": "AXI_REQ_0011",
+    "page": 31,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must wait for the last write data transfer before asserting BVALID. The last write data"
+  },
+  {
+    "req_id": "AXI_REQ_0012",
+    "page": 31,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must not wait for the Manager to assert BREADY before asserting BVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0013",
+    "page": 32,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must not wait for the Subordinate to assert ARREADY before asserting ARVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0014",
+    "page": 32,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must wait for both ARVALID and ARREADY to be asserted before it asserts RVALID to"
+  },
+  {
+    "req_id": "AXI_REQ_0015",
+    "page": 32,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must not wait for the Manager to assert RREADY before asserting RVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0016",
+    "page": 34,
+    "category": "Functional",
+    "text": "CRDTSH signals must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0017",
+    "page": 34,
+    "category": "Handshake/Timing",
+    "text": "• VALID must not be asserted when the channel transmitter has zero credits."
+  },
+  {
+    "req_id": "AXI_REQ_0018",
+    "page": 34,
+    "category": "Functional",
+    "text": "There must not be combinatorial paths between credit signals and other signals on a channel in either direction."
+  },
+  {
+    "req_id": "AXI_REQ_0019",
+    "page": 35,
+    "category": "Transaction",
+    "text": "• Transfers using different Resource Planes must not block one another between transmitter and receiver."
+  },
+  {
+    "req_id": "AXI_REQ_0020",
+    "page": 35,
+    "category": "Functional",
+    "text": "• The receiver must be able to give at least one dedicated credit per RP supported."
+  },
+  {
+    "req_id": "AXI_REQ_0021",
+    "page": 35,
+    "category": "Transaction",
+    "text": "• The AW and W transfers in the same transaction must use the same RP number."
+  },
+  {
+    "req_id": "AXI_REQ_0022",
+    "page": 35,
+    "category": "Ordering",
+    "text": "• A Manager must not issue a request transfer that has the same ID as an outstanding transaction on the same"
+  },
+  {
+    "req_id": "AXI_REQ_0023",
+    "page": 35,
+    "category": "Functional",
+    "text": "Connected interfaces can be configured to have a different number of RPs, but a Manager must not require the use"
+  },
+  {
+    "req_id": "AXI_REQ_0024",
+    "page": 35,
+    "category": "Handshake/Timing",
+    "text": "If the AXI_Transport property is Ready: Num_RP_AWW and Num_RP_AR must be 1."
+  },
+  {
+    "req_id": "AXI_REQ_0025",
+    "page": 36,
+    "category": "Functional",
+    "text": "must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0026",
+    "page": 36,
+    "category": "Functional",
+    "text": "• If Num_RP_AWW is 1: Shared_Credits_AW and Shared_Credits_W must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0027",
+    "page": 36,
+    "category": "Functional",
+    "text": "• If Num_RP_AR is 1: Shared_Credits_AR must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0028",
+    "page": 36,
+    "category": "Functional",
+    "text": "• A receiver must give independence guarantees between RPs, whether the transmitter is using a shared or"
+  },
+  {
+    "req_id": "AXI_REQ_0029",
+    "page": 40,
+    "category": "Handshake/Timing",
+    "text": "• VALID signals must be pipelined by the same number of cycles as the payload signals of that channel"
+  },
+  {
+    "req_id": "AXI_REQ_0030",
+    "page": 40,
+    "category": "Handshake/Timing",
+    "text": "• PENDING signals must retain the relationship that they are HIGH in the cycle before VALID is HIGH."
+  },
+  {
+    "req_id": "AXI_REQ_0031",
+    "page": 41,
+    "category": "Response/Error",
+    "text": "• A write response must always follow the last write transfer in a write transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0032",
+    "page": 41,
+    "category": "Response/Error",
+    "text": "• Read data and responses must always follow the read request."
+  },
+  {
+    "req_id": "AXI_REQ_0033",
+    "page": 41,
+    "category": "Transaction",
+    "text": "• When a Manager issues a write request, it must be able to provide all write data for that transaction, without"
+  },
+  {
+    "req_id": "AXI_REQ_0034",
+    "page": 41,
+    "category": "Response/Error",
+    "text": "• When a Manager has issued a write request and all write data, it must be able to accept all responses for that"
+  },
+  {
+    "req_id": "AXI_REQ_0035",
+    "page": 41,
+    "category": "Transaction",
+    "text": "• When a Manager has issued a read request, it must be able to accept all read data for that transaction, without"
+  },
+  {
+    "req_id": "AXI_REQ_0036",
+    "page": 41,
+    "category": "Transaction",
+    "text": "• A Subordinate must not block acceptance of data-less write requests due to transactions with leading write"
+  },
+  {
+    "req_id": "AXI_REQ_0037",
+    "page": 41,
+    "category": "Functional",
+    "text": "When the interconnect is required to determine the destination address space or Subordinate space, it must realign"
+  },
+  {
+    "req_id": "AXI_REQ_0038",
+    "page": 41,
+    "category": "Handshake/Timing",
+    "text": "the request and write data. This realignment is required to assure that the write data is signaled as being valid only"
+  },
+  {
+    "req_id": "AXI_REQ_0039",
+    "page": 43,
+    "category": "Transaction",
+    "text": "Subordinate must calculate the addresses of subsequent transfers."
+  },
+  {
+    "req_id": "AXI_REQ_0040",
+    "page": 43,
+    "category": "Transaction",
+    "text": "A transaction must not cross a 4KB address boundary. This prevents a transaction from crossing a boundary"
+  },
+  {
+    "req_id": "AXI_REQ_0041",
+    "page": 43,
+    "category": "Functional",
+    "text": "between two Subordinates. It also limits the number of address increments that a Subordinate must support."
+  },
+  {
+    "req_id": "AXI_REQ_0042",
+    "page": 43,
+    "category": "Handshake/Timing",
+    "text": "For read transactions, Size indicates how many data bytes must be valid in each read data transfer."
+  },
+  {
+    "req_id": "AXI_REQ_0043",
+    "page": 43,
+    "category": "Functional",
+    "text": "Size must not exceed the data width of an interface, as determined by the DATA_WIDTH property."
+  },
+  {
+    "req_id": "AXI_REQ_0044",
+    "page": 44,
+    "category": "Functional",
+    "text": "attached Subordinate must have its AxSIZE input tied according to the data width."
+  },
+  {
+    "req_id": "AXI_REQ_0045",
+    "page": 44,
+    "category": "Transaction",
+    "text": "A Manager must issue the number of write data transfers according to Length."
+  },
+  {
+    "req_id": "AXI_REQ_0046",
+    "page": 44,
+    "category": "Transaction",
+    "text": "A Subordinate must issue the number of read data transfers according to Length."
+  },
+  {
+    "req_id": "AXI_REQ_0047",
+    "page": 44,
+    "category": "Functional",
+    "text": "Subordinate must have its AxLEN input tied to 0x00."
+  },
+  {
+    "req_id": "AXI_REQ_0048",
+    "page": 44,
+    "category": "Transaction",
+    "text": "• A transaction must not cross a 4KB address boundary."
+  },
+  {
+    "req_id": "AXI_REQ_0049",
+    "page": 44,
+    "category": "Transaction",
+    "text": "must complete the remaining transfers in the transaction. In a read transaction, the Manager can discard read data,"
+  },
+  {
+    "req_id": "AXI_REQ_0050",
+    "page": 44,
+    "category": "Transaction",
+    "text": "but it must complete all transfers in the transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0051",
+    "page": 45,
+    "category": "Transaction",
+    "text": "burst splitting if it knows that transactions will not cross the stripe boundary."
+  },
+  {
+    "req_id": "AXI_REQ_0052",
+    "page": 46,
+    "category": "Transaction",
+    "text": "An attached Subordinate must have its AxBURST input tied to 0b01."
+  },
+  {
+    "req_id": "AXI_REQ_0053",
+    "page": 47,
+    "category": "Transaction",
+    "text": "• The start address must be aligned to the size of each transfer."
+  },
+  {
+    "req_id": "AXI_REQ_0054",
+    "page": 47,
+    "category": "Transaction",
+    "text": "• The Length of the burst must be 2, 4, 8, or 16 transfers."
+  },
+  {
+    "req_id": "AXI_REQ_0055",
+    "page": 47,
+    "category": "Cache/Stash",
+    "text": "When Burst type is WRAP, the transaction must be cache"
+  },
+  {
+    "req_id": "AXI_REQ_0056",
+    "page": 49,
+    "category": "Functional",
+    "text": "Components with different physical address space sizes must communicate as follows:"
+  },
+  {
+    "req_id": "AXI_REQ_0057",
+    "page": 49,
+    "category": "Functional",
+    "text": "• The component with the smaller physical address space must be positioned within an aligned window in the"
+  },
+  {
+    "req_id": "AXI_REQ_0058",
+    "page": 49,
+    "category": "Transaction",
+    "text": "• An outgoing transaction must have the required additional higher-order bits added to the transaction address."
+  },
+  {
+    "req_id": "AXI_REQ_0059",
+    "page": 49,
+    "category": "Transaction",
+    "text": "• An incoming transaction must be examined so that:"
+  },
+  {
+    "req_id": "AXI_REQ_0060",
+    "page": 51,
+    "category": "Transaction",
+    "text": "// addr must be aligned for a wrapping burst"
+  },
+  {
+    "req_id": "AXI_REQ_0061",
+    "page": 53,
+    "category": "Transaction",
+    "text": "• The Manager must assert the WLAST signal while it is driving the final write transfer in the transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0062",
+    "page": 54,
+    "category": "Transaction",
+    "text": "• Outside of the transaction container all write strobes must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0063",
+    "page": 54,
+    "category": "Functional",
+    "text": "interface. An attached Subordinate must have its WSTRB input tied HIGH."
+  },
+  {
+    "req_id": "AXI_REQ_0064",
+    "page": 55,
+    "category": "Handshake/Timing",
+    "text": "• Even if a Subordinate has only one source of read data, it must assert the RVALID signal only in response to"
+  },
+  {
+    "req_id": "AXI_REQ_0065",
+    "page": 55,
+    "category": "Transaction",
+    "text": "• The Subordinate must assert the RLAST signal when it is driving the final read transfer in the transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0066",
+    "page": 56,
+    "category": "Transaction",
+    "text": "Components that have only one transfer width must have their byte lanes connected to the appropriate byte lanes"
+  },
+  {
+    "req_id": "AXI_REQ_0067",
+    "page": 58,
+    "category": "Functional",
+    "text": "The information on the low-order address lines must be consistent with the information on the byte lane strobes."
+  },
+  {
+    "req_id": "AXI_REQ_0068",
+    "page": 58,
+    "category": "Functional",
+    "text": "The Subordinate is not required to take special action based on any alignment information from the Manager."
+  },
+  {
+    "req_id": "AXI_REQ_0069",
+    "page": 61,
+    "category": "Functional",
+    "text": "Must be 3 if:"
+  },
+  {
+    "req_id": "AXI_REQ_0070",
+    "page": 61,
+    "category": "Response/Error",
+    "text": "If BCOMP is present, it must be asserted for one response transfer of every transaction on the write channels."
+  },
+  {
+    "req_id": "AXI_REQ_0071",
+    "page": 62,
+    "category": "Response/Error",
+    "text": "every read data transfer in a transaction. The response value is not required to be the same for every read data"
+  },
+  {
+    "req_id": "AXI_REQ_0072",
+    "page": 62,
+    "category": "Handshake/Timing",
+    "text": "some responses, the data in that transfer is not required to be valid."
+  },
+  {
+    "req_id": "AXI_REQ_0073",
+    "page": 62,
+    "category": "Handshake/Timing",
+    "text": "Must be valid when RVALID is asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0074",
+    "page": 63,
+    "category": "Transaction",
+    "text": "Must be 3 if Prefetch_Transaction = True OR"
+  },
+  {
+    "req_id": "AXI_REQ_0075",
+    "page": 63,
+    "category": "Handshake/Timing",
+    "text": "For responses where data is not required to be valid, the Manager might still sample the RDATA value so the"
+  },
+  {
+    "req_id": "AXI_REQ_0076",
+    "page": 63,
+    "category": "Response/Error",
+    "text": "Subordinate should not rely on the response to hide sensitive data."
+  },
+  {
+    "req_id": "AXI_REQ_0077",
+    "page": 65,
+    "category": "Handshake/Timing",
+    "text": "For transactions with multiple read data transfers, Busy must be valid but can take a different value for every"
+  },
+  {
+    "req_id": "AXI_REQ_0078",
+    "page": 65,
+    "category": "Handshake/Timing",
+    "text": "For transactions with multiple write responses, Busy must be valid in the response with BCOMP asserted. For"
+  },
+  {
+    "req_id": "AXI_REQ_0079",
+    "page": 65,
+    "category": "Response/Error",
+    "text": "For Atomic transactions with write and read responses, BBUSY and RBUSY are expected, but not required to"
+  },
+  {
+    "req_id": "AXI_REQ_0080",
+    "page": 66,
+    "category": "Functional",
+    "text": "This chapter describes request attributes that indicate how the request should be handled by downstream"
+  },
+  {
+    "req_id": "AXI_REQ_0081",
+    "page": 67,
+    "category": "Transaction",
+    "text": "A Memory Subordinate is required to handle all transaction types correctly."
+  },
+  {
+    "req_id": "AXI_REQ_0082",
+    "page": 67,
+    "category": "Functional",
+    "text": "must complete, in compliance with the protocol. However, when such an access has been made, there is no"
+  },
+  {
+    "req_id": "AXI_REQ_0083",
+    "page": 67,
+    "category": "Functional",
+    "text": "requirement that the Peripheral Subordinate continues to operate correctly. The Subordinate is only required to"
+  },
+  {
+    "req_id": "AXI_REQ_0084",
+    "page": 68,
+    "category": "Functional",
+    "text": "This section describes the attributes that determine how a request should be treated by system components such as"
+  },
+  {
+    "req_id": "AXI_REQ_0085",
+    "page": 69,
+    "category": "Functional",
+    "text": "• If the Bufferable bit is deasserted, the read data must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0086",
+    "page": 69,
+    "category": "Transaction",
+    "text": "A Non-modifiable transaction must not be split into multiple transactions or merged with other transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0087",
+    "page": 69,
+    "category": "Transaction",
+    "text": "In a Non-modifiable transaction, the parameters that are shown in Table A4.3 must not be changed."
+  },
+  {
+    "req_id": "AXI_REQ_0088",
+    "page": 69,
+    "category": "Transaction",
+    "text": "transaction must meet the requirements that are given in this subsection, except that:"
+  },
+  {
+    "req_id": "AXI_REQ_0089",
+    "page": 69,
+    "category": "Transaction",
+    "text": "example, when downsizing to a data width narrower than required by Size, the transaction must be modified."
+  },
+  {
+    "req_id": "AXI_REQ_0090",
+    "page": 70,
+    "category": "Functional",
+    "text": "The following must not be changed:"
+  },
+  {
+    "req_id": "AXI_REQ_0091",
+    "page": 70,
+    "category": "Cache/Stash",
+    "text": "AxCACHE can be modified, but any modification must ensure that the visibility of transactions by other"
+  },
+  {
+    "req_id": "AXI_REQ_0092",
+    "page": 70,
+    "category": "Cache/Stash",
+    "text": "the need to look up a transaction in a cache. Any modification to the memory attributes must be consistent for all"
+  },
+  {
+    "req_id": "AXI_REQ_0093",
+    "page": 70,
+    "category": "Cache/Stash",
+    "text": "• The data might have been previously allocated, so the line must be looked up in a cache."
+  },
+  {
+    "req_id": "AXI_REQ_0094",
+    "page": 70,
+    "category": "Cache/Stash",
+    "text": "• The data might have been previously allocated, so the line must be looked up in a cache."
+  },
+  {
+    "req_id": "AXI_REQ_0095",
+    "page": 70,
+    "category": "Cache/Stash",
+    "text": "If Allocate and Other Allocate are both deasserted, the request is not required to look up in any cache."
+  },
+  {
+    "req_id": "AXI_REQ_0096",
+    "page": 71,
+    "category": "Response/Error",
+    "text": "• The write response must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0097",
+    "page": 71,
+    "category": "Functional",
+    "text": "• Read data must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0098",
+    "page": 71,
+    "category": "Functional",
+    "text": "• Read data must not be prefetched."
+  },
+  {
+    "req_id": "AXI_REQ_0099",
+    "page": 71,
+    "category": "Transaction",
+    "text": "• Write transactions must not be merged."
+  },
+  {
+    "req_id": "AXI_REQ_0100",
+    "page": 71,
+    "category": "Transaction",
+    "text": "• Write transactions must be made visible at the final destination in a timely manner."
+  },
+  {
+    "req_id": "AXI_REQ_0101",
+    "page": 71,
+    "category": "Functional",
+    "text": "• Read data must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0102",
+    "page": 71,
+    "category": "Functional",
+    "text": "• Read data must not be prefetched."
+  },
+  {
+    "req_id": "AXI_REQ_0103",
+    "page": 71,
+    "category": "Transaction",
+    "text": "• Write transactions must not be merged."
+  },
+  {
+    "req_id": "AXI_REQ_0104",
+    "page": 72,
+    "category": "Response/Error",
+    "text": "• The write response must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0105",
+    "page": 72,
+    "category": "Functional",
+    "text": "• Read data must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0106",
+    "page": 72,
+    "category": "Transaction",
+    "text": "• Write transactions must be made visible at the final destination in a timely manner, as defined in the glossary."
+  },
+  {
+    "req_id": "AXI_REQ_0107",
+    "page": 72,
+    "category": "Functional",
+    "text": "• Read data must be obtained from either:"
+  },
+  {
+    "req_id": "AXI_REQ_0108",
+    "page": 72,
+    "category": "Functional",
+    "text": "– It must be obtained from the most recent version of the write."
+  },
+  {
+    "req_id": "AXI_REQ_0109",
+    "page": 72,
+    "category": "Cache/Stash",
+    "text": "– The data must not be cached to service a later read."
+  },
+  {
+    "req_id": "AXI_REQ_0110",
+    "page": 72,
+    "category": "Transaction",
+    "text": "• Write transactions must be made visible at the final destination in a timely manner, as defined in the glossary."
+  },
+  {
+    "req_id": "AXI_REQ_0111",
+    "page": 73,
+    "category": "Transaction",
+    "text": "• Write transactions are not required to be made visible at the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0112",
+    "page": 74,
+    "category": "Functional",
+    "text": "functional correctness, the following rules must be obeyed:"
+  },
+  {
+    "req_id": "AXI_REQ_0113",
+    "page": 74,
+    "category": "Cache/Stash",
+    "text": "• All Managers accessing the same area of memory must have a consistent view of the cacheability of that area"
+  },
+  {
+    "req_id": "AXI_REQ_0114",
+    "page": 74,
+    "category": "Cache/Stash",
+    "text": "– If the address region is Non-cacheable, all Managers must use transactions with both AxCACHE[3:2]"
+  },
+  {
+    "req_id": "AXI_REQ_0115",
+    "page": 74,
+    "category": "Cache/Stash",
+    "text": "– If the address region is Cacheable, all Managers must use transactions with either of AxCACHE[3:2]"
+  },
+  {
+    "req_id": "AXI_REQ_0116",
+    "page": 74,
+    "category": "Functional",
+    "text": "• For Device Bufferable memory, read data must be obtained from the final destination."
+  },
+  {
+    "req_id": "AXI_REQ_0117",
+    "page": 74,
+    "category": "Cache/Stash",
+    "text": "• For Normal Non-cacheable Bufferable memory, read data must be obtained either from the final destination"
+  },
+  {
+    "req_id": "AXI_REQ_0118",
+    "page": 75,
+    "category": "Functional",
+    "text": "intermediate buffers must behave as follows:"
+  },
+  {
+    "req_id": "AXI_REQ_0119",
+    "page": 75,
+    "category": "Transaction",
+    "text": "• An intermediate buffer that can respond to a transaction must ensure that over time, any read transaction to"
+  },
+  {
+    "req_id": "AXI_REQ_0120",
+    "page": 75,
+    "category": "Transaction",
+    "text": "forwarding a read transaction, the attempted forwarding must not continue indefinitely, and any data that is"
+  },
+  {
+    "req_id": "AXI_REQ_0121",
+    "page": 75,
+    "category": "Functional",
+    "text": "used for forwarding must not persist indefinitely. The protocol does not define a mechanism to determine the"
+  },
+  {
+    "req_id": "AXI_REQ_0122",
+    "page": 75,
+    "category": "Reset",
+    "text": "mechanism, the act of reading the data must not reset the data timeout period."
+  },
+  {
+    "req_id": "AXI_REQ_0123",
+    "page": 75,
+    "category": "Transaction",
+    "text": "• An intermediate buffer that can hold and merge write transactions must ensure that transactions do not"
+  },
+  {
+    "req_id": "AXI_REQ_0124",
+    "page": 75,
+    "category": "Reset",
+    "text": "remain in its buffer indefinitely. For example, merging write transactions must not reset the mechanism that"
+  },
+  {
+    "req_id": "AXI_REQ_0125",
+    "page": 75,
+    "category": "Transaction",
+    "text": "A write transaction that is marked as Device Bufferable is required to reach its final destination in a timely manner."
+  },
+  {
+    "req_id": "AXI_REQ_0126",
+    "page": 76,
+    "category": "Response/Error",
+    "text": "A software protocol error for an access in one 4KB memory region must not cause data corruption in a different"
+  },
+  {
+    "req_id": "AXI_REQ_0127",
+    "page": 77,
+    "category": "Functional",
+    "text": "attributes. An interface must not include both sets of signals, the following rules apply:"
+  },
+  {
+    "req_id": "AXI_REQ_0128",
+    "page": 77,
+    "category": "Functional",
+    "text": "• If PROT_Present is True, PAS_WIDTH must be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0129",
+    "page": 77,
+    "category": "Functional",
+    "text": "• If PROT_Present is True, INSTPRIV_Present must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0130",
+    "page": 79,
+    "category": "Functional",
+    "text": "Table A4.7 shows the physical address spaces with signal encodings and property that must be True to enable a"
+  },
+  {
+    "req_id": "AXI_REQ_0131",
+    "page": 80,
+    "category": "Functional",
+    "text": "• When RME_Support is False, GDI_Support must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0132",
+    "page": 80,
+    "category": "Functional",
+    "text": "• When GDI_Support is True, PAS_WIDTH must be 3."
+  },
+  {
+    "req_id": "AXI_REQ_0133",
+    "page": 80,
+    "category": "Transaction",
+    "text": "• When GDI_Support is True, Untranslated_Transactions must be False or v4."
+  },
+  {
+    "req_id": "AXI_REQ_0134",
+    "page": 81,
+    "category": "Functional",
+    "text": "MEC is an extension of RME, so if the RME_Support property is False, MEC_Support must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0135",
+    "page": 81,
+    "category": "Functional",
+    "text": "The following signals are required to support MEC."
+  },
+  {
+    "req_id": "AXI_REQ_0136",
+    "page": 82,
+    "category": "Functional",
+    "text": "• If MEC_Support is False, MECID_WIDTH must be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0137",
+    "page": 82,
+    "category": "Functional",
+    "text": "• If MEC_Support is True, MECID_WIDTH must not be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0138",
+    "page": 82,
+    "category": "Functional",
+    "text": "Must be zero"
+  },
+  {
+    "req_id": "AXI_REQ_0139",
+    "page": 82,
+    "category": "Functional",
+    "text": "Must be zero"
+  },
+  {
+    "req_id": "AXI_REQ_0140",
+    "page": 82,
+    "category": "Functional",
+    "text": "Must be zero"
+  },
+  {
+    "req_id": "AXI_REQ_0141",
+    "page": 83,
+    "category": "Functional",
+    "text": "MECID is inapplicable and must be 0 for the following request Opcodes:"
+  },
+  {
+    "req_id": "AXI_REQ_0142",
+    "page": 83,
+    "category": "Transaction",
+    "text": "Components that propagate transactions and support MECID on their Subordinate and Manager interfaces must"
+  },
+  {
+    "req_id": "AXI_REQ_0143",
+    "page": 83,
+    "category": "Cache/Stash",
+    "text": "A cache that stores data which has an associated MECID must also store the MECID and provide it with the data"
+  },
+  {
+    "req_id": "AXI_REQ_0144",
+    "page": 83,
+    "category": "Handshake/Timing",
+    "text": "When using MEC and GDI, MECID must be valid for all accesses to Non-secure Protected or System Agent"
+  },
+  {
+    "req_id": "AXI_REQ_0145",
+    "page": 83,
+    "category": "Cache/Stash",
+    "text": "A cache must enforce the following rules for the System Agent and Non-secure Protected physical address spaces"
+  },
+  {
+    "req_id": "AXI_REQ_0146",
+    "page": 83,
+    "category": "Functional",
+    "text": "– Any returned data must be masked to an IMPLEMENTATION SPECIFIC value. Arm recommends, but"
+  },
+  {
+    "req_id": "AXI_REQ_0147",
+    "page": 83,
+    "category": "Cache/Stash",
+    "text": "– Cached data must be masked to an IMPLEMENTATION SPECIFIC value. Arm recommends, but does not"
+  },
+  {
+    "req_id": "AXI_REQ_0148",
+    "page": 83,
+    "category": "Cache/Stash",
+    "text": "– The cached MECID for the location must be updated to the MECID of the incoming write."
+  },
+  {
+    "req_id": "AXI_REQ_0149",
+    "page": 83,
+    "category": "Cache/Stash",
+    "text": "– The cached MECID must be updated to the MECID of the incoming write."
+  },
+  {
+    "req_id": "AXI_REQ_0150",
+    "page": 84,
+    "category": "Functional",
+    "text": "provide a decode of higher-order address bits. The region identifier must remain constant within any 4K-byte"
+  },
+  {
+    "req_id": "AXI_REQ_0151",
+    "page": 84,
+    "category": "Response/Error",
+    "text": "interface in the system address map, the interconnect must use the default AxREGION values."
+  },
+  {
+    "req_id": "AXI_REQ_0152",
+    "page": 84,
+    "category": "Ordering",
+    "text": "A Subordinate must ensure that the correct protocol signaling and the correct ordering of transactions are"
+  },
+  {
+    "req_id": "AXI_REQ_0153",
+    "page": 84,
+    "category": "Response/Error",
+    "text": "maintained. A Subordinate must ensure that it provides the responses to two requests to different regions with the"
+  },
+  {
+    "req_id": "AXI_REQ_0154",
+    "page": 84,
+    "category": "Functional",
+    "text": "A Subordinate must also ensure the correct protocol signaling for any values of AxREGION. If a Subordinate"
+  },
+  {
+    "req_id": "AXI_REQ_0155",
+    "page": 84,
+    "category": "Functional",
+    "text": "implements fewer than sixteen regions, then the Subordinate must ensure the correct protocol signaling on any"
+  },
+  {
+    "req_id": "AXI_REQ_0156",
+    "page": 85,
+    "category": "Functional",
+    "text": "address spaces. AxREGION must only be present on an interface that is downstream of an address decode"
+  },
+  {
+    "req_id": "AXI_REQ_0157",
+    "page": 86,
+    "category": "Functional",
+    "text": "This specification expects that many interconnect component implementations will support programmable"
+  },
+  {
+    "req_id": "AXI_REQ_0158",
+    "page": 87,
+    "category": "Functional",
+    "text": "indicate the minimum QoS value it will accept without delay."
+  },
+  {
+    "req_id": "AXI_REQ_0159",
+    "page": 87,
+    "category": "Functional",
+    "text": "This specification does not define a time period during which the Subordinate is required to accept a"
+  },
+  {
+    "req_id": "AXI_REQ_0160",
+    "page": 87,
+    "category": "Transaction",
+    "text": "will be a deterministic maximum number of clock cycles taken to accept a transaction, after taking into"
+  },
+  {
+    "req_id": "AXI_REQ_0161",
+    "page": 90,
+    "category": "Transaction",
+    "text": "transactions that must be returned in order."
+  },
+  {
+    "req_id": "AXI_REQ_0162",
+    "page": 90,
+    "category": "Ordering",
+    "text": "All transactions with a given AXI ID value must remain ordered, but there is no restriction on the ordering of"
+  },
+  {
+    "req_id": "AXI_REQ_0163",
+    "page": 90,
+    "category": "Functional",
+    "text": "can omit the ID signals from its interface. An attached Subordinate must have its AxID inputs tied LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0164",
+    "page": 91,
+    "category": "Transaction",
+    "text": "• When AWIDUNQ is asserted, there must be no outstanding write transactions from this Manager with the"
+  },
+  {
+    "req_id": "AXI_REQ_0165",
+    "page": 91,
+    "category": "Transaction",
+    "text": "• A Manager must not issue a write request with the same AWID as an outstanding write transaction that had"
+  },
+  {
+    "req_id": "AXI_REQ_0166",
+    "page": 91,
+    "category": "Functional",
+    "text": "• If AWIDUNQ is deasserted for a request, the corresponding BIDUNQ signal must be deasserted in a single"
+  },
+  {
+    "req_id": "AXI_REQ_0167",
+    "page": 91,
+    "category": "Functional",
+    "text": "• If AWIDUNQ is asserted for a request, the corresponding BIDUNQ signal must be asserted in a single"
+  },
+  {
+    "req_id": "AXI_REQ_0168",
+    "page": 91,
+    "category": "Transaction",
+    "text": "• When ARIDUNQ is asserted, there must be no outstanding read transactions from this Manager with the"
+  },
+  {
+    "req_id": "AXI_REQ_0169",
+    "page": 91,
+    "category": "Transaction",
+    "text": "• A Manager must not issue a read request with the same ARID as an outstanding read transaction that had"
+  },
+  {
+    "req_id": "AXI_REQ_0170",
+    "page": 91,
+    "category": "Functional",
+    "text": "• If ARIDUNQ is deasserted for a request, the corresponding RIDUNQ signal must be deasserted for all"
+  },
+  {
+    "req_id": "AXI_REQ_0171",
+    "page": 91,
+    "category": "Response/Error",
+    "text": "• If ARIDUNQ is asserted for a request, the corresponding RIDUNQ signal must be asserted for all response"
+  },
+  {
+    "req_id": "AXI_REQ_0172",
+    "page": 92,
+    "category": "Atomic/Exclusive",
+    "text": "– If AWIDUNQ is deasserted for an Atomic request, the corresponding RIDUNQ signal must be"
+  },
+  {
+    "req_id": "AXI_REQ_0173",
+    "page": 92,
+    "category": "Atomic/Exclusive",
+    "text": "– If AWIDUNQ is asserted for an Atomic request, the corresponding RIDUNQ signal must be asserted"
+  },
+  {
+    "req_id": "AXI_REQ_0174",
+    "page": 92,
+    "category": "Transaction",
+    "text": "Some transaction types specify that AxIDUNQ is required to be asserted, if present. If not specified, asserting"
+  },
+  {
+    "req_id": "AXI_REQ_0175",
+    "page": 93,
+    "category": "Ordering",
+    "text": "If a Manager requires ordering between transactions that have no ordering guarantee, the Manager must wait to"
+  },
+  {
+    "req_id": "AXI_REQ_0176",
+    "page": 93,
+    "category": "Functional",
+    "text": "• The size of a Peripheral region is IMPLEMENTATION DEFINED but it must be contained within a single"
+  },
+  {
+    "req_id": "AXI_REQ_0177",
+    "page": 93,
+    "category": "Transaction",
+    "text": "• A transaction to a Peripheral region must be entirely contained within that region."
+  },
+  {
+    "req_id": "AXI_REQ_0178",
+    "page": 94,
+    "category": "Functional",
+    "text": "A Normal access to a Peripheral region must complete in a protocol compliant manner, but the result is"
+  },
+  {
+    "req_id": "AXI_REQ_0179",
+    "page": 95,
+    "category": "Ordering",
+    "text": "To meet the Manager ordering guarantees, Subordinate interfaces must meet the following requirements."
+  },
+  {
+    "req_id": "AXI_REQ_0180",
+    "page": 95,
+    "category": "Ordering",
+    "text": "• A write W1 must be ordered before a write W2 with the same ID, where W2 is received after W1 is received."
+  },
+  {
+    "req_id": "AXI_REQ_0181",
+    "page": 95,
+    "category": "Response/Error",
+    "text": "• A write W1 must be ordered before a write W2, where W2 is received after the completion response for W1"
+  },
+  {
+    "req_id": "AXI_REQ_0182",
+    "page": 95,
+    "category": "Response/Error",
+    "text": "• A write W1 must be ordered before a read R2, where R2 is received after the completion response for W1 is"
+  },
+  {
+    "req_id": "AXI_REQ_0183",
+    "page": 95,
+    "category": "Response/Error",
+    "text": "• A read R1 must be ordered before a write W2, where W2 is received after the completion response for R1 is"
+  },
+  {
+    "req_id": "AXI_REQ_0184",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "• The response to read R1 must be returned before the response to a read R2, where R2 is received after R1"
+  },
+  {
+    "req_id": "AXI_REQ_0185",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "• The response to write W1 must be returned before the response to a write W2, where W2 is received after"
+  },
+  {
+    "req_id": "AXI_REQ_0186",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "When the interconnect issues requests or responses, it must adhere to the following requirements:"
+  },
+  {
+    "req_id": "AXI_REQ_0187",
+    "page": 96,
+    "category": "Ordering",
+    "text": "• A read R1 request must be issued before a read R2 request, where R2 is received after R1, with the same ID"
+  },
+  {
+    "req_id": "AXI_REQ_0188",
+    "page": 96,
+    "category": "Functional",
+    "text": "• A write W1 request must be issued before a write W2 request, where W2 is received after W1, with the same"
+  },
+  {
+    "req_id": "AXI_REQ_0189",
+    "page": 96,
+    "category": "Functional",
+    "text": "• A Device read DR1 request must be issued before a Device read DR2 request, where DR2 is received after"
+  },
+  {
+    "req_id": "AXI_REQ_0190",
+    "page": 96,
+    "category": "Functional",
+    "text": "• A Device write DW1 request must be issued before a Device write DW2 request, where DW2 is received"
+  },
+  {
+    "req_id": "AXI_REQ_0191",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "• A read R1 response must be issued before a read R2 response, where R2 is received after R1, with the same"
+  },
+  {
+    "req_id": "AXI_REQ_0192",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "• A write W1 response must be issued before a write W2 response, where W2 is received after W1, with the"
+  },
+  {
+    "req_id": "AXI_REQ_0193",
+    "page": 96,
+    "category": "Functional",
+    "text": "When the interconnect is acting as a Subordinate component, it must also adhere to the Subordinate requirements."
+  },
+  {
+    "req_id": "AXI_REQ_0194",
+    "page": 96,
+    "category": "Ordering",
+    "text": "Any manipulation of the AXI ID values that are associated with a transaction must ensure that the ordering"
+  },
+  {
+    "req_id": "AXI_REQ_0195",
+    "page": 96,
+    "category": "Ordering",
+    "text": "must ensure that visibility and ordering guarantees are met."
+  },
+  {
+    "req_id": "AXI_REQ_0196",
+    "page": 96,
+    "category": "Functional",
+    "text": "required to propagate beyond the intermediate component."
+  },
+  {
+    "req_id": "AXI_REQ_0197",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "An intermediate component must observe ID ordering rules, which means a read response can only be sent if all"
+  },
+  {
+    "req_id": "AXI_REQ_0198",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "response, the intermediate component can store a local copy of the data, but must propagate the transaction"
+  },
+  {
+    "req_id": "AXI_REQ_0199",
+    "page": 96,
+    "category": "Response/Error",
+    "text": "An intermediate component must observe ID ordering rules, which means a write response can only be sent if all"
+  },
+  {
+    "req_id": "AXI_REQ_0200",
+    "page": 97,
+    "category": "Response/Error",
+    "text": "After sending an early write response, the component must be responsible for ordering and observability of that"
+  },
+  {
+    "req_id": "AXI_REQ_0201",
+    "page": 97,
+    "category": "Response/Error",
+    "text": "between sending the early write response and receiving a response from downstream, the component must ensure"
+  },
+  {
+    "req_id": "AXI_REQ_0202",
+    "page": 97,
+    "category": "Response/Error",
+    "text": "Responses must be in order for transactions with the same AXI ID, irrespective of cacheability."
+  },
+  {
+    "req_id": "AXI_REQ_0203",
+    "page": 97,
+    "category": "Functional",
+    "text": "the same location must be observed in issue order."
+  },
+  {
+    "req_id": "AXI_REQ_0204",
+    "page": 100,
+    "category": "Transaction",
+    "text": "A Manager must issue write data in the same order that it issues the transaction requests."
+  },
+  {
+    "req_id": "AXI_REQ_0205",
+    "page": 100,
+    "category": "Response/Error",
+    "text": "A Subordinate must ensure that the BID value of a write response matches the AWID value of the request to which"
+  },
+  {
+    "req_id": "AXI_REQ_0206",
+    "page": 100,
+    "category": "Response/Error",
+    "text": "An interconnect must ensure that write responses from a sequence of transactions with the same AWID value"
+  },
+  {
+    "req_id": "AXI_REQ_0207",
+    "page": 101,
+    "category": "Functional",
+    "text": "The Subordinate must ensure that the RID value of any returned data matches the ARID value of the request to"
+  },
+  {
+    "req_id": "AXI_REQ_0208",
+    "page": 101,
+    "category": "Transaction",
+    "text": "The interconnect must ensure that read data from a sequence of transactions with the same ARID value targeting"
+  },
+  {
+    "req_id": "AXI_REQ_0209",
+    "page": 101,
+    "category": "Transaction",
+    "text": "design-time whether the attached Subordinate interface will interleave read data from different transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0210",
+    "page": 101,
+    "category": "Transaction",
+    "text": "Managers that issue transactions with different IDs must be designed to accept interleaved data. Managers might"
+  },
+  {
+    "req_id": "AXI_REQ_0211",
+    "page": 102,
+    "category": "Handshake/Timing",
+    "text": "RCHUNKSTRB are valid. It must be the same for"
+  },
+  {
+    "req_id": "AXI_REQ_0212",
+    "page": 103,
+    "category": "Functional",
+    "text": "Must be 0 if Read_Data_Chunking == False else"
+  },
+  {
+    "req_id": "AXI_REQ_0213",
+    "page": 103,
+    "category": "Functional",
+    "text": "Must be 0 if Read_Data_Chunking == False else"
+  },
+  {
+    "req_id": "AXI_REQ_0214",
+    "page": 103,
+    "category": "Functional",
+    "text": "signals, so RCHUNKNUM and RCHUNKSTRB must be the same width for connected components."
+  },
+  {
+    "req_id": "AXI_REQ_0215",
+    "page": 103,
+    "category": "Transaction",
+    "text": "• ARCHUNKEN must only be asserted for transactions with the following attributes:"
+  },
+  {
+    "req_id": "AXI_REQ_0216",
+    "page": 103,
+    "category": "Functional",
+    "text": "• The ID value must be unique-in-flight, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0217",
+    "page": 103,
+    "category": "Functional",
+    "text": "– The Manager must not issue a request on the read channel with the same ARID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0218",
+    "page": 103,
+    "category": "Functional",
+    "text": "– If present on the interface, ARIDUNQ must be asserted if ARCHUNKEN is asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0219",
+    "page": 103,
+    "category": "Response/Error",
+    "text": "• If ARCHUNKEN is deasserted, RCHUNKV must be deasserted for all response transfers of the transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0220",
+    "page": 104,
+    "category": "Response/Error",
+    "text": "• RCHUNKV must be the same for every response transfer of a transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0221",
+    "page": 104,
+    "category": "Handshake/Timing",
+    "text": "• When RVALID and RCHUNKV are asserted, RCHUNKNUM must be between zero and ARLEN."
+  },
+  {
+    "req_id": "AXI_REQ_0222",
+    "page": 104,
+    "category": "Handshake/Timing",
+    "text": "• When RVALID and RCHUNKV are asserted, RCHUNKSTRB must not be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0223",
+    "page": 104,
+    "category": "Handshake/Timing",
+    "text": "• When RVALID and RCHUNKV are asserted, RLAST must only be asserted for the final response transfer"
+  },
+  {
+    "req_id": "AXI_REQ_0224",
+    "page": 104,
+    "category": "Transaction",
+    "text": "The number of data chunks transferred must be consistent with ARLEN and ARSIZE, so the number of bytes"
+  },
+  {
+    "req_id": "AXI_REQ_0225",
+    "page": 104,
+    "category": "Transaction",
+    "text": "For unaligned transactions, chunks at addresses lower than ARADDR are not transferred and must have"
+  },
+  {
+    "req_id": "AXI_REQ_0226",
+    "page": 108,
+    "category": "Atomic/Exclusive",
+    "text": "Atomicity does not define the exact instant when the data is updated. What must be ensured is that no Manager can"
+  },
+  {
+    "req_id": "AXI_REQ_0227",
+    "page": 108,
+    "category": "Atomic/Exclusive",
+    "text": "in a given communication must support the required size of atomic element. If two Managers are communicating"
+  },
+  {
+    "req_id": "AXI_REQ_0228",
+    "page": 108,
+    "category": "Transaction",
+    "text": "through an interconnect and a single Subordinate, then all the components involved must ensure that transactions"
+  },
+  {
+    "req_id": "AXI_REQ_0229",
+    "page": 109,
+    "category": "Handshake/Timing",
+    "text": "ordered. This must ensure that all coherent cached copies of a location are invalidated before the new value"
+  },
+  {
+    "req_id": "AXI_REQ_0230",
+    "page": 110,
+    "category": "Atomic/Exclusive",
+    "text": "Exclusive accesses will continually fail,"
+  },
+  {
+    "req_id": "AXI_REQ_0231",
+    "page": 110,
+    "category": "Functional",
+    "text": "but the interface will not deadlock."
+  },
+  {
+    "req_id": "AXI_REQ_0232",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "A Manager must not start the write part of an exclusive access sequence until the read part is complete."
+  },
+  {
+    "req_id": "AXI_REQ_0233",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "• The address of an exclusive access must be aligned to the total number of bytes in the transaction, that is, the"
+  },
+  {
+    "req_id": "AXI_REQ_0234",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "• The number of bytes to be transferred in an exclusive access transaction must be a power-of-2, that is, 1, 2, 4,"
+  },
+  {
+    "req_id": "AXI_REQ_0235",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "• The Length of an exclusive access must not exceed 16 transfers."
+  },
+  {
+    "req_id": "AXI_REQ_0236",
+    "page": 111,
+    "category": "Functional",
+    "text": "• The Domain must not be Shareable, see A8.3.3 Shareable Domain."
+  },
+  {
+    "req_id": "AXI_REQ_0237",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "• The Opcode must be ReadExclusive or WriteExclusive. See Chapter A7 Request Opcodes."
+  },
+  {
+    "req_id": "AXI_REQ_0238",
+    "page": 111,
+    "category": "Functional",
+    "text": "• AWTAGOP must not be Match, see A12.2 Memory Tagging Extension (MTE)."
+  },
+  {
+    "req_id": "AXI_REQ_0239",
+    "page": 111,
+    "category": "Atomic/Exclusive",
+    "text": "For an exclusive sequence to be successful, the AxCACHE values must be appropriate to ensure that the read and"
+  },
+  {
+    "req_id": "AXI_REQ_0240",
+    "page": 112,
+    "category": "Atomic/Exclusive",
+    "text": "Table A6.5: Signals that should be the same in an exclusive sequence"
+  },
+  {
+    "req_id": "AXI_REQ_0241",
+    "page": 112,
+    "category": "Atomic/Exclusive",
+    "text": "A Subordinate that supports exclusive access must have monitor hardware. It is recommended that such a"
+  },
+  {
+    "req_id": "AXI_REQ_0242",
+    "page": 112,
+    "category": "Atomic/Exclusive",
+    "text": "If the monitor deems the sequence to have failed, the exclusive write must not update the addressed location, and"
+  },
+  {
+    "req_id": "AXI_REQ_0243",
+    "page": 112,
+    "category": "Response/Error",
+    "text": "the Subordinate must return the OKAY response instead of the EXOKAY response."
+  },
+  {
+    "req_id": "AXI_REQ_0244",
+    "page": 113,
+    "category": "Functional",
+    "text": "significant distance from the agent that must perform the operation."
+  },
+  {
+    "req_id": "AXI_REQ_0245",
+    "page": 113,
+    "category": "Atomic/Exclusive",
+    "text": "Compared with using exclusive accesses, this approach reduces the amount of time during which the data must be"
+  },
+  {
+    "req_id": "AXI_REQ_0246",
+    "page": 114,
+    "category": "Functional",
+    "text": "the number of bytes must include both the compare and swap values."
+  },
+  {
+    "req_id": "AXI_REQ_0247",
+    "page": 114,
+    "category": "Transaction",
+    "text": "• If AWLEN indicates a transaction length greater than one, AWSIZE is required to be the full data channel"
+  },
+  {
+    "req_id": "AXI_REQ_0248",
+    "page": 114,
+    "category": "Functional",
+    "text": "• Write strobes that are not within the data window, as specified by AWADDR and AWSIZE, must be"
+  },
+  {
+    "req_id": "AXI_REQ_0249",
+    "page": 114,
+    "category": "Functional",
+    "text": "• Write strobes within the data window must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0250",
+    "page": 115,
+    "category": "Functional",
+    "text": "• AWADDR must be aligned to the total write data size."
+  },
+  {
+    "req_id": "AXI_REQ_0251",
+    "page": 115,
+    "category": "Transaction",
+    "text": "• AWBURST must be INCR."
+  },
+  {
+    "req_id": "AXI_REQ_0252",
+    "page": 115,
+    "category": "Functional",
+    "text": "• AWADDR must be aligned to half the total write data size."
+  },
+  {
+    "req_id": "AXI_REQ_0253",
+    "page": 115,
+    "category": "Transaction",
+    "text": "– AWBURST must be INCR."
+  },
+  {
+    "req_id": "AXI_REQ_0254",
+    "page": 115,
+    "category": "Transaction",
+    "text": "– AWBURST must be WRAP."
+  },
+  {
+    "req_id": "AXI_REQ_0255",
+    "page": 115,
+    "category": "Transaction",
+    "text": "– AWADDR is not required to be aligned to the transfer size."
+  },
+  {
+    "req_id": "AXI_REQ_0256",
+    "page": 116,
+    "category": "Functional",
+    "text": "the read data. This requirement means that the Manager must only use ID values that can be signaled on both"
+  },
+  {
+    "req_id": "AXI_REQ_0257",
+    "page": 116,
+    "category": "Atomic/Exclusive",
+    "text": "The ID must be unique-in-flight for Atomic transactions, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0258",
+    "page": 116,
+    "category": "Ordering",
+    "text": "• A Manager must not issue a request on the write channel with the same ID value as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0259",
+    "page": 116,
+    "category": "Ordering",
+    "text": "• A Manager must not issue a request on the read or write channels with the same ID value as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0260",
+    "page": 116,
+    "category": "Functional",
+    "text": "RIDUNQ must be asserted if AWIDUNQ was asserted. See A5.2 Unique ID indicator for more details."
+  },
+  {
+    "req_id": "AXI_REQ_0261",
+    "page": 117,
+    "category": "Functional",
+    "text": "• AWSNOOP must be set to all zeros. If AWSNOOP has any other value, AWATOP must be all zeros."
+  },
+  {
+    "req_id": "AXI_REQ_0262",
+    "page": 117,
+    "category": "Atomic/Exclusive",
+    "text": "• AWLOCK must be deasserted, not exclusive access."
+  },
+  {
+    "req_id": "AXI_REQ_0263",
+    "page": 118,
+    "category": "Functional",
+    "text": "• A Subordinate is permitted to wait for all write data before sending read data. A Manager must be able to"
+  },
+  {
+    "req_id": "AXI_REQ_0264",
+    "page": 118,
+    "category": "Functional",
+    "text": "• A Subordinate is permitted to send all read data before accepting any write data. A Manager must be able to"
+  },
+  {
+    "req_id": "AXI_REQ_0265",
+    "page": 118,
+    "category": "Response/Error",
+    "text": "• A single write response is returned on the B channel. The write response must be given by the Subordinate"
+  },
+  {
+    "req_id": "AXI_REQ_0266",
+    "page": 119,
+    "category": "Response/Error",
+    "text": "• A single write response is returned on the B channel. The write response must be given only by the"
+  },
+  {
+    "req_id": "AXI_REQ_0267",
+    "page": 119,
+    "category": "Response/Error",
+    "text": "• A Subordinate must send the correct number of read data transfers, even if the write response is DECERR or"
+  },
+  {
+    "req_id": "AXI_REQ_0268",
+    "page": 119,
+    "category": "Response/Error",
+    "text": "• If there is an error on the write but not on the read, a Manager ignoring the write response must read the"
+  },
+  {
+    "req_id": "AXI_REQ_0269",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must not wait for the Subordinate to assert AWREADY or WREADY before asserting"
+  },
+  {
+    "req_id": "AXI_REQ_0270",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must wait for AWVALID, AWREADY, WVALID, and WREADY to be asserted before"
+  },
+  {
+    "req_id": "AXI_REQ_0271",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must also wait for WLAST to be asserted before asserting BVALID because the write"
+  },
+  {
+    "req_id": "AXI_REQ_0272",
+    "page": 120,
+    "category": "Response/Error",
+    "text": "response BRESP, must be signaled only after the last data transfer of a write transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0273",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must not wait for the Manager to assert BREADY before asserting BVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0274",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must wait for both AWVALID and AWREADY to be asserted before it asserts RVALID to"
+  },
+  {
+    "req_id": "AXI_REQ_0275",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must not wait for the Manager to assert RREADY before asserting RVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0276",
+    "page": 120,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must not wait for the Subordinate to assert RVALID before asserting WVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0277",
+    "page": 120,
+    "category": "Functional",
+    "text": "• A double-headed arrow points to a signal that must be asserted only after assertion of the signal at the start of"
+  },
+  {
+    "req_id": "AXI_REQ_0278",
+    "page": 121,
+    "category": "Functional",
+    "text": "In some implementations this will be a fixed interface attribute, other implementations might enable the"
+  },
+  {
+    "req_id": "AXI_REQ_0279",
+    "page": 121,
+    "category": "Atomic/Exclusive",
+    "text": "If a Subordinate or interconnect component declares that it supports Atomic transactions, then it must support all"
+  },
+  {
+    "req_id": "AXI_REQ_0280",
+    "page": 121,
+    "category": "Response/Error",
+    "text": "address regions, then the Subordinate must give an appropriate error response for the Atomic transactions that it"
+  },
+  {
+    "req_id": "AXI_REQ_0281",
+    "page": 122,
+    "category": "Atomic/Exclusive",
+    "text": "If an interconnect does not support Atomic transactions, all attached Manager components must be configured to"
+  },
+  {
+    "req_id": "AXI_REQ_0282",
+    "page": 122,
+    "category": "Atomic/Exclusive",
+    "text": "Atomic transactions are not required to be supported for every address location. If Atomic transactions are not"
+  },
+  {
+    "req_id": "AXI_REQ_0283",
+    "page": 122,
+    "category": "Atomic/Exclusive",
+    "text": "For Device transactions, the Atomic transaction must be passed to the endpoint Subordinate. If the Subordinate is"
+  },
+  {
+    "req_id": "AXI_REQ_0284",
+    "page": 122,
+    "category": "Response/Error",
+    "text": "configured to indicate that it does not support Atomic transactions, then the interconnect must give an error"
+  },
+  {
+    "req_id": "AXI_REQ_0285",
+    "page": 122,
+    "category": "Response/Error",
+    "text": "response for the transaction. An Atomic transaction must not be passed to a component that does not support"
+  },
+  {
+    "req_id": "AXI_REQ_0286",
+    "page": 123,
+    "category": "Functional",
+    "text": "The request Opcode indicates the function of a request and how it must be processed by a Subordinate."
+  },
+  {
+    "req_id": "AXI_REQ_0287",
+    "page": 124,
+    "category": "Functional",
+    "text": "If any of the following properties are not False, AWSNOOP_WIDTH must be 5:"
+  },
+  {
+    "req_id": "AXI_REQ_0288",
+    "page": 124,
+    "category": "Functional",
+    "text": "If any of the following properties are not False, AWSNOOP_WIDTH must be 4 or 5:"
+  },
+  {
+    "req_id": "AXI_REQ_0289",
+    "page": 124,
+    "category": "Functional",
+    "text": "If any of the following properties are not False, ARSNOOP_WIDTH must be 4:"
+  },
+  {
+    "req_id": "AXI_REQ_0290",
+    "page": 125,
+    "category": "Functional",
+    "text": "AWSNOOP output from its interface. An attached Subordinate must have its AWSNOOP input tied LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0291",
+    "page": 125,
+    "category": "Functional",
+    "text": "ARSNOOP output from its interface. An attached Subordinate must have its ARSNOOP input tied LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0292",
+    "page": 126,
+    "category": "Functional",
+    "text": "operation must be performed. The"
+  },
+  {
+    "req_id": "AXI_REQ_0293",
+    "page": 127,
+    "category": "Functional",
+    "text": "an indication that the data should"
+  },
+  {
+    "req_id": "AXI_REQ_0294",
+    "page": 127,
+    "category": "Functional",
+    "text": "indication that the data should be"
+  },
+  {
+    "req_id": "AXI_REQ_0295",
+    "page": 127,
+    "category": "Functional",
+    "text": "the line must be cleaned and/or"
+  },
+  {
+    "req_id": "AXI_REQ_0296",
+    "page": 127,
+    "category": "Functional",
+    "text": "line must be cleaned and/or"
+  },
+  {
+    "req_id": "AXI_REQ_0297",
+    "page": 127,
+    "category": "Cache/Stash",
+    "text": "indicates that a cache line should"
+  },
+  {
+    "req_id": "AXI_REQ_0298",
+    "page": 127,
+    "category": "Cache/Stash",
+    "text": "indicates that a cache line should"
+  },
+  {
+    "req_id": "AXI_REQ_0299",
+    "page": 127,
+    "category": "Functional",
+    "text": "indicates that a translation should"
+  },
+  {
+    "req_id": "AXI_REQ_0300",
+    "page": 129,
+    "category": "Functional",
+    "text": "which the Manager will not"
+  },
+  {
+    "req_id": "AXI_REQ_0301",
+    "page": 129,
+    "category": "Functional",
+    "text": "Data must not be Dirty."
+  },
+  {
+    "req_id": "AXI_REQ_0302",
+    "page": 129,
+    "category": "Functional",
+    "text": "which the Manager will not"
+  },
+  {
+    "req_id": "AXI_REQ_0303",
+    "page": 129,
+    "category": "Functional",
+    "text": "which the Manager will not"
+  },
+  {
+    "req_id": "AXI_REQ_0304",
+    "page": 130,
+    "category": "Cache/Stash",
+    "text": "cache line. Cleaned data must"
+  },
+  {
+    "req_id": "AXI_REQ_0305",
+    "page": 130,
+    "category": "Functional",
+    "text": "data is not required to be written"
+  },
+  {
+    "req_id": "AXI_REQ_0306",
+    "page": 132,
+    "category": "Cache/Stash",
+    "text": "Fully coherent agents use hardware coherency with data snooping to keep their caches coherent. These will"
+  },
+  {
+    "req_id": "AXI_REQ_0307",
+    "page": 132,
+    "category": "Cache/Stash",
+    "text": "I/O coherent agents can share data with fully coherent agents but any data that is cached locally to them must be"
+  },
+  {
+    "req_id": "AXI_REQ_0308",
+    "page": 132,
+    "category": "Cache/Stash",
+    "text": "Non-coherent agents must use manual cache maintenance on any data that is shared with other agents and cached"
+  },
+  {
+    "req_id": "AXI_REQ_0309",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "aligned to the total size of the cache line. A system which employs cache sharing must have a common cache line"
+  },
+  {
+    "req_id": "AXI_REQ_0310",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "size. Some transactions only operate on entire cache lines and must be cache line sized."
+  },
+  {
+    "req_id": "AXI_REQ_0311",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "For any interfaces carrying cache line sized transactions, the data width must be wide enough to transport a cache"
+  },
+  {
+    "req_id": "AXI_REQ_0312",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "To be compatible with AMBA CHI, cache line size must be 64 bytes."
+  },
+  {
+    "req_id": "AXI_REQ_0313",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "Opcodes where the transaction must be cache line sized and Regular are shown in Table A8.2. For more"
+  },
+  {
+    "req_id": "AXI_REQ_0314",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "Table A8.2: Opcodes which must be cache line sized and Regular"
+  },
+  {
+    "req_id": "AXI_REQ_0315",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "• Size x Length must be equal to the cache line size."
+  },
+  {
+    "req_id": "AXI_REQ_0316",
+    "page": 133,
+    "category": "Cache/Stash",
+    "text": "• Transactions with write data must have all byte strobes asserted within the cache line container."
+  },
+  {
+    "req_id": "AXI_REQ_0317",
+    "page": 134,
+    "category": "Functional",
+    "text": "When multiple Managers share data, writes from those Managers must be coherent. This means writes to the same"
+  },
+  {
+    "req_id": "AXI_REQ_0318",
+    "page": 134,
+    "category": "Cache/Stash",
+    "text": "If a system contains caches, measures must be taken to ensure that cached values do not become stale."
+  },
+  {
+    "req_id": "AXI_REQ_0319",
+    "page": 134,
+    "category": "Functional",
+    "text": "Shareable. There must be a consistent definition of:"
+  },
+  {
+    "req_id": "AXI_REQ_0320",
+    "page": 134,
+    "category": "Functional",
+    "text": "Address locations in the System Domain must be visible to all Managers that are able to access them. This is"
+  },
+  {
+    "req_id": "AXI_REQ_0321",
+    "page": 134,
+    "category": "Functional",
+    "text": "Requests to Device type memory are required to use the System Domain."
+  },
+  {
+    "req_id": "AXI_REQ_0322",
+    "page": 134,
+    "category": "Transaction",
+    "text": "Address locations in the Non-shareable Domain are not required to be visible to other Managers. Transactions to"
+  },
+  {
+    "req_id": "AXI_REQ_0323",
+    "page": 134,
+    "category": "Handshake/Timing",
+    "text": "Operations (CMOs) must be issued to clean and invalidate the data from any local caches before it is read."
+  },
+  {
+    "req_id": "AXI_REQ_0324",
+    "page": 134,
+    "category": "Cache/Stash",
+    "text": "line must be passed as Clean and responsibility for writing back the line remains with the downstream cache."
+  },
+  {
+    "req_id": "AXI_REQ_0325",
+    "page": 134,
+    "category": "Functional",
+    "text": "Address locations in the Shareable Domain must be visible to all other Managers that also have those locations"
+  },
+  {
+    "req_id": "AXI_REQ_0326",
+    "page": 134,
+    "category": "Cache/Stash",
+    "text": "marked as Shareable. Requests with the Shareable attribute must snoop local caches and lookup in caches that"
+  },
+  {
+    "req_id": "AXI_REQ_0327",
+    "page": 135,
+    "category": "Functional",
+    "text": "If a component is required to support the Shareable Domain, it must include the Domain signaling."
+  },
+  {
+    "req_id": "AXI_REQ_0328",
+    "page": 136,
+    "category": "Cache/Stash",
+    "text": "coherency, data cached as Non-shareable must be made visible using CMOs before being accessed by an agent"
+  },
+  {
+    "req_id": "AXI_REQ_0329",
+    "page": 136,
+    "category": "Cache/Stash",
+    "text": "The combination of Domain and memory type determines which caches must be accessed to complete the"
+  },
+  {
+    "req_id": "AXI_REQ_0330",
+    "page": 136,
+    "category": "Functional",
+    "text": "must be accessed when processing a request."
+  },
+  {
+    "req_id": "AXI_REQ_0331",
+    "page": 137,
+    "category": "Cache/Stash",
+    "text": "but it cannot be snooped, so it must not cache Shareable data. AXI does not support data snooping, so the coherent"
+  },
+  {
+    "req_id": "AXI_REQ_0332",
+    "page": 137,
+    "category": "Functional",
+    "text": "interconnect will typically be based on the AMBA CHI protocol [5] with AXI interfaces for connecting I/O"
+  },
+  {
+    "req_id": "AXI_REQ_0333",
+    "page": 137,
+    "category": "Cache/Stash",
+    "text": "a request is sent downstream towards memory. When the data is returned, it must not be cached by the I/O"
+  },
+  {
+    "req_id": "AXI_REQ_0334",
+    "page": 137,
+    "category": "Cache/Stash",
+    "text": "The Shareable_Cache_Support property must be False for an I/O coherent interface."
+  },
+  {
+    "req_id": "AXI_REQ_0335",
+    "page": 138,
+    "category": "Cache/Stash",
+    "text": "• Clean evictions of Shareable lines can be cached but must not be written back to memory."
+  },
+  {
+    "req_id": "AXI_REQ_0336",
+    "page": 138,
+    "category": "Response/Error",
+    "text": "To enable this, additional Opcodes and responses are required. The cache must also track which lines are Shareable"
+  },
+  {
+    "req_id": "AXI_REQ_0337",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must not hit"
+  },
+  {
+    "req_id": "AXI_REQ_0338",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0339",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit2"
+  },
+  {
+    "req_id": "AXI_REQ_0340",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0341",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0342",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must not hit"
+  },
+  {
+    "req_id": "AXI_REQ_0343",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0344",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0345",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0346",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0347",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0348",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0349",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0350",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0351",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0352",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0353",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0354",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0355",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must hit"
+  },
+  {
+    "req_id": "AXI_REQ_0356",
+    "page": 138,
+    "category": "Functional",
+    "text": "Must not hit"
+  },
+  {
+    "req_id": "AXI_REQ_0357",
+    "page": 138,
+    "category": "Functional",
+    "text": "1 The line must no longer be marked as Shareable."
+  },
+  {
+    "req_id": "AXI_REQ_0358",
+    "page": 138,
+    "category": "Functional",
+    "text": "3 Must hit if RME_Support is True."
+  },
+  {
+    "req_id": "AXI_REQ_0359",
+    "page": 138,
+    "category": "Cache/Stash",
+    "text": "Non-cacheable, Outer Cacheable will not use shareable read and write transactions and it is not expected that"
+  },
+  {
+    "req_id": "AXI_REQ_0360",
+    "page": 138,
+    "category": "Cache/Stash",
+    "text": "cache lines will be allocated as Shareable."
+  },
+  {
+    "req_id": "AXI_REQ_0361",
+    "page": 139,
+    "category": "Cache/Stash",
+    "text": "Transactions using these Opcodes must be Modifiable, cache line sized and Regular. See A4.2.2 Modifiable"
+  },
+  {
+    "req_id": "AXI_REQ_0362",
+    "page": 139,
+    "category": "Transaction",
+    "text": "For write transactions all write strobes must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0363",
+    "page": 139,
+    "category": "Functional",
+    "text": "read data must be Clean."
+  },
+  {
+    "req_id": "AXI_REQ_0364",
+    "page": 139,
+    "category": "Response/Error",
+    "text": "read data can be Clean or Dirty. If the data is Dirty, the line must be allocated upstream, and the response for all"
+  },
+  {
+    "req_id": "AXI_REQ_0365",
+    "page": 139,
+    "category": "Transaction",
+    "text": "transfers of read data must be OKAYDIRTY instead of OKAY."
+  },
+  {
+    "req_id": "AXI_REQ_0366",
+    "page": 140,
+    "category": "Functional",
+    "text": "A Shareable Clean line must not be exposed to any agents outside of the Shareable Domain because the line might"
+  },
+  {
+    "req_id": "AXI_REQ_0367",
+    "page": 140,
+    "category": "Cache/Stash",
+    "text": "become stale within caches in the Shareable Domain. For the same reason, data from a WriteEvictFull must not"
+  },
+  {
+    "req_id": "AXI_REQ_0368",
+    "page": 140,
+    "category": "Functional",
+    "text": "Alternative Opcodes must be used."
+  },
+  {
+    "req_id": "AXI_REQ_0369",
+    "page": 141,
+    "category": "Functional",
+    "text": "- (request must be dropped)"
+  },
+  {
+    "req_id": "AXI_REQ_0370",
+    "page": 142,
+    "category": "Ordering",
+    "text": "The Prefetch request is not required to be ordered with respect to other requests such as CMOs, therefore a"
+  },
+  {
+    "req_id": "AXI_REQ_0371",
+    "page": 142,
+    "category": "Cache/Stash",
+    "text": "Prefetch must not be used to signal that a line can be fetched into a managed or visible cache."
+  },
+  {
+    "req_id": "AXI_REQ_0372",
+    "page": 142,
+    "category": "Cache/Stash",
+    "text": "• A Prefetch request must be cache line sized with the following constraints:"
+  },
+  {
+    "req_id": "AXI_REQ_0373",
+    "page": 142,
+    "category": "Functional",
+    "text": "• The ID value must be unique-in-flight, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0374",
+    "page": 142,
+    "category": "Functional",
+    "text": "– The Manager must not issue a request on the write channel with the same AWID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0375",
+    "page": 142,
+    "category": "Transaction",
+    "text": "– If present on the interface, AWIDUNQ must be asserted for Prefetch transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0376",
+    "page": 142,
+    "category": "Functional",
+    "text": "• The Manager may or may not follow a Prefetch request with a non-Prefetch request to the same address."
+  },
+  {
+    "req_id": "AXI_REQ_0377",
+    "page": 143,
+    "category": "Transaction",
+    "text": "• When Prefetch_Transaction is True, RRESP_WIDTH must be 3 to enable the signaling of the"
+  },
+  {
+    "req_id": "AXI_REQ_0378",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "Cache stashing enables one component to indicate that data should be placed in another cache in the system. This"
+  },
+  {
+    "req_id": "AXI_REQ_0379",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "Write to a Shareable location with an indication that the data should be allocated into a cache. Any number of"
+  },
+  {
+    "req_id": "AXI_REQ_0380",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "Write a full cache line of data to a Shareable location with an indication that the data should be allocated into a"
+  },
+  {
+    "req_id": "AXI_REQ_0381",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "cache. The transaction must be cache line sized and Regular. All write strobes must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0382",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "A data-less transaction which indicates that a cache line should be fetched into a particular cache. Other copies of"
+  },
+  {
+    "req_id": "AXI_REQ_0383",
+    "page": 144,
+    "category": "Handshake/Timing",
+    "text": "the line are not required to be invalidated."
+  },
+  {
+    "req_id": "AXI_REQ_0384",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "A data-less transaction which indicates that a cache line should be fetched into a particular cache. It is"
+  },
+  {
+    "req_id": "AXI_REQ_0385",
+    "page": 144,
+    "category": "Handshake/Timing",
+    "text": "A StashOnceUnique transaction can cause the invalidation of a cached copy of a cache line and care must be taken"
+  },
+  {
+    "req_id": "AXI_REQ_0386",
+    "page": 144,
+    "category": "Cache/Stash",
+    "text": "should be obtained for the address that is supplied with the StashTranslation transaction. See A13.9"
+  },
+  {
+    "req_id": "AXI_REQ_0387",
+    "page": 145,
+    "category": "Cache/Stash",
+    "text": "The Domain of a stash request determines which caches are checked for the cache line and how the line should be"
+  },
+  {
+    "req_id": "AXI_REQ_0388",
+    "page": 145,
+    "category": "Cache/Stash",
+    "text": "request causes a cache to issue a downstream request, it should be Shareable if possible. Writes with stash must"
+  },
+  {
+    "req_id": "AXI_REQ_0389",
+    "page": 145,
+    "category": "Cache/Stash",
+    "text": "request causes a cache to issue a downstream request, it must be Non-shareable. StashOnceShared and"
+  },
+  {
+    "req_id": "AXI_REQ_0390",
+    "page": 146,
+    "category": "Cache/Stash",
+    "text": "• A Node ID (NID) to identify the physical interface that the cache stash should be sent to."
+  },
+  {
+    "req_id": "AXI_REQ_0391",
+    "page": 146,
+    "category": "Cache/Stash",
+    "text": "• For non-stash transactions, AWSTASHLPIDEN and AWSTASHNIDEN must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0392",
+    "page": 146,
+    "category": "Handshake/Timing",
+    "text": "• When AWSTASHNIDEN is LOW, AWSTASHNID is invalid and must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0393",
+    "page": 146,
+    "category": "Handshake/Timing",
+    "text": "• When AWSTASHLPIDEN is LOW, AWSTASHLPID is invalid and must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0394",
+    "page": 147,
+    "category": "Cache/Stash",
+    "text": "StashOnce transactions must not use the same AXI ID values that are used by non-StashOnce transactions on the"
+  },
+  {
+    "req_id": "AXI_REQ_0395",
+    "page": 148,
+    "category": "Cache/Stash",
+    "text": "may not be a stash target."
+  },
+  {
+    "req_id": "AXI_REQ_0396",
+    "page": 148,
+    "category": "Cache/Stash",
+    "text": "STASHNID_Present must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0397",
+    "page": 148,
+    "category": "Cache/Stash",
+    "text": "When Cache_Stash_Transactions is False, STASHNID_Present and STASHLPID_Present must both be False."
+  },
+  {
+    "req_id": "AXI_REQ_0398",
+    "page": 148,
+    "category": "Functional",
+    "text": "must be taken."
+  },
+  {
+    "req_id": "AXI_REQ_0399",
+    "page": 148,
+    "category": "Functional",
+    "text": "must be taken."
+  },
+  {
+    "req_id": "AXI_REQ_0400",
+    "page": 148,
+    "category": "Functional",
+    "text": "must be taken."
+  },
+  {
+    "req_id": "AXI_REQ_0401",
+    "page": 149,
+    "category": "Functional",
+    "text": "deallocated, then the Dirty copy must be written back to main memory."
+  },
+  {
+    "req_id": "AXI_REQ_0402",
+    "page": 149,
+    "category": "Cache/Stash",
+    "text": "cache line boundary. Size must be cache line sized or smaller."
+  },
+  {
+    "req_id": "AXI_REQ_0403",
+    "page": 149,
+    "category": "Transaction",
+    "text": "ROCI and ROMI are only supported in the Shareable Domain, so the Shareable_Transactions property must be"
+  },
+  {
+    "req_id": "AXI_REQ_0404",
+    "page": 149,
+    "category": "Handshake/Timing",
+    "text": "first item of read data for the transaction. The invalidation of the cache line is not required to have completed at"
+  },
+  {
+    "req_id": "AXI_REQ_0405",
+    "page": 149,
+    "category": "Transaction",
+    "text": "this point. However, it must be ensured that any later write transaction from any agent that starts after this point, is"
+  },
+  {
+    "req_id": "AXI_REQ_0406",
+    "page": 150,
+    "category": "Cache/Stash",
+    "text": "• The use of the ROMI transaction can cause the loss of a Dirty cache line. The use of this transaction must be"
+  },
+  {
+    "req_id": "AXI_REQ_0407",
+    "page": 150,
+    "category": "Handshake/Timing",
+    "text": "• Deallocating transactions do not guarantee that a cache line will be cleaned or invalidated, so cannot be used"
+  },
+  {
+    "req_id": "AXI_REQ_0408",
+    "page": 151,
+    "category": "Handshake/Timing",
+    "text": "InvalidateHint is not required to be executed for functional correctness, so can be terminated at any point in the"
+  },
+  {
+    "req_id": "AXI_REQ_0409",
+    "page": 151,
+    "category": "Handshake/Timing",
+    "text": "• Ensuring the use of the InvalidateHint transaction is limited to address ranges that will not contain sensitive"
+  },
+  {
+    "req_id": "AXI_REQ_0410",
+    "page": 151,
+    "category": "Handshake/Timing",
+    "text": "– AWSNOOP must be 5b wide if the InvalidateHint_Transaction property is True."
+  },
+  {
+    "req_id": "AXI_REQ_0411",
+    "page": 151,
+    "category": "Cache/Stash",
+    "text": "• AWSIZE and AWLEN must be cache line sized and Regular."
+  },
+  {
+    "req_id": "AXI_REQ_0412",
+    "page": 151,
+    "category": "Ordering",
+    "text": "– A Manager must not issue a request on the write channels with the same ID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0413",
+    "page": 151,
+    "category": "Handshake/Timing",
+    "text": "– If present, AWIDUNQ must be asserted for an InvalidateHint request."
+  },
+  {
+    "req_id": "AXI_REQ_0414",
+    "page": 155,
+    "category": "Functional",
+    "text": "When a component receives a CMO, it must do the following:"
+  },
+  {
+    "req_id": "AXI_REQ_0415",
+    "page": 155,
+    "category": "Cache/Stash",
+    "text": "1. If the component is a cache and the CMO is cacheable, it must look up the line."
+  },
+  {
+    "req_id": "AXI_REQ_0416",
+    "page": 155,
+    "category": "Functional",
+    "text": "2. If the component is a coherent interconnect and the CMO is Shareable, a CMO snoop must be sent to any"
+  },
+  {
+    "req_id": "AXI_REQ_0417",
+    "page": 155,
+    "category": "Functional",
+    "text": "Note that a coherent protocol such as AMBA CHI [5] is required to send CMO snoop requests."
+  },
+  {
+    "req_id": "AXI_REQ_0418",
+    "page": 155,
+    "category": "Functional",
+    "text": "It is recommended that Write-Through No-Allocate is used for writes to memory which will be followed by"
+  },
+  {
+    "req_id": "AXI_REQ_0419",
+    "page": 155,
+    "category": "Cache/Stash",
+    "text": "a CMO to the same line. This ensures that the line will be looked up in any downstream cache but will not be"
+  },
+  {
+    "req_id": "AXI_REQ_0420",
+    "page": 155,
+    "category": "Response/Error",
+    "text": "6. If the CMO does need to be sent downstream, the CMO must be sent and the response that is returned must"
+  },
+  {
+    "req_id": "AXI_REQ_0421",
+    "page": 156,
+    "category": "Cache/Stash",
+    "text": "• The request must be cache line sized and Regular. See A3.1.8 Regular transactions for more details."
+  },
+  {
+    "req_id": "AXI_REQ_0422",
+    "page": 156,
+    "category": "Transaction",
+    "text": "– System Domain is not permitted, which means that CMO transactions must be Normal rather than"
+  },
+  {
+    "req_id": "AXI_REQ_0423",
+    "page": 156,
+    "category": "Cache/Stash",
+    "text": "The AxCACHE and AxDOMAIN attributes indicate which caches must action a CMO, as shown in Table A9.1."
+  },
+  {
+    "req_id": "AXI_REQ_0424",
+    "page": 156,
+    "category": "Cache/Stash",
+    "text": "• If a location is cacheable for non-CMO transactions, it should be cacheable for CMO transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0425",
+    "page": 156,
+    "category": "Transaction",
+    "text": "• If a location is in the Shareable Domain for non-CMO transactions, it should be in the Shareable Domain for"
+  },
+  {
+    "req_id": "AXI_REQ_0426",
+    "page": 156,
+    "category": "Functional",
+    "text": "• A Manager should not issue a read request that permits it to allocate a line, while there is an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0427",
+    "page": 156,
+    "category": "Cache/Stash",
+    "text": "• Allocation hints, such as AxCACHE[3:2], are not required to match between CMO and non-CMO"
+  },
+  {
+    "req_id": "AXI_REQ_0428",
+    "page": 157,
+    "category": "Functional",
+    "text": "The propagation of CMOs downstream of components depends on the system topology. A CMO must be"
+  },
+  {
+    "req_id": "AXI_REQ_0429",
+    "page": 159,
+    "category": "Functional",
+    "text": "• Must be 0 if CMO_On_Write is False. This means that AWCMO is not on the interface."
+  },
+  {
+    "req_id": "AXI_REQ_0430",
+    "page": 159,
+    "category": "Functional",
+    "text": "• Must be 2 if CMO_On_Write is True and RME_Support is False."
+  },
+  {
+    "req_id": "AXI_REQ_0431",
+    "page": 159,
+    "category": "Functional",
+    "text": "• Must be 3 if CMO_On_Write is True and"
+  },
+  {
+    "req_id": "AXI_REQ_0432",
+    "page": 159,
+    "category": "Functional",
+    "text": "When AWSNOOP is not CMO, WritePtlCMO or WriteFullCMO, AWCMO must be 0b000."
+  },
+  {
+    "req_id": "AXI_REQ_0433",
+    "page": 160,
+    "category": "Cache/Stash",
+    "text": "• A write from an I/O agent which must be made visible to observers which are downstream of caches."
+  },
+  {
+    "req_id": "AXI_REQ_0434",
+    "page": 160,
+    "category": "Functional",
+    "text": "• A write to persistent memory that must ensure that all copies of the line are also cleaned to the point of"
+  },
+  {
+    "req_id": "AXI_REQ_0435",
+    "page": 160,
+    "category": "Functional",
+    "text": "• A CMO that causes a write back of dirty data, which must be followed by the CMO."
+  },
+  {
+    "req_id": "AXI_REQ_0436",
+    "page": 160,
+    "category": "Cache/Stash",
+    "text": "that some Managers will natively generate a write with CMO. In other cases, a cache or interconnect will combine"
+  },
+  {
+    "req_id": "AXI_REQ_0437",
+    "page": 160,
+    "category": "Functional",
+    "text": "If the Write_Plus_CMO property is True, the CMO_On_Write property must also be True."
+  },
+  {
+    "req_id": "AXI_REQ_0438",
+    "page": 160,
+    "category": "Functional",
+    "text": "data must be visible to observers"
+  },
+  {
+    "req_id": "AXI_REQ_0439",
+    "page": 160,
+    "category": "Cache/Stash",
+    "text": "All in-line and peer caches must look up the"
+  },
+  {
+    "req_id": "AXI_REQ_0440",
+    "page": 160,
+    "category": "Functional",
+    "text": "Shareable region, where the data must"
+  },
+  {
+    "req_id": "AXI_REQ_0441",
+    "page": 160,
+    "category": "Functional",
+    "text": "and CleanSharedPersist must be propagated"
+  },
+  {
+    "req_id": "AXI_REQ_0442",
+    "page": 160,
+    "category": "Cache/Stash",
+    "text": "All in-line and peer cache entries must be"
+  },
+  {
+    "req_id": "AXI_REQ_0443",
+    "page": 160,
+    "category": "Handshake/Timing",
+    "text": "CleanInvalid must be propagated if there are"
+  },
+  {
+    "req_id": "AXI_REQ_0444",
+    "page": 161,
+    "category": "Cache/Stash",
+    "text": "A WriteFullCMO must be cache line sized and Regular, see A8.2 Cache line size and A3.1.8 Regular transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0445",
+    "page": 161,
+    "category": "Cache/Stash",
+    "text": "A WritePtlCMO must be cache line sized or smaller and not cross a cache line boundary. The associated CMO"
+  },
+  {
+    "req_id": "AXI_REQ_0446",
+    "page": 161,
+    "category": "Cache/Stash",
+    "text": "applies to the whole of the addressed cache line. AWBURST must not be FIXED."
+  },
+  {
+    "req_id": "AXI_REQ_0447",
+    "page": 161,
+    "category": "Response/Error",
+    "text": "BPERSIST signals must be set on the write response. See A9.8 CMOs for Persistence for more details."
+  },
+  {
+    "req_id": "AXI_REQ_0448",
+    "page": 164,
+    "category": "Functional",
+    "text": "If CMO_On_Write and CMO_On_Read are both False, Persist_CMO must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0449",
+    "page": 165,
+    "category": "Functional",
+    "text": "The propagation of PCMOs downstream of components depends on the system topology. A PCMO must be"
+  },
+  {
+    "req_id": "AXI_REQ_0450",
+    "page": 165,
+    "category": "Response/Error",
+    "text": "If the PCMO is changed to a CleanShared, the Persist response must be sent by the component doing the"
+  },
+  {
+    "req_id": "AXI_REQ_0451",
+    "page": 165,
+    "category": "Functional",
+    "text": "When Persist_CMO is False, AWCMO must not indicate CleanSharedPersist or CleanSharedDeepPersist."
+  },
+  {
+    "req_id": "AXI_REQ_0452",
+    "page": 166,
+    "category": "Response/Error",
+    "text": "• The Completion response must follow normal response ordering rules."
+  },
+  {
+    "req_id": "AXI_REQ_0453",
+    "page": 166,
+    "category": "Response/Error",
+    "text": "• If BCOMP is present on an interface, it must be asserted for one response transfer in all transactions on the"
+  },
+  {
+    "req_id": "AXI_REQ_0454",
+    "page": 166,
+    "category": "Functional",
+    "text": "• BIDUNQ can take any value, it is not required to have the same value as AWIDUNQ."
+  },
+  {
+    "req_id": "AXI_REQ_0455",
+    "page": 166,
+    "category": "Functional",
+    "text": "• BLOOP can take any value, it is not required to be driven from AWLOOP."
+  },
+  {
+    "req_id": "AXI_REQ_0456",
+    "page": 166,
+    "category": "Response/Error",
+    "text": "• If BPERSIST is present on an interface, it must be asserted for one transfer of a response to a CSP or CSDP."
+  },
+  {
+    "req_id": "AXI_REQ_0457",
+    "page": 166,
+    "category": "Response/Error",
+    "text": "It must be deasserted for all other responses."
+  },
+  {
+    "req_id": "AXI_REQ_0458",
+    "page": 166,
+    "category": "Response/Error",
+    "text": "• The combined response must follow normal response ordering rules."
+  },
+  {
+    "req_id": "AXI_REQ_0459",
+    "page": 167,
+    "category": "Response/Error",
+    "text": "and Persist response, so the cache must deassert BCOMP when it propagates the response upstream."
+  },
+  {
+    "req_id": "AXI_REQ_0460",
+    "page": 167,
+    "category": "Cache/Stash",
+    "text": "Cache must"
+  },
+  {
+    "req_id": "AXI_REQ_0461",
+    "page": 167,
+    "category": "Functional",
+    "text": "When Persist_CMO is False, ARSNOOP must not indicate CleanSharedPersist."
+  },
+  {
+    "req_id": "AXI_REQ_0462",
+    "page": 168,
+    "category": "Cache/Stash",
+    "text": "A9.15 illustrates which cache lines must be operated on by a CMO with and without RME support. See A4.5"
+  },
+  {
+    "req_id": "AXI_REQ_0463",
+    "page": 168,
+    "category": "Handshake/Timing",
+    "text": "When acted upon by a CleanInvalid or CleanShared CMO, data must propagate to a point where it is observable to"
+  },
+  {
+    "req_id": "AXI_REQ_0464",
+    "page": 168,
+    "category": "Handshake/Timing",
+    "text": "The CMO_On_Write property must be True to use a CleanInvalidPoPA."
+  },
+  {
+    "req_id": "AXI_REQ_0465",
+    "page": 168,
+    "category": "Handshake/Timing",
+    "text": "The Write_Plus_CMO property must be True to use a write with CleanInvalidPoPA."
+  },
+  {
+    "req_id": "AXI_REQ_0466",
+    "page": 172,
+    "category": "Cache/Stash",
+    "text": "AxDOMAIN signals to identify the caches on which the cache maintenance operations must operate."
+  },
+  {
+    "req_id": "AXI_REQ_0467",
+    "page": 172,
+    "category": "Cache/Stash",
+    "text": "For a processor that has cache maintenance instructions that are required to operate on a different number of"
+  },
+  {
+    "req_id": "AXI_REQ_0468",
+    "page": 172,
+    "category": "Transaction",
+    "text": "transaction must be adapted to meet the requirements of the processor."
+  },
+  {
+    "req_id": "AXI_REQ_0469",
+    "page": 172,
+    "category": "Cache/Stash",
+    "text": "memory attributes is required to operate on all caches within the system, then the Manager must issue a cache"
+  },
+  {
+    "req_id": "AXI_REQ_0470",
+    "page": 172,
+    "category": "Functional",
+    "text": "of Managers and non-coherent agents. This process must follow a particular sequence to reliably make the data"
+  },
+  {
+    "req_id": "AXI_REQ_0471",
+    "page": 175,
+    "category": "Functional",
+    "text": "• Requests other address spaces must use an NSAID value of zero."
+  },
+  {
+    "req_id": "AXI_REQ_0472",
+    "page": 175,
+    "category": "Functional",
+    "text": "• If a Manager is required to use a single NSAID value, then it is permitted for NSAID signals to be tied to a"
+  },
+  {
+    "req_id": "AXI_REQ_0473",
+    "page": 176,
+    "category": "Functional",
+    "text": "NSAID values that pass data between them must be subjected to permission checks."
+  },
+  {
+    "req_id": "AXI_REQ_0474",
+    "page": 176,
+    "category": "Cache/Stash",
+    "text": "• When an agent caches a line of data that has been fetched using a particular NSAID value, it must ensure that"
+  },
+  {
+    "req_id": "AXI_REQ_0475",
+    "page": 176,
+    "category": "Response/Error",
+    "text": "– If the NSAID value of the snoop response does not match the read request, then the cache line must first"
+  },
+  {
+    "req_id": "AXI_REQ_0476",
+    "page": 176,
+    "category": "Handshake/Timing",
+    "text": "• Snoop transactions that invalidate cached copies, such as MakeInvalid, must not be used if memory"
+  },
+  {
+    "req_id": "AXI_REQ_0477",
+    "page": 176,
+    "category": "Cache/Stash",
+    "text": "protection is used. All such snoop transactions must be replaced with transactions that also clean the cache"
+  },
+  {
+    "req_id": "AXI_REQ_0478",
+    "page": 176,
+    "category": "Functional",
+    "text": "• Any interconnect-generated write to main memory that occurs as the result of a snoop must use the NSAID"
+  },
+  {
+    "req_id": "AXI_REQ_0479",
+    "page": 176,
+    "category": "Transaction",
+    "text": "• If a single Manager can issue transactions with multiple NSAID values, it must ensure that internal accesses"
+  },
+  {
+    "req_id": "AXI_REQ_0480",
+    "page": 176,
+    "category": "Cache/Stash",
+    "text": "– An access that has a cache line hit with the same address, but a different NSAID value, must clean and"
+  },
+  {
+    "req_id": "AXI_REQ_0481",
+    "page": 176,
+    "category": "Cache/Stash",
+    "text": "• Appropriate cache maintenance must be performed when changing the access permissions for NSAID values."
+  },
+  {
+    "req_id": "AXI_REQ_0482",
+    "page": 177,
+    "category": "Functional",
+    "text": "within their component. A system integrator wanting to use PBHA must consider every component between the"
+  },
+  {
+    "req_id": "AXI_REQ_0483",
+    "page": 179,
+    "category": "Functional",
+    "text": "• The data bus width (DATA_WIDTH) must be 128b or larger."
+  },
+  {
+    "req_id": "AXI_REQ_0484",
+    "page": 179,
+    "category": "Transaction",
+    "text": "• Untranslated_Transactions must not be False, because ACT transactions are to virtual addresses."
+  },
+  {
+    "req_id": "AXI_REQ_0485",
+    "page": 179,
+    "category": "Functional",
+    "text": "When connecting Manager and Subordinate interfaces, the ACT_Support property must be compatible as shown"
+  },
+  {
+    "req_id": "AXI_REQ_0486",
+    "page": 180,
+    "category": "Functional",
+    "text": "The following signals are required to support ACT."
+  },
+  {
+    "req_id": "AXI_REQ_0487",
+    "page": 180,
+    "category": "Functional",
+    "text": "• If ACT_Support is False, ACT_W_WIDTH and ACT_R_WIDTH must be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0488",
+    "page": 180,
+    "category": "Functional",
+    "text": "• When AWACTV is HIGH, AWSNOOP must be 0x0."
+  },
+  {
+    "req_id": "AXI_REQ_0489",
+    "page": 180,
+    "category": "Functional",
+    "text": "• When ARACTV is HIGH, ARSNOOP must be 0x0."
+  },
+  {
+    "req_id": "AXI_REQ_0490",
+    "page": 180,
+    "category": "Transaction",
+    "text": "• For writes, all write strobes within the transaction container must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0491",
+    "page": 181,
+    "category": "Ordering",
+    "text": "– A request must not be issued on the read channels with the same ID as an outstanding ACT read request."
+  },
+  {
+    "req_id": "AXI_REQ_0492",
+    "page": 181,
+    "category": "Ordering",
+    "text": "– A request must not be issued on the write channels with the same ID as an outstanding ACT write"
+  },
+  {
+    "req_id": "AXI_REQ_0493",
+    "page": 181,
+    "category": "Functional",
+    "text": "– If present, AxIDUNQ must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0494",
+    "page": 181,
+    "category": "Transaction",
+    "text": "transaction must never have its Size or Length changed. This might limit the topology of subsystems transporting"
+  },
+  {
+    "req_id": "AXI_REQ_0495",
+    "page": 183,
+    "category": "Functional",
+    "text": "must be set to zero."
+  },
+  {
+    "req_id": "AXI_REQ_0496",
+    "page": 183,
+    "category": "Functional",
+    "text": "• AWSNOOP must be 0b0111 or 0b00111."
+  },
+  {
+    "req_id": "AXI_REQ_0497",
+    "page": 183,
+    "category": "Atomic/Exclusive",
+    "text": "• AWLOCK must be 0b0, not exclusive access."
+  },
+  {
+    "req_id": "AXI_REQ_0498",
+    "page": 183,
+    "category": "Handshake/Timing",
+    "text": "• AWTAGOP must be Invalid."
+  },
+  {
+    "req_id": "AXI_REQ_0499",
+    "page": 183,
+    "category": "Functional",
+    "text": "• AWID must be unique-in-flight, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0500",
+    "page": 183,
+    "category": "Functional",
+    "text": "– A Manager must not issue a request on the write channel with the same AWID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0501",
+    "page": 183,
+    "category": "Transaction",
+    "text": "– If present, AWIDUNQ must be asserted for a WriteZero transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0502",
+    "page": 184,
+    "category": "Functional",
+    "text": "some cases, it is possible that the store will not be accepted because the queue is full but might be accepted if"
+  },
+  {
+    "req_id": "AXI_REQ_0503",
+    "page": 184,
+    "category": "Transaction",
+    "text": "When the WriteDeferrable_Transaction property is True, AWSNOOP and BRESP must be wide enough to"
+  },
+  {
+    "req_id": "AXI_REQ_0504",
+    "page": 184,
+    "category": "Functional",
+    "text": "• AWSNOOP_WIDTH must be 5."
+  },
+  {
+    "req_id": "AXI_REQ_0505",
+    "page": 184,
+    "category": "Functional",
+    "text": "• BRESP_WIDTH must be 3."
+  },
+  {
+    "req_id": "AXI_REQ_0506",
+    "page": 184,
+    "category": "Functional",
+    "text": "• All bits of WSTRB must be set within the 64-byte container."
+  },
+  {
+    "req_id": "AXI_REQ_0507",
+    "page": 185,
+    "category": "Ordering",
+    "text": "– A Manager must not issue a request on the write channels with the same ID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0508",
+    "page": 185,
+    "category": "Transaction",
+    "text": "– If present, AWIDUNQ must be asserted for a WriteDeferrable transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0509",
+    "page": 185,
+    "category": "Atomic/Exclusive",
+    "text": "• A WriteDeferrable transaction must be treated as 64-byte atomic, therefore:"
+  },
+  {
+    "req_id": "AXI_REQ_0510",
+    "page": 185,
+    "category": "Atomic/Exclusive",
+    "text": "– It must only be to locations which have a single-copy atomicity size of 64-bytes or greater."
+  },
+  {
+    "req_id": "AXI_REQ_0511",
+    "page": 185,
+    "category": "Transaction",
+    "text": "– The request must not be split or merged with other transactions."
+  },
+  {
+    "req_id": "AXI_REQ_0512",
+    "page": 185,
+    "category": "Transaction",
+    "text": "transactions, it must not propagate the request."
+  },
+  {
+    "req_id": "AXI_REQ_0513",
+    "page": 187,
+    "category": "Functional",
+    "text": "When MPAM_Support is False, MPAM_WIDTH must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0514",
+    "page": 188,
+    "category": "Functional",
+    "text": "When MPAM_Support is MPAM_9_1 and RME_Support is False, MPAM_WIDTH must be 11 and the mapping"
+  },
+  {
+    "req_id": "AXI_REQ_0515",
+    "page": 188,
+    "category": "Functional",
+    "text": "When MPAM_Support is MPAM_9_1 and RME_Support is True, MPAM_WIDTH must be 12 and the mapping is"
+  },
+  {
+    "req_id": "AXI_REQ_0516",
+    "page": 188,
+    "category": "Functional",
+    "text": "When MPAM_Support is MPAM_12_1 and RME_Support is False, MPAM_WIDTH must be 14 and the mapping"
+  },
+  {
+    "req_id": "AXI_REQ_0517",
+    "page": 188,
+    "category": "Functional",
+    "text": "When MPAM_Support is MPAM_12_1 and RME_Support is True, MPAM_WIDTH must be 15 and the mapping"
+  },
+  {
+    "req_id": "AXI_REQ_0518",
+    "page": 189,
+    "category": "Response/Error",
+    "text": "system must add the MPAM information. The default behavior is IMPLEMENTATION DEFINED; one possible"
+  },
+  {
+    "req_id": "AXI_REQ_0519",
+    "page": 189,
+    "category": "Handshake/Timing",
+    "text": "Manager components that are MPAM-enabled must drive MPAM signals when the corresponding AxVALID is"
+  },
+  {
+    "req_id": "AXI_REQ_0520",
+    "page": 190,
+    "category": "Transaction",
+    "text": "transaction container must be asserted. BTAGMATCH is not present."
+  },
+  {
+    "req_id": "AXI_REQ_0521",
+    "page": 190,
+    "category": "Functional",
+    "text": "MTE_Support must be False when:"
+  },
+  {
+    "req_id": "AXI_REQ_0522",
+    "page": 191,
+    "category": "Functional",
+    "text": "The signals required to support MTE are shown in Table A12.9."
+  },
+  {
+    "req_id": "AXI_REQ_0523",
+    "page": 191,
+    "category": "Functional",
+    "text": "Indicates which tags must be written to memory when"
+  },
+  {
+    "req_id": "AXI_REQ_0524",
+    "page": 191,
+    "category": "Cache/Stash",
+    "text": "Allocation Tags that are cached must be kept hardware-coherent. The coherence mechanism is the same as for"
+  },
+  {
+    "req_id": "AXI_REQ_0525",
+    "page": 192,
+    "category": "Cache/Stash",
+    "text": "• When Dirty tags are evicted from a cache, they must be either written back to memory or passed dirty to"
+  },
+  {
+    "req_id": "AXI_REQ_0526",
+    "page": 192,
+    "category": "Handshake/Timing",
+    "text": "• When a MakeInvalid or ROMI transaction hits a line with dirty tags, the tags must be written back to"
+  },
+  {
+    "req_id": "AXI_REQ_0527",
+    "page": 192,
+    "category": "Cache/Stash",
+    "text": "• The transaction must be cache line sized or smaller and not cross a cache line boundary."
+  },
+  {
+    "req_id": "AXI_REQ_0528",
+    "page": 192,
+    "category": "Handshake/Timing",
+    "text": "• AxADDR must be a physical address, therefore AxMMUVALID must be LOW if present."
+  },
+  {
+    "req_id": "AXI_REQ_0529",
+    "page": 192,
+    "category": "Transaction",
+    "text": "• AxBURST must be INCR or WRAP, not FIXED."
+  },
+  {
+    "req_id": "AXI_REQ_0530",
+    "page": 192,
+    "category": "Transaction",
+    "text": "• The transaction must be to Normal Write-Back memory, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0531",
+    "page": 192,
+    "category": "Cache/Stash",
+    "text": "– The CACHE_Present property must be True."
+  },
+  {
+    "req_id": "AXI_REQ_0532",
+    "page": 192,
+    "category": "Functional",
+    "text": "• The ID value must be unique-in-flight, which means:"
+  },
+  {
+    "req_id": "AXI_REQ_0533",
+    "page": 192,
+    "category": "Functional",
+    "text": "– A Manager must not issue a request on the read channel with the same ARID as an outstanding read"
+  },
+  {
+    "req_id": "AXI_REQ_0534",
+    "page": 192,
+    "category": "Transaction",
+    "text": "– If present, ARIDUNQ must be asserted for a read with tag Transfer or Fetch."
+  },
+  {
+    "req_id": "AXI_REQ_0535",
+    "page": 192,
+    "category": "Functional",
+    "text": "– A Manager must not issue a request on the write channel with the same AWID as an outstanding write"
+  },
+  {
+    "req_id": "AXI_REQ_0536",
+    "page": 192,
+    "category": "Transaction",
+    "text": "– If present, AWIDUNQ must be asserted for a write with tag operations Transfer, Update, or Match."
+  },
+  {
+    "req_id": "AXI_REQ_0537",
+    "page": 192,
+    "category": "Handshake/Timing",
+    "text": "required to be valid."
+  },
+  {
+    "req_id": "AXI_REQ_0538",
+    "page": 193,
+    "category": "Transaction",
+    "text": "must be consistent for each 4-bit tag that is accessed by the transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0539",
+    "page": 193,
+    "category": "Response/Error",
+    "text": "Tags are not required to be returned with the data. In the response to this"
+  },
+  {
+    "req_id": "AXI_REQ_0540",
+    "page": 193,
+    "category": "Handshake/Timing",
+    "text": "request, RTAG is invalid and must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0541",
+    "page": 193,
+    "category": "Handshake/Timing",
+    "text": "Each transfer of read data must have a valid tag value. Tags must be sent for"
+  },
+  {
+    "req_id": "AXI_REQ_0542",
+    "page": 193,
+    "category": "Handshake/Timing",
+    "text": "Only tags are required to be fetched. Data is not required to be valid and must"
+  },
+  {
+    "req_id": "AXI_REQ_0543",
+    "page": 193,
+    "category": "Cache/Stash",
+    "text": "not be used by the Manager. Transactions using Fetch must be cache line sized"
+  },
+  {
+    "req_id": "AXI_REQ_0544",
+    "page": 193,
+    "category": "Functional",
+    "text": "and Regular. Tags must be sent for every 16-byte granule that is accessed."
+  },
+  {
+    "req_id": "AXI_REQ_0545",
+    "page": 194,
+    "category": "Functional",
+    "text": "WTAGUPDATE must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0546",
+    "page": 194,
+    "category": "Functional",
+    "text": "WTAG must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0547",
+    "page": 194,
+    "category": "Functional",
+    "text": "WTAGUPDATE must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0548",
+    "page": 194,
+    "category": "Handshake/Timing",
+    "text": "WTAG bits must be valid for every byte in the transaction container."
+  },
+  {
+    "req_id": "AXI_REQ_0549",
+    "page": 194,
+    "category": "Functional",
+    "text": "Tag values have been updated and are dirty; the tags in memory must be"
+  },
+  {
+    "req_id": "AXI_REQ_0550",
+    "page": 194,
+    "category": "Transaction",
+    "text": "Tags that are only partially addressed in the transaction must have"
+  },
+  {
+    "req_id": "AXI_REQ_0551",
+    "page": 194,
+    "category": "Functional",
+    "text": "Write*Full* Opcodes must have all associated WTAGUPDATE bits asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0552",
+    "page": 194,
+    "category": "Handshake/Timing",
+    "text": "WTAG must be valid for every associated WTAGUPDATE bit that is asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0553",
+    "page": 194,
+    "category": "Functional",
+    "text": "The tags in the write must be checked against the Allocation Tag values that are"
+  },
+  {
+    "req_id": "AXI_REQ_0554",
+    "page": 194,
+    "category": "Functional",
+    "text": "obtained from memory. The Match operation must be performed for all tags"
+  },
+  {
+    "req_id": "AXI_REQ_0555",
+    "page": 194,
+    "category": "Functional",
+    "text": "where any corresponding write data strobes are asserted. It is required to update"
+  },
+  {
+    "req_id": "AXI_REQ_0556",
+    "page": 194,
+    "category": "Functional",
+    "text": "WTAGUPDATE must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0557",
+    "page": 194,
+    "category": "Handshake/Timing",
+    "text": "WTAG bits must be valid for byte lanes that are enabled by WSTRB."
+  },
+  {
+    "req_id": "AXI_REQ_0558",
+    "page": 194,
+    "category": "Functional",
+    "text": "For a write with tag Update, WTAGUPDATE indicates which tags must be written. It has the following rules:"
+  },
+  {
+    "req_id": "AXI_REQ_0559",
+    "page": 194,
+    "category": "Functional",
+    "text": "• If a bit is asserted, then the corresponding tags must be written to memory."
+  },
+  {
+    "req_id": "AXI_REQ_0560",
+    "page": 194,
+    "category": "Transaction",
+    "text": "• WTAGUPDATE bits outside of the transaction container must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0561",
+    "page": 194,
+    "category": "Functional",
+    "text": "• For operations other than Update, WTAGUPDATE must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0562",
+    "page": 195,
+    "category": "Functional",
+    "text": "3 Domain must be Non-shareable."
+  },
+  {
+    "req_id": "AXI_REQ_0563",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BCOMP must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0564",
+    "page": 196,
+    "category": "Response/Error",
+    "text": "• BTAGMATCH must be 0b01 (Match result in separate response)."
+  },
+  {
+    "req_id": "AXI_REQ_0565",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BID must have the same value as AWID."
+  },
+  {
+    "req_id": "AXI_REQ_0566",
+    "page": 196,
+    "category": "Functional",
+    "text": "• If Loopback signaling is supported, BLOOP must have the same value as AWLOOP."
+  },
+  {
+    "req_id": "AXI_REQ_0567",
+    "page": 196,
+    "category": "Response/Error",
+    "text": "• The Completion response must follow normal response ordering rules."
+  },
+  {
+    "req_id": "AXI_REQ_0568",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BCOMP must be deasserted."
+  },
+  {
+    "req_id": "AXI_REQ_0569",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BTAGMATCH must be 0b11 (Pass) or 0b10 (Fail)."
+  },
+  {
+    "req_id": "AXI_REQ_0570",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BID must have the same value as AWID."
+  },
+  {
+    "req_id": "AXI_REQ_0571",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BIDUNQ can take any value, it is not required to have the same value as AWIDUNQ."
+  },
+  {
+    "req_id": "AXI_REQ_0572",
+    "page": 196,
+    "category": "Functional",
+    "text": "• BLOOP can take any value, it is not required to have the same value as AWLOOP."
+  },
+  {
+    "req_id": "AXI_REQ_0573",
+    "page": 197,
+    "category": "Functional",
+    "text": "• BCOMP must be asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0574",
+    "page": 197,
+    "category": "Functional",
+    "text": "• BTAGMATCH must be 0b11 (Pass) or 0b10 (Fail)."
+  },
+  {
+    "req_id": "AXI_REQ_0575",
+    "page": 197,
+    "category": "Functional",
+    "text": "• BID must have the same value as AWID."
+  },
+  {
+    "req_id": "AXI_REQ_0576",
+    "page": 197,
+    "category": "Functional",
+    "text": "• If Loopback signaling is supported, BLOOP must have the same value as AWLOOP."
+  },
+  {
+    "req_id": "AXI_REQ_0577",
+    "page": 197,
+    "category": "Response/Error",
+    "text": "• The combined response must follow normal response ordering rules."
+  },
+  {
+    "req_id": "AXI_REQ_0578",
+    "page": 197,
+    "category": "Functional",
+    "text": "data must be identical to that produced by a non-MTE operation to the same location."
+  },
+  {
+    "req_id": "AXI_REQ_0579",
+    "page": 197,
+    "category": "Transaction",
+    "text": "• For a write with Transfer or Update, the data must be written normally. The tag is discarded."
+  },
+  {
+    "req_id": "AXI_REQ_0580",
+    "page": 197,
+    "category": "Response/Error",
+    "text": "• For a write with Match, the data must be written normally and a single Combined response is given."
+  },
+  {
+    "req_id": "AXI_REQ_0581",
+    "page": 197,
+    "category": "Functional",
+    "text": "BTAGMATCH must be 0b10 (Fail)."
+  },
+  {
+    "req_id": "AXI_REQ_0582",
+    "page": 197,
+    "category": "Functional",
+    "text": "value must be used for tag bits associated with the compare and swap bytes."
+  },
+  {
+    "req_id": "AXI_REQ_0583",
+    "page": 198,
+    "category": "Transaction",
+    "text": "A Prefetch transaction with AWTAGOP of Transfer indicates that the data should be prefetched with tags if"
+  },
+  {
+    "req_id": "AXI_REQ_0584",
+    "page": 198,
+    "category": "Functional",
+    "text": "associated with the tag, it may not be possible to clear the poison using the same techniques that would be"
+  },
+  {
+    "req_id": "AXI_REQ_0585",
+    "page": 198,
+    "category": "Functional",
+    "text": "occurs should be significantly lower than the rate at which data corruption occurs."
+  },
+  {
+    "req_id": "AXI_REQ_0586",
+    "page": 199,
+    "category": "Functional",
+    "text": "then the appropriate Trace signal must be present for all channels that are present."
+  },
+  {
+    "req_id": "AXI_REQ_0587",
+    "page": 199,
+    "category": "Transaction",
+    "text": "• A Manager interface can assert the Trace signal along with the address of a transaction that should be tracked"
+  },
+  {
+    "req_id": "AXI_REQ_0588",
+    "page": 199,
+    "category": "Functional",
+    "text": "• A Subordinate that receives a request with AWTRACE asserted should assert the BTRACE signal alongside"
+  },
+  {
+    "req_id": "AXI_REQ_0589",
+    "page": 199,
+    "category": "Functional",
+    "text": "• WTRACE should be propagated through interconnect components."
+  },
+  {
+    "req_id": "AXI_REQ_0590",
+    "page": 199,
+    "category": "Functional",
+    "text": "• A Subordinate that receives a request with the ARTRACE signal asserted should assert the RTRACE signal"
+  },
+  {
+    "req_id": "AXI_REQ_0591",
+    "page": 199,
+    "category": "Response/Error",
+    "text": "• For Atomic transactions that require a response on the read channel, the RTRACE signal should be asserted"
+  },
+  {
+    "req_id": "AXI_REQ_0592",
+    "page": 200,
+    "category": "Functional",
+    "text": "A user-defined value that must be reflected from a"
+  },
+  {
+    "req_id": "AXI_REQ_0593",
+    "page": 200,
+    "category": "Functional",
+    "text": "A user-defined value that must be reflected from a"
+  },
+  {
+    "req_id": "AXI_REQ_0594",
+    "page": 200,
+    "category": "Functional",
+    "text": "• If Loopback_Signals is False, LOOP_R_WIDTH and LOOP_W_WIDTH must be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0595",
+    "page": 200,
+    "category": "Functional",
+    "text": "• If Loopback_Signals is True, LOOP_W_WIDTH or LOOP_R_WIDTH must be greater than 0."
+  },
+  {
+    "req_id": "AXI_REQ_0596",
+    "page": 201,
+    "category": "Functional",
+    "text": "• The value of BLOOP must be identical to the value that was on AWLOOP."
+  },
+  {
+    "req_id": "AXI_REQ_0597",
+    "page": 201,
+    "category": "Transaction",
+    "text": "• The value of RLOOP must be identical to the value that was on ARLOOP for all read data transfers."
+  },
+  {
+    "req_id": "AXI_REQ_0598",
+    "page": 201,
+    "category": "Response/Error",
+    "text": "• For Atomic transactions that require a response on the read channel, the value of RLOOP must be identical"
+  },
+  {
+    "req_id": "AXI_REQ_0599",
+    "page": 201,
+    "category": "Functional",
+    "text": "to the value that was presented on AWLOOP. This means that the Manager must use loop values that can be"
+  },
+  {
+    "req_id": "AXI_REQ_0600",
+    "page": 201,
+    "category": "Transaction",
+    "text": "Loopback values are not required to be unique. Multiple outstanding transactions from the same Manager are"
+  },
+  {
+    "req_id": "AXI_REQ_0601",
+    "page": 205,
+    "category": "Functional",
+    "text": "space to addresses in the physical address space. Although all components in the system must use a single physical"
+  },
+  {
+    "req_id": "AXI_REQ_0602",
+    "page": 205,
+    "category": "Functional",
+    "text": "• Otherwise, the SMMU must perform a translation table walk, accessing translation table in memory to"
+  },
+  {
+    "req_id": "AXI_REQ_0603",
+    "page": 205,
+    "category": "Response/Error",
+    "text": "generates a fault that must be notified to the agent that maintains the translation tables. For the required access to"
+  },
+  {
+    "req_id": "AXI_REQ_0604",
+    "page": 205,
+    "category": "Functional",
+    "text": "proceed, that agent must then provide the required VA to PA translation. Typically, it updates the translation tables"
+  },
+  {
+    "req_id": "AXI_REQ_0605",
+    "page": 208,
+    "category": "Functional",
+    "text": "• ‘-’ indicates that the signal must not be present."
+  },
+  {
+    "req_id": "AXI_REQ_0606",
+    "page": 209,
+    "category": "Functional",
+    "text": "hard coded by the interconnect, must be tied LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0607",
+    "page": 209,
+    "category": "Transaction",
+    "text": "• SECSID_WIDTH must be 0 when Untranslated_Transactions is False. AxMMUSECSID signals are not"
+  },
+  {
+    "req_id": "AXI_REQ_0608",
+    "page": 209,
+    "category": "Transaction",
+    "text": "• SECSID_WIDTH must be 1 when Untranslated_Transactions is not False and RME_Support is False. Only"
+  },
+  {
+    "req_id": "AXI_REQ_0609",
+    "page": 209,
+    "category": "Transaction",
+    "text": "• SECSID_WIDTH must be 2 when Untranslated_Transactions is not False and RME_Support is True."
+  },
+  {
+    "req_id": "AXI_REQ_0610",
+    "page": 209,
+    "category": "Functional",
+    "text": "• When AxMMUSECSID is Non-secure, the physical address space must be Non-secure."
+  },
+  {
+    "req_id": "AXI_REQ_0611",
+    "page": 209,
+    "category": "Functional",
+    "text": "• When AxMMUSECSID is Secure, the physical address space must be Non-secure or Secure."
+  },
+  {
+    "req_id": "AXI_REQ_0612",
+    "page": 209,
+    "category": "Functional",
+    "text": "• When AxMMUSECSID is Realm, the physical address space must be Non-secure or Realm."
+  },
+  {
+    "req_id": "AXI_REQ_0613",
+    "page": 210,
+    "category": "Functional",
+    "text": "• When AxMMUSSIDV is deasserted, AxMMUSSID must be 0."
+  },
+  {
+    "req_id": "AXI_REQ_0614",
+    "page": 211,
+    "category": "Transaction",
+    "text": "When using untranslated transactions and GDI, the Untranslated_Transactions property must be v4 and the"
+  },
+  {
+    "req_id": "AXI_REQ_0615",
+    "page": 211,
+    "category": "Functional",
+    "text": "• Requests to the Non-secure Protected or System Agent physical address space must be physically addressed,"
+  },
+  {
+    "req_id": "AXI_REQ_0616",
+    "page": 211,
+    "category": "Handshake/Timing",
+    "text": "– When AxPAS is NSP or SA, AxMMUVALID must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0617",
+    "page": 211,
+    "category": "Functional",
+    "text": "• When AxMMUPM is asserted, AxMMUFLOW must not be Stall."
+  },
+  {
+    "req_id": "AXI_REQ_0618",
+    "page": 212,
+    "category": "Functional",
+    "text": "• AxMMUSECSID must be Non-secure or Realm."
+  },
+  {
+    "req_id": "AXI_REQ_0619",
+    "page": 212,
+    "category": "Functional",
+    "text": "• AxMMUSECSID must be Realm."
+  },
+  {
+    "req_id": "AXI_REQ_0620",
+    "page": 212,
+    "category": "Functional",
+    "text": "• AxPAS is inapplicable and must be Realm."
+  },
+  {
+    "req_id": "AXI_REQ_0621",
+    "page": 212,
+    "category": "Functional",
+    "text": "A PCIe device in eXtended TEE (XT) mode provides XT and T bits which should map to AXI as shown in Table"
+  },
+  {
+    "req_id": "AXI_REQ_0622",
+    "page": 212,
+    "category": "Functional",
+    "text": "Non-trusted request that must"
+  },
+  {
+    "req_id": "AXI_REQ_0623",
+    "page": 212,
+    "category": "Functional",
+    "text": "Trusted request that must target"
+  },
+  {
+    "req_id": "AXI_REQ_0624",
+    "page": 212,
+    "category": "Functional",
+    "text": "Trusted request that must target"
+  },
+  {
+    "req_id": "AXI_REQ_0625",
+    "page": 212,
+    "category": "Functional",
+    "text": "When PCIe XT mode is not used, the T bit should map to AXI as shown in Table A13.11."
+  },
+  {
+    "req_id": "AXI_REQ_0626",
+    "page": 213,
+    "category": "Functional",
+    "text": "Non-trusted request that must"
+  },
+  {
+    "req_id": "AXI_REQ_0627",
+    "page": 213,
+    "category": "Functional",
+    "text": "Trusted request that must target"
+  },
+  {
+    "req_id": "AXI_REQ_0628",
+    "page": 214,
+    "category": "Transaction",
+    "text": "MMUFLOW_Present must be False if Untranslated_Transactions is False."
+  },
+  {
+    "req_id": "AXI_REQ_0629",
+    "page": 214,
+    "category": "Functional",
+    "text": "The SMMU ATST flow must be used."
+  },
+  {
+    "req_id": "AXI_REQ_0630",
+    "page": 214,
+    "category": "Functional",
+    "text": "The SMMU NoStall flow must be used."
+  },
+  {
+    "req_id": "AXI_REQ_0631",
+    "page": 215,
+    "category": "Response/Error",
+    "text": "If a translation fault occurs, the transaction must be terminated with an SLVERR response."
+  },
+  {
+    "req_id": "AXI_REQ_0632",
+    "page": 215,
+    "category": "Functional",
+    "text": "• AxMMUSECSID must be Non-secure or Realm."
+  },
+  {
+    "req_id": "AXI_REQ_0633",
+    "page": 215,
+    "category": "Transaction",
+    "text": "• If Untranslated_Transactions is True, v1 or v2 then AxMMUSSIDV must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0634",
+    "page": 215,
+    "category": "Response/Error",
+    "text": "If a translation fault occurs when using this flow, the Subordinate must terminate the transaction with an SLVERR"
+  },
+  {
+    "req_id": "AXI_REQ_0635",
+    "page": 216,
+    "category": "Response/Error",
+    "text": "• If TRANSFAULT is used for one response transfer, it must be used for all response transfers of a transaction."
+  },
+  {
+    "req_id": "AXI_REQ_0636",
+    "page": 217,
+    "category": "Handshake/Timing",
+    "text": "– AxTAGOP must be 0b00 (Invalid)"
+  },
+  {
+    "req_id": "AXI_REQ_0637",
+    "page": 217,
+    "category": "Ordering",
+    "text": "• Translated and untranslated transactions must not use the same ID for in-flight transactions, and this applies"
+  },
+  {
+    "req_id": "AXI_REQ_0638",
+    "page": 219,
+    "category": "Cache/Stash",
+    "text": "The StashTranslation Opcode is a hint that an MMU should cache the table entry required to process the given"
+  },
+  {
+    "req_id": "AXI_REQ_0639",
+    "page": 219,
+    "category": "Cache/Stash",
+    "text": "MMU should cache the relevant page table entry."
+  },
+  {
+    "req_id": "AXI_REQ_0640",
+    "page": 219,
+    "category": "Handshake/Timing",
+    "text": "• If AWMMUVALID is deasserted, the StashTranslation request has a physical address and the MMU should"
+  },
+  {
+    "req_id": "AXI_REQ_0641",
+    "page": 219,
+    "category": "Handshake/Timing",
+    "text": "If RME_Support is False, AWMMUVALID must be asserted for a StashTranslation request."
+  },
+  {
+    "req_id": "AXI_REQ_0642",
+    "page": 219,
+    "category": "Cache/Stash",
+    "text": "AWSTASHLPIDEN must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0643",
+    "page": 219,
+    "category": "Cache/Stash",
+    "text": "• StashTranslation requests must not use the same AXI ID values that are used by non-StashTranslation"
+  },
+  {
+    "req_id": "AXI_REQ_0644",
+    "page": 220,
+    "category": "Functional",
+    "text": "MMU should deallocate the relevant page table entry."
+  },
+  {
+    "req_id": "AXI_REQ_0645",
+    "page": 220,
+    "category": "Handshake/Timing",
+    "text": "• If AWMMUVALID is deasserted, the StashTranslation request has a physical address and the MMU should"
+  },
+  {
+    "req_id": "AXI_REQ_0646",
+    "page": 220,
+    "category": "Handshake/Timing",
+    "text": "If RME_Support is False, AWMMUVALID must be asserted for an UnstashTranslation request."
+  },
+  {
+    "req_id": "AXI_REQ_0647",
+    "page": 220,
+    "category": "Cache/Stash",
+    "text": "• AWSNOOP is 0b10001 to indicate UnstashTranslation, AWSNOOP_WIDTH must be 5."
+  },
+  {
+    "req_id": "AXI_REQ_0648",
+    "page": 220,
+    "category": "Cache/Stash",
+    "text": "AWSTASHLPIDEN must be LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0649",
+    "page": 220,
+    "category": "Ordering",
+    "text": "– A Manager must not issue a request on the write channels with the same ID as an outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0650",
+    "page": 221,
+    "category": "Cache/Stash",
+    "text": "– If present, AWIDUNQ must be asserted for an UnstashTranslation request."
+  },
+  {
+    "req_id": "AXI_REQ_0651",
+    "page": 223,
+    "category": "Functional",
+    "text": "The wake-up signals are synchronous and must also be suitable for sampling asynchronously in a different clock"
+  },
+  {
+    "req_id": "AXI_REQ_0652",
+    "page": 223,
+    "category": "Transaction",
+    "text": "The wake-up signals must be asserted to guarantee that a transaction can be accepted, but once the transaction is in"
+  },
+  {
+    "req_id": "AXI_REQ_0653",
+    "page": 223,
+    "category": "Functional",
+    "text": "• When AXI_Transport is Credited, Wakeup_Signals must be False."
+  },
+  {
+    "req_id": "AXI_REQ_0654",
+    "page": 224,
+    "category": "Handshake/Timing",
+    "text": "AWAKEUP must remain asserted until AWREADY is asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0655",
+    "page": 224,
+    "category": "Handshake/Timing",
+    "text": "AWAKEUP must remain asserted until ARREADY is asserted."
+  },
+  {
+    "req_id": "AXI_REQ_0656",
+    "page": 224,
+    "category": "Transaction",
+    "text": "must remain active until the transaction has completed."
+  },
+  {
+    "req_id": "AXI_REQ_0657",
+    "page": 224,
+    "category": "Functional",
+    "text": "However, it is required to be asserted to guarantee the corresponding assertion of SYSCOACK. When"
+  },
+  {
+    "req_id": "AXI_REQ_0658",
+    "page": 224,
+    "category": "Functional",
+    "text": "AWAKEUP is asserted with SYSCOREQ asserted and SYSCOACK deasserted, it must remain asserted"
+  },
+  {
+    "req_id": "AXI_REQ_0659",
+    "page": 224,
+    "category": "Functional",
+    "text": "However, it is required to be asserted to guarantee the corresponding deassertion of SYSCOACK. When"
+  },
+  {
+    "req_id": "AXI_REQ_0660",
+    "page": 224,
+    "category": "Functional",
+    "text": "AWAKEUP is asserted with SYSCOREQ deasserted and SYSCOACK asserted, it must remain asserted"
+  },
+  {
+    "req_id": "AXI_REQ_0661",
+    "page": 224,
+    "category": "Handshake/Timing",
+    "text": "• ACWAKEUP must remain asserted until the associated ACVALID / ACREADY handshake to ensure"
+  },
+  {
+    "req_id": "AXI_REQ_0662",
+    "page": 224,
+    "category": "Handshake/Timing",
+    "text": "• After the ACVALID / ACREADY handshake, the Manager must remain active until the DVM transaction"
+  },
+  {
+    "req_id": "AXI_REQ_0663",
+    "page": 225,
+    "category": "Functional",
+    "text": "receiver. Transmitters are not required to explicitly return all credits to the receiver before it stops."
+  },
+  {
+    "req_id": "AXI_REQ_0664",
+    "page": 225,
+    "category": "Handshake/Timing",
+    "text": "• Credit_Control must be False if the AXI_Transport property is Ready."
+  },
+  {
+    "req_id": "AXI_REQ_0665",
+    "page": 225,
+    "category": "Functional",
+    "text": "• Connected interfaces must have the same value for Credit_Control."
+  },
+  {
+    "req_id": "AXI_REQ_0666",
+    "page": 226,
+    "category": "Functional",
+    "text": "ACTIVATEREQ deassertion, they must be discarded."
+  },
+  {
+    "req_id": "AXI_REQ_0667",
+    "page": 227,
+    "category": "Transaction",
+    "text": "• The Manager must not send transfers or credits."
+  },
+  {
+    "req_id": "AXI_REQ_0668",
+    "page": 227,
+    "category": "Transaction",
+    "text": "• The Subordinate will have no transfers to send because all outstanding transactions must be complete."
+  },
+  {
+    "req_id": "AXI_REQ_0669",
+    "page": 227,
+    "category": "Reset",
+    "text": "because it is required to reconfigure or reset when all outstanding transactions are complete."
+  },
+  {
+    "req_id": "AXI_REQ_0670",
+    "page": 227,
+    "category": "Functional",
+    "text": "• If ASKSTOP is asserted, it must remain HIGH until ACTIVATEACK is LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0671",
+    "page": 227,
+    "category": "Functional",
+    "text": "• ASKSTOP must be LOW when ACTIVATEACK is LOW."
+  },
+  {
+    "req_id": "AXI_REQ_0672",
+    "page": 227,
+    "category": "Functional",
+    "text": "• When ASKSTOP is HIGH, the Manager must deassert ACTIVATEREQ when there are no outstanding"
+  },
+  {
+    "req_id": "AXI_REQ_0673",
+    "page": 227,
+    "category": "Transaction",
+    "text": "• When ACTIVATEREQ is LOW there must be no outstanding transactions and the Manager must not send"
+  },
+  {
+    "req_id": "AXI_REQ_0674",
+    "page": 227,
+    "category": "Functional",
+    "text": "• When ACTIVATEREQ is LOW or ACTIVATEACK is LOW, the Manager must not send credits."
+  },
+  {
+    "req_id": "AXI_REQ_0675",
+    "page": 227,
+    "category": "Transaction",
+    "text": "• When ACTIVATEACK is LOW, the Subordinate must not send transfers or credits."
+  },
+  {
+    "req_id": "AXI_REQ_0676",
+    "page": 227,
+    "category": "Reset",
+    "text": "• ACTIVATEREQ, ACTIVATEACK and ASKSTOP must be LOW during reset."
+  },
+  {
+    "req_id": "AXI_REQ_0677",
+    "page": 227,
+    "category": "Functional",
+    "text": "It can sometimes be required to add pipeline stages to channels to meet timing between interfaces. The following"
+  },
+  {
+    "req_id": "AXI_REQ_0678",
+    "page": 227,
+    "category": "Functional",
+    "text": "• The Manager must not receive any credits in the STOP state."
+  },
+  {
+    "req_id": "AXI_REQ_0679",
+    "page": 227,
+    "category": "Functional",
+    "text": "– If credit signals from the Subordinate have a longer transport delay than ACTIVATEACK, there must"
+  },
+  {
+    "req_id": "AXI_REQ_0680",
+    "page": 227,
+    "category": "Functional",
+    "text": "might receive credits in the STOP state. These credits must be discarded."
+  },
+  {
+    "req_id": "AXI_REQ_0681",
+    "page": 227,
+    "category": "Functional",
+    "text": "• ASKSTOP must be pipelined the same as ACTIVATEACK so the rules regarding ASKSTOP can be"
+  },
+  {
+    "req_id": "AXI_REQ_0682",
+    "page": 228,
+    "category": "Handshake/Timing",
+    "text": "• When registering the VALID signals, the logic must ensure that associated payload signals remain aligned to"
+  },
+  {
+    "req_id": "AXI_REQ_0683",
+    "page": 228,
+    "category": "Transaction",
+    "text": "• Transfers will not be sent or received."
+  },
+  {
+    "req_id": "AXI_REQ_0684",
+    "page": 228,
+    "category": "Functional",
+    "text": "• Credits will not be sent."
+  },
+  {
+    "req_id": "AXI_REQ_0685",
+    "page": 228,
+    "category": "Functional",
+    "text": "• ACTIVATEREQ must be glitch free and suitable for sampling in a different clock domain."
+  },
+  {
+    "req_id": "AXI_REQ_0686",
+    "page": 229,
+    "category": "Functional",
+    "text": "• Due to pipelining, a Subordinate might receive credits during the STOP state, which must be discarded."
+  },
+  {
+    "req_id": "AXI_REQ_0687",
+    "page": 230,
+    "category": "Functional",
+    "text": "permitted behavior. Not all signals are shown, for example PENDING signals must be included on all credited"
+  },
+  {
+    "req_id": "AXI_REQ_0688",
+    "page": 230,
+    "category": "Functional",
+    "text": "The Subordinate deasserts ACTIVATEACK and ASKSTOP and moves into STOP. This must be at least N"
+  },
+  {
+    "req_id": "AXI_REQ_0689",
+    "page": 233,
+    "category": "Transaction",
+    "text": "DVM_Message_Support is Receiver the Shareable_Transactions property must be True."
+  },
+  {
+    "req_id": "AXI_REQ_0690",
+    "page": 233,
+    "category": "Functional",
+    "text": "A component that supports DVM messages from a specific version must also support earlier architecture versions."
+  },
+  {
+    "req_id": "AXI_REQ_0691",
+    "page": 234,
+    "category": "Functional",
+    "text": "When deasserted, ASID must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0692",
+    "page": 234,
+    "category": "Functional",
+    "text": "When deasserted, VMID must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0693",
+    "page": 238,
+    "category": "Functional",
+    "text": "messages are required to set the ASID[15:8] bits to zero."
+  },
+  {
+    "req_id": "AXI_REQ_0694",
+    "page": 238,
+    "category": "Functional",
+    "text": "It is expected that most systems will use a single ASID size across the entire system, either 8-bit ASID or 16-bit"
+  },
+  {
+    "req_id": "AXI_REQ_0695",
+    "page": 238,
+    "category": "Handshake/Timing",
+    "text": "– If the upper 8 bits are non-zero, then over-invalidation will occur, since the 8-bit ASID agent ignores the"
+  },
+  {
+    "req_id": "AXI_REQ_0696",
+    "page": 238,
+    "category": "Functional",
+    "text": "messages are required to set the VMID[15:8] field to zero."
+  },
+  {
+    "req_id": "AXI_REQ_0697",
+    "page": 239,
+    "category": "Handshake/Timing",
+    "text": "– If the upper 8 bits are nonzero, then over-invalidation will occur, since the 8-bit VMID agent ignores the"
+  },
+  {
+    "req_id": "AXI_REQ_0698",
+    "page": 239,
+    "category": "Functional",
+    "text": "The entries on which the TLBI must operate depends on the fields in the message. All supported TLBI operations"
+  },
+  {
+    "req_id": "AXI_REQ_0699",
+    "page": 239,
+    "category": "Functional",
+    "text": "The Arm column indicates the minimum Arm architecture version required to support the message."
+  },
+  {
+    "req_id": "AXI_REQ_0700",
+    "page": 242,
+    "category": "Functional",
+    "text": "– 16K: BaseAddr is VA[MaxVA:14], VA[13:12] must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0701",
+    "page": 242,
+    "category": "Functional",
+    "text": "– 64K: BaseAddr is VA[MaxVA:16], VA[15:12] must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0702",
+    "page": 242,
+    "category": "Handshake/Timing",
+    "text": "If the PA is not aligned to the IS value, no TLB entries are required to be invalidated."
+  },
+  {
+    "req_id": "AXI_REQ_0703",
+    "page": 243,
+    "category": "Functional",
+    "text": "The Arm column indicates the minimum Arm architecture version required to support the message."
+  },
+  {
+    "req_id": "AXI_REQ_0704",
+    "page": 244,
+    "category": "Functional",
+    "text": "that use virtual addresses. A component that receives DVM messages must support both forms of message,"
+  },
+  {
+    "req_id": "AXI_REQ_0705",
+    "page": 245,
+    "category": "Functional",
+    "text": "Secure only when it should have been Secure and Non-secure."
+  },
+  {
+    "req_id": "AXI_REQ_0706",
+    "page": 245,
+    "category": "Functional",
+    "text": "The Arm column indicates the minimum Arm architecture version required to support the message."
+  },
+  {
+    "req_id": "AXI_REQ_0707",
+    "page": 248,
+    "category": "Functional",
+    "text": "• A component issuing a two-part DVM message must be able to issue the second part of the message without"
+  },
+  {
+    "req_id": "AXI_REQ_0708",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• ACVALID must only be asserted by a Subordinate when there is valid address and control information."
+  },
+  {
+    "req_id": "AXI_REQ_0709",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• When asserted, ACVALID must remain asserted until the rising clock edge after the Manager asserts the"
+  },
+  {
+    "req_id": "AXI_REQ_0710",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• When asserted, CRVALID must remain asserted until the rising clock edge after the Subordinate asserts the"
+  },
+  {
+    "req_id": "AXI_REQ_0711",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• The Subordinate must not wait for the Manager to assert ACREADY before asserting ACVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0712",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must wait for both ACVALID and ACREADY to be asserted before it asserts CRVALID to"
+  },
+  {
+    "req_id": "AXI_REQ_0713",
+    "page": 250,
+    "category": "Handshake/Timing",
+    "text": "• The Manager must not wait for the Subordinate to assert CRREADY before asserting CRVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0714",
+    "page": 250,
+    "category": "Response/Error",
+    "text": "• The Manager must wait for a DVM message request before sending a DVM message response."
+  },
+  {
+    "req_id": "AXI_REQ_0715",
+    "page": 251,
+    "category": "Functional",
+    "text": "in a DVM message. In this case, any additional address information must be ignored and operations performed"
+  },
+  {
+    "req_id": "AXI_REQ_0716",
+    "page": 251,
+    "category": "Functional",
+    "text": "If a component supports a larger VA width than its PA width, the component must take appropriate action"
+  },
+  {
+    "req_id": "AXI_REQ_0717",
+    "page": 258,
+    "category": "Response/Error",
+    "text": "response must not be dependent on the forward progress of any transactions on the AR or AW channels."
+  },
+  {
+    "req_id": "AXI_REQ_0718",
+    "page": 258,
+    "category": "Functional",
+    "text": "2. The Manager must issue a DVM Complete request on the AR channel when it has completed all the"
+  },
+  {
+    "req_id": "AXI_REQ_0719",
+    "page": 258,
+    "category": "Handshake/Timing",
+    "text": "necessary actions. This must be after the handshake of the associated DVM Sync on the snoop request"
+  },
+  {
+    "req_id": "AXI_REQ_0720",
+    "page": 258,
+    "category": "Functional",
+    "text": "channel of the same Manager. The Manager must send a DVM Complete in a timely manner, even if it"
+  },
+  {
+    "req_id": "AXI_REQ_0721",
+    "page": 258,
+    "category": "Functional",
+    "text": "Every DVM Sync message must have one corresponding DVM Complete request."
+  },
+  {
+    "req_id": "AXI_REQ_0722",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b1110."
+  },
+  {
+    "req_id": "AXI_REQ_0723",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be zero."
+  },
+  {
+    "req_id": "AXI_REQ_0724",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be different from that of any outstanding, non-DVM"
+  },
+  {
+    "req_id": "AXI_REQ_0725",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be INCR (0b01)."
+  },
+  {
+    "req_id": "AXI_REQ_0726",
+    "page": 259,
+    "category": "Transaction",
+    "text": "Must be 1 transfer (0x00)."
+  },
+  {
+    "req_id": "AXI_REQ_0727",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be equal to the data channel width or"
+  },
+  {
+    "req_id": "AXI_REQ_0728",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be Shareable (0b01 or 0b10)."
+  },
+  {
+    "req_id": "AXI_REQ_0729",
+    "page": 259,
+    "category": "Cache/Stash",
+    "text": "Must be Modifiable, Non-cacheable (0b0010)."
+  },
+  {
+    "req_id": "AXI_REQ_0730",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b0."
+  },
+  {
+    "req_id": "AXI_REQ_0731",
+    "page": 259,
+    "category": "Handshake/Timing",
+    "text": "Must be 0b0. If not present, ARMMUVALID is assumed to be"
+  },
+  {
+    "req_id": "AXI_REQ_0732",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b0."
+  },
+  {
+    "req_id": "AXI_REQ_0733",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b00."
+  },
+  {
+    "req_id": "AXI_REQ_0734",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b00."
+  },
+  {
+    "req_id": "AXI_REQ_0735",
+    "page": 259,
+    "category": "Functional",
+    "text": "Must be 0b0."
+  },
+  {
+    "req_id": "AXI_REQ_0736",
+    "page": 259,
+    "category": "Functional",
+    "text": "messages on an interface must use the same RP."
+  },
+  {
+    "req_id": "AXI_REQ_0737",
+    "page": 260,
+    "category": "Response/Error",
+    "text": "Coherency Connection signals do not have default values, so connected interfaces must both support or not"
+  },
+  {
+    "req_id": "AXI_REQ_0738",
+    "page": 260,
+    "category": "Reset",
+    "text": "SYSCOREQ and SYSCOACK must be deasserted when ARESETn is asserted. When not in reset, the following"
+  },
+  {
+    "req_id": "AXI_REQ_0739",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must not fetch and use DVM-managed translation table"
+  },
+  {
+    "req_id": "AXI_REQ_0740",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must not issue any DVM message requests."
+  },
+  {
+    "req_id": "AXI_REQ_0741",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must not issue any DVM Sync requests, these are assumed"
+  },
+  {
+    "req_id": "AXI_REQ_0742",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must not fetch and use DVM-managed translation table"
+  },
+  {
+    "req_id": "AXI_REQ_0743",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must be able to receive and respond to DVM message"
+  },
+  {
+    "req_id": "AXI_REQ_0744",
+    "page": 261,
+    "category": "Functional",
+    "text": "• Must be able to receive and respond to DVM message"
+  },
+  {
+    "req_id": "AXI_REQ_0745",
+    "page": 261,
+    "category": "Functional",
+    "text": "data must have been completed."
+  },
+  {
+    "req_id": "AXI_REQ_0746",
+    "page": 262,
+    "category": "Functional",
+    "text": "• Must not fetch or use any DVM-managed translation table"
+  },
+  {
+    "req_id": "AXI_REQ_0747",
+    "page": 262,
+    "category": "Functional",
+    "text": "• Must be able to receive and respond to DVM message"
+  },
+  {
+    "req_id": "AXI_REQ_0748",
+    "page": 262,
+    "category": "Functional",
+    "text": "• Must wait for all outstanding DVM messages to receive a"
+  },
+  {
+    "req_id": "AXI_REQ_0749",
+    "page": 262,
+    "category": "Functional",
+    "text": "• Must stop issuing DVM messages in a timely manner."
+  },
+  {
+    "req_id": "AXI_REQ_0750",
+    "page": 262,
+    "category": "Functional",
+    "text": "• Must issue the second part of a 2-part DVM message if the"
+  },
+  {
+    "req_id": "AXI_REQ_0751",
+    "page": 262,
+    "category": "Functional",
+    "text": "Note that a Subordinate is not permitted to send DVM messages in the Connect state, but a Manager must be able"
+  },
+  {
+    "req_id": "AXI_REQ_0752",
+    "page": 262,
+    "category": "Functional",
+    "text": "is required to send the DVM Complete request on the AR channel, even when DVM messages are disabled."
+  },
+  {
+    "req_id": "AXI_REQ_0753",
+    "page": 263,
+    "category": "Response/Error",
+    "text": "DVM channels can be stopped once the CR response is received. The Manager must start the main channels"
+  },
+  {
+    "req_id": "AXI_REQ_0754",
+    "page": 265,
+    "category": "Transaction",
+    "text": "different on each data transfer. In this situation the receiving component must examine all data transfers to"
+  },
+  {
+    "req_id": "AXI_REQ_0755",
+    "page": 266,
+    "category": "Functional",
+    "text": "detection and correction (EDC) is required to operate end-to-end, covering all logic and wires from source to"
+  },
+  {
+    "req_id": "AXI_REQ_0756",
+    "page": 267,
+    "category": "Functional",
+    "text": "• Check signals are synchronous to ACLK and must be driven correctly in every cycle that the signal in the"
+  },
+  {
+    "req_id": "AXI_REQ_0757",
+    "page": 267,
+    "category": "Functional",
+    "text": "• Parity signals must be driven appropriately to all the bits in the associated payload, irrespective of whether"
+  },
+  {
+    "req_id": "AXI_REQ_0758",
+    "page": 267,
+    "category": "Transaction",
+    "text": "those bits are actively used in the transfer. For example, all bits of WDATACHK must be driven correctly"
+  },
+  {
+    "req_id": "AXI_REQ_0759",
+    "page": 268,
+    "category": "Response/Error",
+    "text": "non-zero default must be considered when calculating parity, for example BCOMP which has a default value"
+  },
+  {
+    "req_id": "AXI_REQ_0760",
+    "page": 287,
+    "category": "Functional",
+    "text": "An ACE5-LiteDVM interface was previously needed if an interface was required to send or receive DVM"
+  },
+  {
+    "req_id": "AXI_REQ_0761",
+    "page": 288,
+    "category": "Functional",
+    "text": "• Data width must be 128b (DATA_WIDTH = 128)."
+  },
+  {
+    "req_id": "AXI_REQ_0762",
+    "page": 288,
+    "category": "Functional",
+    "text": "• Size must be 128b (SIZE_Present = False)."
+  },
+  {
+    "req_id": "AXI_REQ_0763",
+    "page": 288,
+    "category": "Transaction",
+    "text": "• Length must be 1 or 4 transfers."
+  },
+  {
+    "req_id": "AXI_REQ_0764",
+    "page": 288,
+    "category": "Transaction",
+    "text": "• Burst must be INCR (BURST_Present = False)."
+  },
+  {
+    "req_id": "AXI_REQ_0765",
+    "page": 288,
+    "category": "Cache/Stash",
+    "text": "• Memory type must be Write-back, that is AxCACHE[1:0] is 0b11 and AxCACHE[3:2] is not 0b00."
+  },
+  {
+    "req_id": "AXI_REQ_0766",
+    "page": 288,
+    "category": "Cache/Stash",
+    "text": "• Cache line size must be 64."
+  },
+  {
+    "req_id": "AXI_REQ_0767",
+    "page": 288,
+    "category": "Transaction",
+    "text": "Note that the burst type is assumed to be INCR, this must be taken into account when calculating a parity value for"
+  },
+  {
+    "req_id": "AXI_REQ_0768",
+    "page": 305,
+    "category": "Functional",
+    "text": "Must use an ID that is unique in-flight on the same channels:"
+  },
+  {
+    "req_id": "AXI_REQ_0769",
+    "page": 305,
+    "category": "Ordering",
+    "text": "Must not use the same ID for in-flight transactions on the same channels:"
+  },
+  {
+    "req_id": "AXI_REQ_0770",
+    "page": 305,
+    "category": "Ordering",
+    "text": "Must use the same ID:"
+  },
+  {
+    "req_id": "AXI_REQ_0771",
+    "page": 307,
+    "category": "Functional",
+    "text": "BIDUNQ is not required to follow AWIDUNQ for non-Completion"
+  },
+  {
+    "req_id": "AXI_REQ_0772",
+    "page": 307,
+    "category": "Transaction",
+    "text": "A WritePtlCMO or WriteFullCMO with AWTAGOP Transfer must be"
+  },
+  {
+    "req_id": "AXI_REQ_0773",
+    "page": 308,
+    "category": "Cache/Stash",
+    "text": "Transactions that carry MTE tags must not cross a cache line boundary."
+  },
+  {
+    "req_id": "AXI_REQ_0774",
+    "page": 308,
+    "category": "Transaction",
+    "text": "Read transactions with the MTE opcode of Fetch must be Regular."
+  },
+  {
+    "req_id": "AXI_REQ_0775",
+    "page": 308,
+    "category": "Functional",
+    "text": "A Prefetch request must not be used to signal that a line can be fetched"
+  },
+  {
+    "req_id": "AXI_REQ_0776",
+    "page": 308,
+    "category": "Handshake/Timing",
+    "text": "For read responses where data is not required to be valid, the Manager"
+  },
+  {
+    "req_id": "AXI_REQ_0777",
+    "page": 308,
+    "category": "Functional",
+    "text": "might still sample the RDATA value so the Subordinate should not rely"
+  },
+  {
+    "req_id": "AXI_REQ_0778",
+    "page": 308,
+    "category": "Cache/Stash",
+    "text": "\"AWSTASHLPIDEN must be driven to all zeros when"
+  },
+  {
+    "req_id": "AXI_REQ_0779",
+    "page": 308,
+    "category": "Handshake/Timing",
+    "text": "\"When AWSTASHLPIDEN is LOW, AWSTASHLPID is invalid and must"
+  },
+  {
+    "req_id": "AXI_REQ_0780",
+    "page": 309,
+    "category": "Functional",
+    "text": "It is clarified that a Subordinate must not block acceptance of data-less"
+  },
+  {
+    "req_id": "AXI_REQ_0781",
+    "page": 309,
+    "category": "Ordering",
+    "text": "Device and Normal Non-cacheable requests are required to be ordered"
+  },
+  {
+    "req_id": "AXI_REQ_0782",
+    "page": 309,
+    "category": "Functional",
+    "text": "It is clarified that AxNSE must not be modified, along with AxPROT."
+  },
+  {
+    "req_id": "AXI_REQ_0783",
+    "page": 309,
+    "category": "Atomic/Exclusive",
+    "text": "It is clarified that AWATOP must not be Match for exclusive writes."
+  },
+  {
+    "req_id": "AXI_REQ_0784",
+    "page": 309,
+    "category": "Functional",
+    "text": "It is clarified that clean evictions of Shareable lines must not be written"
+  },
+  {
+    "req_id": "AXI_REQ_0785",
+    "page": 310,
+    "category": "Atomic/Exclusive",
+    "text": "with tag Match must not be Exclusive."
+  },
+  {
+    "req_id": "AXI_REQ_0786",
+    "page": 310,
+    "category": "Functional",
+    "text": "A15.22. ACADDR[11:4] should be PA[11:4]."
+  },
+  {
+    "req_id": "AXI_REQ_0787",
+    "page": 310,
+    "category": "Handshake/Timing",
+    "text": "ACVALID when it should be CRVALID."
+  },
+  {
+    "req_id": "AXI_REQ_0788",
+    "page": 310,
+    "category": "Functional",
+    "text": "DVM_Message_Support must be Receiver for ACE5-LiteDVM"
+  },
+  {
+    "req_id": "AXI_REQ_0789",
+    "page": 310,
+    "category": "Functional",
+    "text": "AXI5-Lite interfaces, it should be False."
+  },
+  {
+    "req_id": "AXI_REQ_0790",
+    "page": 311,
+    "category": "Functional",
+    "text": "It is clarified that all signals that are required to be deasserted during"
+  },
+  {
+    "req_id": "AXI_REQ_0791",
+    "page": 311,
+    "category": "Reset",
+    "text": "reset must wait until at least the rising ACLK edge after ARESETn is"
+  },
+  {
+    "req_id": "AXI_REQ_0792",
+    "page": 311,
+    "category": "Cache/Stash",
+    "text": "WRAP transactions must be cache line sized and Modifiable."
+  },
+  {
+    "req_id": "AXI_REQ_0793",
+    "page": 311,
+    "category": "Atomic/Exclusive",
+    "text": "It is clarified that Atomic transactions must update the entire written"
+  },
+  {
+    "req_id": "AXI_REQ_0794",
+    "page": 311,
+    "category": "Transaction",
+    "text": "If is clarified that transactions that carry tags must be physically"
+  },
+  {
+    "req_id": "AXI_REQ_0795",
+    "page": 312,
+    "category": "Functional",
+    "text": "footnote added that it must hit a Shareable Dirty line if RME_Support is"
+  },
+  {
+    "req_id": "AXI_REQ_0796",
+    "page": 312,
+    "category": "Handshake/Timing",
+    "text": "all in-line and peer caches must be cleaned and invalidated because the"
+  },
+  {
+    "req_id": "AXI_REQ_0797",
+    "page": 312,
+    "category": "Functional",
+    "text": "channel width. It is clarified that for a DVM Complete, ARSIZE must"
+  },
+  {
+    "req_id": "AXI_REQ_0798",
+    "page": 312,
+    "category": "Functional",
+    "text": "ReadNoSnoop with MTE Fetch is added to the list of Opcodes that must"
+  },
+  {
+    "req_id": "AXI_REQ_0799",
+    "page": 315,
+    "category": "Cache/Stash",
+    "text": "The basic unit of storage in a cache. Its size in words is always a power of two. A cache line must be aligned to the"
+  },
+  {
+    "req_id": "AXI_REQ_0800",
+    "page": 316,
+    "category": "Functional",
+    "text": "Something that is present in the specification for backwards compatibility. Whenever possible you must avoid"
+  },
+  {
+    "req_id": "AXI_REQ_0801",
+    "page": 316,
+    "category": "Functional",
+    "text": "Means that the behavior is not defined by this specification, but must be defined and documented by individual"
+  },
+  {
+    "req_id": "AXI_REQ_0802",
+    "page": 316,
+    "category": "Functional",
+    "text": "The protocol cannot define an absolute time within which something must occur. However, in a sufficiently idle"
+  },
+  {
+    "req_id": "AXI_REQ_0803",
+    "page": 316,
+    "category": "Functional",
+    "text": "system, it will make progress and complete without requiring any explicit action."
+  },
+  {
+    "req_id": "AXI_REQ_0804",
+    "page": 318,
+    "category": "Functional",
+    "text": "component. Any access that is not defined as permitted might cause the Peripheral Subordinate to fail, but must"
+  },
+  {
+    "req_id": "AXI_REQ_0805",
+    "page": 318,
+    "category": "Transaction",
+    "text": "Point of Serialization. The point through which all transactions to a given address must pass and the order in"
+  },
+  {
+    "req_id": "AXI_REQ_0806",
+    "page": 318,
+    "category": "Functional",
+    "text": "Hardware must implement the field as Read-as-Zero, and must ignore writes to the field. Software can rely on the"
+  },
+  {
+    "req_id": "AXI_REQ_0807",
+    "page": 320,
+    "category": "Functional",
+    "text": "UNPREDICTABLE behavior must not be documented or promoted as having a defined effect."
+  }
+]

@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+
+AXI_SPEC_OUTPUT/
+*.zip
+
