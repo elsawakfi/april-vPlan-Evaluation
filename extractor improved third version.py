@@ -18,8 +18,10 @@ Document
     semantic_chunks  <-- now section-level, not page-level
     pages
 """
-
+from email.mime import text
+import random as rand
 import os
+from random import random
 import re
 import json
 import fitz
@@ -76,6 +78,22 @@ REQ_ID_REGEX = re.compile(
     re.IGNORECASE
 )
 
+FEATURE_REGEX = re.compile(
+    r'\b('
+    r'to transfer|'
+    r'permits|'
+    r'supports|'
+    r'provides|'
+    r'contains|'
+    r'uses|'
+    r'can either|'
+    r'can pass|'
+    r'requires that|'
+    r'perform'
+    r')\b',
+    re.IGNORECASE
+)
+
 REQUIREMENT_REGEX = re.compile(
     r'\b('
     #strong obligations / prohubitions
@@ -86,6 +104,7 @@ REQUIREMENT_REGEX = re.compile(
     r'length can be|'
     r'can discard|'
     r'must complete|must not complete|'
+    r'must be consistent|'
     r'must not cross|'
     r'should|should not|'
     r'cannot|can not|'
@@ -179,6 +198,22 @@ TABLE_REF_REGEX = re.compile(
     re.IGNORECASE
 )
 
+pattern = re.compile(
+    r'(0b[01]+)\s+'
+    r'([A-Za-z][A-Za-z0-9_-]*)\s+'
+    r'(.*?)'
+    r'(?='
+        r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
+        r'|'
+        r'\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
+        r'|'
+        r'\s+Table\s+[A-Za-z]?\d+'
+        r'|$'
+    r')',
+    re.DOTALL
+)
+
+
 # ==========================================================
 # ACRONYM STOPLIST
 # FIX 3 — Acronym noise
@@ -195,7 +230,6 @@ ACRONYM_STOPLIST = {
     "WHICH", "THERE", "THEIR", "THESE", "THOSE", "WHAT",
     "PAGE", "NOTE", "TYPE", "DATA", "BASE", "TRUE", "FALSE"
 }
-
 
 # ==========================================================
 # METADATA
@@ -230,6 +264,34 @@ def save_page_screenshots(pdf_path, output_folder, scale=3):
         image.save(output_path)
         print("Saved:", output_path)
 
+# ==========================================================
+# HEADING EXTRACTION
+# ==========================================================
+
+def remove_detected_headings(text, headings):
+    clean_text = text
+
+    for h in headings:
+        title = h.get("title", "").strip()
+        section_id = h.get("section_id", "").strip()
+
+        if section_id:
+            clean_text = re.sub(
+                rf'^\s*{re.escape(section_id)}\s+.*$',
+                '',
+                clean_text,
+                flags=re.MULTILINE
+            )
+
+        if title:
+            clean_text = re.sub(
+                rf'^\s*{re.escape(title)}\s*$',
+                '',
+                clean_text,
+                flags=re.MULTILINE
+            )
+
+    return clean_text
 
 # ==========================================================
 # IMAGE EXTRACTION  (raster/embedded images — unchanged)
@@ -337,18 +399,6 @@ def extract_figure_regions(
 
         if visual_rects:
             clip_rect = search_rect
-            # for r in visual_rects[1:]:
-            #     clip_rect |= r
-
-            
-        #     clip_rect = fitz.Rect(
-        #         max(full_rect.x0, clip_rect.x0 - margin),
-        #         max(full_rect.y0, clip_rect.y0 - margin),
-        #         min(full_rect.x1, clip_rect.x1 + margin),
-        #         min(full_rect.y1, clip_rect.y1 + margin)
-        #     )
-        # else:
-        #     clip_rect = search_rect
 
         mat = fitz.Matrix(scale, scale)
         pixmap = pdf_page.get_pixmap(matrix=mat, clip=clip_rect)
@@ -387,8 +437,9 @@ def ocr_image_file(image_path):
 # TABLE EXTRACTION  (unchanged)
 # ==========================================================
 
-def extract_tables(page, page_num):
+def extract_tables(page, page_num, section_id=None):
     tables_found = []
+    table_requirements = []
     try:
         tables = page.find_tables()
         for idx, table in enumerate(tables.tables):
@@ -396,6 +447,7 @@ def extract_tables(page, page_num):
                 extracted = table.extract()
                 if not extracted:
                     continue
+
                 df = pd.DataFrame(extracted)
                 csv_name = f"table_p{page_num+1}_{idx+1}.csv"
                 csv_path = os.path.join(TABLE_FOLDER, csv_name)
@@ -404,16 +456,90 @@ def extract_tables(page, page_num):
                     "page":     page_num + 1,
                     "csv_file": csv_path
                 })
+                
+                for row in extracted:
+                    cells = [
+                        str(cell).replace("\n", " ").strip()
+                        for cell in row
+                        if cell and str(cell).strip()
+                    ]
+
+                    if len(cells) < 2:
+                        continue
+
+                    row_text = " ".join(cells)
+    
+                    if REQUIREMENT_REGEX.search(row_text) or FEATURE_REGEX.search(row_text):
+                        table_requirements.append(
+                            make_requirement(
+                                None,
+                                row_text,
+                                section_id,
+                                "table_requirement"
+                            )
+                        )
+
             except Exception as e:
                 print(f"Table extraction error page {page_num+1}:", e)
     except Exception:
         pass
-    return tables_found
+    return tables_found, table_requirements
 
+
+def extract_encoding_table_requirements(text, section_id=None):
+    requirements = []
+
+    pattern = re.compile(
+    r'(0b[01]+)\s+'
+    r'([A-Za-z][A-Za-z0-9_-]*)\s+'
+    r'(.*?)'
+    r'(?='
+        r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
+        # r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
+        r'|\s+Table\s+[A-Za-z]?\d+(?:\.\d+)*'
+        r'|\s+ARM IHI'
+        r'|$'
+    r')',
+    re.DOTALL
+    )
+
+    for code, operation, meaning in pattern.findall(text):
+        # meaning = " ".join(meaning.split())
+
+        meaning = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', meaning)
+        meaning = re.sub(r'\s+', ' ', meaning).strip()
+
+        if REQUIREMENT_REGEX.search(meaning) or FEATURE_REGEX.search(meaning):
+ 
+            section = str(section_id).replace(".", "_")
+            req_id = f"REQ_{section}_{len(requirements)+1:03}"
+
+            requirements.append(
+                make_requirement(
+                    req_id,
+                    f"{code} | {operation} | {meaning}",
+                    section_id,
+                    "encoding_rule"
+                )
+            )
+    return requirements
 
 # ==========================================================
 # TEXT ANALYSIS
 # ==========================================================
+
+def is_chapter_cover_page(text):
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    
+    if lines and re.match(r'^Chapter\s+[A-Z]\d+', lines[0]):
+        if len(lines) > 1 and not lines[1].startswith("A"):
+            if sum(
+                bool(re.match(r'^•?\s*A\d+\.\d+', l))
+                for l in lines
+            ) >= 3:
+                return True
+    return False
+
 
 def extract_headings_from_layout(layout):
     """
@@ -443,10 +569,15 @@ def extract_headings_from_layout(layout):
                 continue
             match = SECTION_REGEX.match(text)
             if match:
+                sid = match.group(1)
+
+                if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+                    continue
+
                 headings.append({
-                    "section_id": match.group(1),
-                    "title":      match.group(2),
-                    "font_size":  max(span["size"] for span in spans)
+                    "section_id": sid,
+                    "title": match.group(2),
+                    "font_size": max(span["size"] for span in spans)
                 })
     return headings
 
@@ -466,6 +597,20 @@ def classify_requirement(text):
         return "Interface"
     return "Functional"
 
+
+
+def extract_signals(text):
+    return sorted(set(re.findall(r'\b[A-Z][A-Z0-9_]{2,}\b', text)))
+
+
+def make_requirement(req_id, text, section_id, category):
+    return {
+        "id": req_id,
+        "text": text,
+        "source_section": section_id,
+        "signals": extract_signals(text),
+        "type": category
+    }
 
 def extract_requirements(text, section_id=None):
     requirements = []
@@ -497,6 +642,12 @@ def extract_requirements(text, section_id=None):
     for line in sentences:
         line = line.strip()
 
+        line = re.sub(
+            r'^(?:[A-C]\d+(?:\.\d+)*\s+)?[A-Z][A-Za-z ]{2,40}\s+(?=(It|If|For|When|The|A|An)\b)',
+            '',
+            line
+        ).strip()
+
         line = re.sub(r'^•\s*', '', line)
 
         line = re.sub(
@@ -509,19 +660,45 @@ def extract_requirements(text, section_id=None):
         if not line:
             continue
         
+        if re.match(r'^[A-Z][A-Za-z ]+\s+[A-C]\d+(?:\.\d+)*\.?$', line):
+            continue
+
+        if re.match(r'^Chapter\s+[A-Z]\d+\.?$', line):
+            continue
+
+        if line.startswith("ARM IHI"):
+            continue
+
+        if "Copyright" in line:
+            continue
+
+        if line == "All rights reserved.":
+            continue
+
+        if re.match(r'^Non-confidential\s+\d+$', line):
+            continue
+
+        if line.startswith("See "):
+            continue
+
         if line.lower().startswith("however,"):
             continue
 
-        if REQUIREMENT_REGEX.search(line):
+        if REQUIREMENT_REGEX.search(line) or FEATURE_REGEX.search(line):
             req_match = REQ_ID_REGEX.search(line)
-            req_id = req_match.group(1) if req_match else None
+            # req_id = req_match.group(1) if req_match else None
 
-            requirements.append({
-                "id":       req_id,
-                "section":  section_id,
-                "category": classify_requirement(line),
-                "text":     line
-            })
+            section = str(section_id).replace(".", "_")
+            req_id = f"REQ_{section}_{len(requirements)+1:03}"
+
+            requirements.append(
+                make_requirement(
+                    req_id,
+                    line,
+                    section_id,
+                    "protocol_rule"
+                )
+            )
 
     return requirements
 
@@ -682,48 +859,43 @@ def extract_visual_requirement_hints(figure):
     return sorted(set(hints))
 
 def extract_heading_from_text(text):
-
-    """
-    Fallback heading detector using raw page text.
-    Useful when PyMuPDF layout misses section headings.
-    """
-    
-
     for line in text.splitlines()[:80]:
         line = line.strip()
 
         if not line:
             continue
 
-        # Skip chapter headers
         if line.lower().startswith("chapter"):
             continue
 
-        # Skip table-of-contents entries like: A2.3 Title .... 29
         if re.search(r'\.{3,}\s*\d+$', line):
             continue
 
-        # Skip plain page numbers
         if re.fullmatch(r'\d+', line):
             continue
 
         match = SECTION_REGEX.match(line)
 
         if match:
-            section_id = match.group(1)
+            sid = match.group(1)
             title = match.group(2).strip()
 
-            # Avoid garbage titles
+            if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+                continue
+
             if len(title) < 3:
                 continue
 
             return {
-                "section_id": section_id,
+                "section_id": sid,
                 "title": title,
                 "font_size": None
             }
 
     return None
+
+def normalize(text):
+    return re.sub(r'[\W_]+', '', text).lower()
 # ==========================================================
 # MAIN PARSER
 # ==========================================================
@@ -756,7 +928,7 @@ def parse_pdf(pdf_path):
 
     current_section = None
 
-    for page_num in range(len(pdf)):
+    for page_num in range(20, len(pdf)):
 
         page   = pdf[page_num]
         layout = page.get_text("dict")
@@ -780,28 +952,59 @@ def parse_pdf(pdf_path):
 
                 match = SECTION_REGEX.match(line)
                 if match:
+                    sid = match.group(1)
+
+                    if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+                        continue
+
                     headings = [{
-                        "section_id": match.group(1),
+                        "section_id": sid,
                         "title": match.group(2),
                         "font_size": None
                     }]
                     break
+
         if headings:
             current_section = headings[-1]["section_id"]
         elif current_section is None:
             current_section = "Unknown"
 
-        requirements  = extract_requirements(text, current_section)
-        # requirements = [
-        #     r for r in requirements
-        #     if is_valid_vplan_section(r.get("section"))
-        # ]
-        
+        is_cover = is_chapter_cover_page(text)
+
+        if is_cover:
+            requirements = []
+            table_reqs = []
+        else:
+            # requirements = extract_requirements(text, current_section)
+            clean_text = remove_detected_headings(text, headings)
+            requirements = extract_requirements(clean_text, current_section)
+            table_reqs = extract_encoding_table_requirements(clean_text, current_section)
+
+        if table_reqs:
+            requirements = [
+                r for r in requirements
+                if not (
+                    "as shown in Table" in r["text"]
+                    or "Operation Meaning" in r["text"]
+                    or re.match(r'^0b[01]+', r["text"])
+                    or any(
+                        normalize(r["text"]) in normalize(tr["text"])
+                        or normalize(tr["text"]) in normalize(r["text"])
+                        for tr in table_reqs
+                    )
+                )
+            ]
+
+        requirements.extend(table_reqs)
+
+
         notes         = extract_notes(text)
         acronyms      = extract_acronyms(text)
         cross_refs    = extract_cross_references(text)
         table_captions = extract_table_captions(text)
-        extracted_tables = extract_tables(page, page_num)
+        extracted_tables, table_requirements = extract_tables(page, page_num, current_section)
+
+        requirements.extend(table_requirements)
 
         # --- Figure captions + region clipping (FIX 4) ---
         # Step 1: find caption lines in the text
@@ -825,12 +1028,6 @@ def parse_pdf(pdf_path):
             fig["page"] = page_num + 1
             fig["ocr_text"] = ocr_image_file(fig.get("file"))
             fig["visual_requirement_hints"] = extract_visual_requirement_hints(fig)
-
-            print("\nFIGURE:", fig["caption"])
-            print("SECTION:", fig["section"])
-            print("OCR TEXT:", fig["ocr_text"])
-            print("HINTS:", fig["visual_requirement_hints"])
-
 
         page_images = [
             img for img in image_records
@@ -872,6 +1069,37 @@ def parse_pdf(pdf_path):
 
     # Deduplicate acronyms (unchanged)
     document["acronyms"] = sorted(set(document["acronyms"]))
+    
+
+    # ----------------------------------------------------------
+    # Random page checks for manual requirement validation
+    # ----------------------------------------------------------
+
+    NUM_RANDOM_CHECKS = 1
+
+    print("\n===================================")
+    print("RANDOM PAGE REQUIREMENT CHECKS")
+    print("===================================")
+
+    random_pages = rand.sample(
+        document["pages"],
+        min(NUM_RANDOM_CHECKS, len(document["pages"]))
+    )
+
+    for p in random_pages:
+        print("\n" + "=" * 80)
+        print(f"PAGE {p['page_number']}")
+        print("=" * 80)
+
+        print("\nRequirements:")
+        if p["requirements"]:
+            for r in p["requirements"]:
+                print("-", r["text"])
+        else:
+            print("- None found")
+
+        print("\nPage text preview:")
+        print(p["text"][:1500])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 
     # ----------------------------------------------------------
     # Write JSON
