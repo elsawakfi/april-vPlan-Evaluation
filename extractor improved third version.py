@@ -86,6 +86,8 @@ FEATURE_REGEX = re.compile(
     r'provides|'
     r'contains|'
     r'uses|'
+    r'controls|'
+    r'control|'
     r'can either|'
     r'can pass|'
     r'requires that|'
@@ -98,6 +100,10 @@ REQUIREMENT_REGEX = re.compile(
     r'\b('
     #strong obligations / prohubitions
     r'shall|shall not|'
+    r'require|required|'
+    r'permitted|'
+    r'able to|'
+    r'specified|not specified|'
     r'must|must not|'
     r'must have|must not have|must be|must not be|'
     r'must issue|must not issue|'
@@ -117,11 +123,14 @@ REQUIREMENT_REGEX = re.compile(
     r'are nonmodifiable| is nonmodifiable|'
     r'is not present|are not present|'
     r'must be able to|must be given|'
+    r'is indicated|are indicated|'
     r'is issued|are issued|'
     r'is sent|are sent|'
     r'is determined|are determined|'
     r'is returned|are returned|'
+    r'is terminated|are terminated|'
     r'returns|'
+    r'is sent|'
 
     #Timing / protocol behaviour
     r'must remain|shall remain|remain asserted|remains asserted|'
@@ -132,6 +141,7 @@ REQUIREMENT_REGEX = re.compile(
 
     #Validity / legality constraints
     r'is valid only when|are valid only when|'
+    r'is not valid|are not valid|'
     r'is only valid|are only valid|'
     r'can only be|may only be|'
     r'is not satisfied|are not satisfied|'
@@ -160,7 +170,10 @@ REQUIREMENT_REGEX = re.compile(
     r'can be asserted|can be deasserted|'
     r'may be asserted|may be deasserted|'
     r'may not'
-    
+    r'are present|are not present|is present|is not present|'
+    r'is deasserted|are deasserted|is asserted|are asserted|' \
+    r'can be sent|'
+    r'indicates that|'
     
     r')\b',
     re.IGNORECASE
@@ -495,7 +508,8 @@ def extract_encoding_table_requirements(text, section_id=None):
     r'(.*?)'
     r'(?='
         r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
-        # r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
+        r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
+        r'|\s+[A-C]\d+(?:\.\d+)+\s+[A-Za-z]'
         r'|\s+Table\s+[A-Za-z]?\d+(?:\.\d+)*'
         r'|\s+ARM IHI'
         r'|$'
@@ -632,23 +646,104 @@ def extract_requirements(text, section_id=None):
     )
 
     clean_text = re.sub(
+        r'Table\s+[A-Za-z]?\d+(?:\.\d+)*:\s*[^\n.]*',
+        '',
+        clean_text,
+        flags=re.IGNORECASE
+    )
+
+    clean_text = re.sub(
         r'(?:\b\d+\s+){3,}[A-Z][A-Z\s]{10,}',
         '',
         clean_text
     )
 
+    clean_text = re.sub(
+        r'(Must use an ID that is unique in-flight on the same channels:)\s*•',
+        r'\1 •',
+        clean_text
+    )
+
+    clean_text = re.sub(
+        r'(Must not use the same ID for in-flight transactions on the same channels:)\s*•',
+        r'\1 •',
+        clean_text
+    )
+
+    clean_text = re.sub(
+        r'(Must use the same ID:)\s*•',
+        r'\1 •',
+        clean_text
+    )
+
     sentences = re.split(r'(?=•)|(?<=[.!?])\s+', clean_text)
+
+    # raw_sentences = re.split(r'(?=•)|(?<=[.!?])\s+', clean_text)
+
+    # sentences = []
+    # current_parent = ""
+
+    # for s in raw_sentences:
+    #     s = s.strip()
+
+    #     if s.endswith(":"):
+    #         current_parent = s
+    #         continue
+
+    #     if s.startswith("•") and current_parent:
+    #         s = current_parent + " " + s
+
+    #     sentences.append(s)
+
+    raw_sentences = re.split(r'(?=•)|(?<=[.!?])\s+', clean_text)
+
+    sentences = []
+    current_parent = ""
+
+    for s in raw_sentences:
+        s = s.strip()
+
+        # parent line = contains requirement language and ends with ":"
+        if s.endswith(":") and REQUIREMENT_REGEX.search(s):
+            # keep only from the first requirement word, remove merged heading before it
+            m = re.search(r'\b(Must|Must not|Shall|Should|Cannot|Can|May|If|When|The)\b', s, re.IGNORECASE)
+            if m:
+                current_parent = s[m.start():]
+            else:
+                current_parent = s
+            continue
+
+        if s.startswith("•") and current_parent:
+            s = current_parent + " " + s
+
+        sentences.append(s)
+
 
     for line in sentences:
         line = line.strip()
 
         line = re.sub(
-            r'^(?:[A-C]\d+(?:\.\d+)*\s+)?[A-Z][A-Za-z ]{2,40}\s+(?=(It|If|For|When|The|A|An)\b)',
+            r'^[A-Z][A-Za-z0-9\- ]{2,80}\s*[–-]\s*(?=(If|When|The|A|An|For|It)\b)',
             '',
             line
         ).strip()
+        
+        line = re.sub(
+            r'^(Name\s+Width\s+Default\s+Description\s+)+',
+            '',
+            line,
+            flags=re.IGNORECASE
+        ).strip()
 
-        line = re.sub(r'^•\s*', '', line)
+        if re.match(
+            r'^[A-Z0-9_, ]+\s+(?:are|is)\s+(?:present|not present)\.?$',
+            line,
+            re.IGNORECASE
+        ):
+            continue
+
+        # line = re.sub(r'^•\s*', '', line)
+        line = re.sub(r'•\s*', '', line)
 
         line = re.sub(
             r'^.*?The required behavior .*?:\s*',
@@ -657,9 +752,56 @@ def extract_requirements(text, section_id=None):
             flags=re.IGNORECASE
         )
 
+        line = re.sub(
+            r'^[A-Z0-9_, ]+\s+\d+\s+0x[0-9A-Fa-f]+\s+',
+            '',
+            line
+        ).strip()
+
         if not line:
             continue
+
+        if line.endswith(":"):
+            continue
+
+        if re.match(
+            r'^(?:Name|Width|Default|Description)(?:\s+\w+){2,}$',
+            line
+        ):
+            continue
+
+        if re.match(r'^.*This section describes .*$', line):
+            continue
+
+        # if (
+        #     line.startswith(("How ", "Why ", "Where ", "Which "))
+        #     and not REQUIREMENT_REGEX.search(line)
+        # ):
+        #     continue
         
+        # if re.match(r'^(How|Why|Where|Which)\b', line):
+        #     continue
+
+        if (
+            re.match(r'^[A-C]\d+(?:\.\d+)*\s+', line)
+            and not REQUIREMENT_REGEX.search(line)
+        ):
+            continue
+
+        if re.match(r'^\[\d+\]\s+', line):
+            continue
+
+        if line.startswith("Table "):
+            continue
+
+        if re.match(r'^[A-C]\d+(?:\.\d+)*\s+', line):
+            continue
+
+        if line.startswith("In this specification"):
+            continue
+
+        if line.lower().endswith("can either:"):
+            continue
         if re.match(r'^[A-Z][A-Za-z ]+\s+[A-C]\d+(?:\.\d+)*\.?$', line):
             continue
 
@@ -1004,52 +1146,53 @@ def parse_pdf(pdf_path):
         table_captions = extract_table_captions(text)
         extracted_tables, table_requirements = extract_tables(page, page_num, current_section)
 
-        requirements.extend(table_requirements)
+        # requirements.extend(table_requirements)
+
 
         # --- Figure captions + region clipping (FIX 4) ---
         # Step 1: find caption lines in the text
-        figures = extract_figure_captions(text)
+        # figures = extract_figure_captions(text)
 
         # Step 2: for each caption, clip and save the page region
         #         above it to FIGURE_FOLDER and store the path in
         #         the caption dict under "file".
-        if figures:
-            extract_figure_regions(
-                pdf_page=page,
-                page_num=page_num,
-                captions=figures,
-                output_folder=FIGURE_FOLDER,
-                scale=4,
-                clip_height_pt=120
-            )
+        # if figures:
+        #     extract_figure_regions(
+        #         pdf_page=page,
+        #         page_num=page_num,
+        #         captions=figures,
+        #         output_folder=FIGURE_FOLDER,
+        #         scale=4,
+        #         clip_height_pt=120
+        #     )
         # --------------------------------------------------
-        for fig in figures:
-            fig["section"] = current_section
-            fig["page"] = page_num + 1
-            fig["ocr_text"] = ocr_image_file(fig.get("file"))
-            fig["visual_requirement_hints"] = extract_visual_requirement_hints(fig)
+        # for fig in figures:
+        #     fig["section"] = current_section
+        #     fig["page"] = page_num + 1
+        #     fig["ocr_text"] = ocr_image_file(fig.get("file"))
+        #     fig["visual_requirement_hints"] = extract_visual_requirement_hints(fig)
 
-        page_images = [
-            img for img in image_records
-            if img["page"] == page_num + 1
-        ]
+        # page_images = [
+        #     img for img in image_records
+        #     if img["page"] == page_num + 1
+        # ]
 
         page_json = {
             "page_number":   page_num + 1,
             "text":          text,
             "headings":      headings,
             "requirements":  requirements,
-            "figures":       figures,          # now includes "file" key
+            # "figures":       figures,          # now includes "file" key
             "table_captions": table_captions,
             "tables":        extracted_tables,
-            "images":        page_images
+            # "images":        page_images
         }
 
         document["requirements"].extend(requirements)
         document["notes"].extend(notes)
         document["acronyms"].extend(acronyms)
         document["cross_references"].extend(cross_refs)
-        document["figures"].extend(figures)
+        # document["figures"].extend(figures)
         document["tables"].extend(extracted_tables)
         document["pages"].append(page_json)
 
