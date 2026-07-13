@@ -1,0 +1,7 @@
+0,1
+"Load mem(kind, address, size, load continuation)
+_ _",- memory load operation
+"Early sc fail(res continuation)
+_ _ _",- allow sc to fail early
+"Store ea(kind, address, size, next state)
+_ _",- memory store effective address

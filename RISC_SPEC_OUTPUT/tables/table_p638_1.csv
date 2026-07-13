@@ -1,0 +1,14 @@
+0,1
+ARM Operation,RVWMO Mapping
+Load,l{b|h|w|d}
+Load-Acquire,"fence rw, rw; l{b|h|w|d}; fence r,rw"
+Load-Exclusive,lr.{w|d}
+Load-Acquire-Exclusive,lr.{w|d}.aqrl
+Store,s{b|h|w|d}
+Store-Release,"fence rw,w; s{b|h|w|d}"
+Store-Exclusive,sc.{w|d}
+Store-Release-Exclusive,sc.{w|d}.rl
+dmb,"fence rw,rw"
+dmb.ld,"fence r,rw"
+dmb.st,"fence w,w"
+isb,"fence.i; fence r,r"

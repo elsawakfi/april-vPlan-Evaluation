@@ -1,0 +1,9 @@
+0,1
+Power Operation,RVWMO Mapping
+Load,l{b|h|w|d}
+Load-Reserve,lr.{w|d}
+Store,s{b|h|w|d}
+Store-Conditional,sc.{w|d}
+lwsync,fence.tso
+sync,"fence rw,rw"
+isync,"fence.i; fence r,r"

@@ -1,0 +1,5 @@
+0,1,2
+Register,Direction,Definition
+Vs1,input,Shift amount
+Vs2,input,Data
+Vd,output,Shifted data

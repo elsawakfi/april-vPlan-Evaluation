@@ -1,0 +1,9 @@
+0,1,2
+Input,Output,Exceptions raised
+-∞ ≤ x < -0.0,canonical NaN,NV
+-0.0,-∞,DZ
++0.0,+∞,DZ
++0.0 < x < +∞,estimate of 1/sqrt(x),
++∞,+0.0,
+qNaN,canonical NaN,
+sNaN,canonical NaN,NV

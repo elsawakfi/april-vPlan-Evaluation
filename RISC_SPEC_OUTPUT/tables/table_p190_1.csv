@@ -1,0 +1,12 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+yes,yes,"cm.push {reg list}, -stack adj
+_ _",cm.push
+yes,yes,"cm.pop {reg list}, stack adj
+_ _",cm.pop
+yes,yes,"cm.popret {reg list}, stack adj
+_ _",cm.popret
+yes,yes,"cm.popretz {reg list}, stack adj
+_ _",cm.popretz
+yes,yes,"cm.mva01s rs1', rs2'",Move two s0-s7 registers into a0-a1
+yes,yes,"cm.mvsa01 r1s', r2s'",Move a0-a1 into two different s0-s7 registers

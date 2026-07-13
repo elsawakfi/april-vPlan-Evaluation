@@ -1,0 +1,4 @@
+0,1,2,3,4
+,FCVT.W.S,FCVT.WU.S,FCVT.L.S,FCVT.LU.S
+Output for out-of-range positive input,231−1,232−1,263−1,264−1
+Output for +∞ or NaN,231−1,232−1,263−1,264−1

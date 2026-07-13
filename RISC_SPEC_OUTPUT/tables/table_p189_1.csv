@@ -1,0 +1,13 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+yes,yes,"c.lhu rd', uimm(rs1')","Load unsigned halfword, 16-bit encoding"
+yes,yes,"c.lh rd', uimm(rs1')","Load signed halfword, 16-bit encoding"
+yes,yes,"c.sb rs2', uimm(rs1')","Store byte, 16-bit encoding"
+yes,yes,"c.sh rs2', uimm(rs1')","Store halfword, 16-bit encoding"
+yes,yes,c.zext.b rsd',"Zero extend byte, 16-bit encoding"
+yes,yes,c.sext.b rsd',"Sign extend byte, 16-bit encoding"
+yes,yes,c.zext.h rsd',"Zero extend halfword, 16-bit encoding"
+yes,yes,c.sext.h rsd',"Sign extend halfword, 16-bit encoding"
+,yes,c.zext.w rsd',"Zero extend word, 16-bit encoding"
+yes,yes,c.not rsd',"Bitwise not, 16-bit encoding"
+yes,yes,"c.mul rsd', rs2'","Multiply, 16-bit encoding"

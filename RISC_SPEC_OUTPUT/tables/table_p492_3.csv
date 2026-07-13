@@ -1,0 +1,9 @@
+0,1
+Instructions,Required SEW
+vaes*,32
+Zvknha: vsha2*,32
+Zvknhb: vsha2*,32 or 64
+vclmul[h],64
+vg*,32
+vsm3*,32
+vsm4*,32

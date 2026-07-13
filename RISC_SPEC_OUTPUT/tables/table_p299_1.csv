@@ -1,0 +1,7 @@
+0,1,2,3
+Address,Privilege,Name,Description
+0x00A,URW,vxrm,Fixed-Point Rounding Mode
+0x00F,URW,vcsr,Vector control and status register
+0xC20,URO,vl,Vector length
+0xC21,URO,vtype,Vector data type register
+0xC22,URO,vlenb,VLEN/8 (vector register length in bytes)

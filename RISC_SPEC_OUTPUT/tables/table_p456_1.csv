@@ -1,0 +1,6 @@
+0,1,2
+Bits,Name,Description
+31:30,OPST,"Status: BIST (00), WAIT (01), ES16 (10), DEAD (11)."
+29:24,reserved,For future use by the RISC-V specification.
+23:16,custom,Designated for custom and experimental use.
+15: 0,entropy,"16 bits of randomness, only when OPST=ES16."

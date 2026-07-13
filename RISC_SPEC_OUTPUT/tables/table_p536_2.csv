@@ -1,0 +1,4 @@
+0,1,2
+Register,Direction,Definition
+Vs2,input,Input elements
+Vd,output,Count of bits set

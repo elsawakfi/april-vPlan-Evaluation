@@ -1,0 +1,26 @@
+0,1,2,3,4
+,Source Registers,Destination Registers,Accumulating CSRs,
+ADD,"rs1, rs2",rd,,
+SUB,"rs1, rs2",rd,,
+SLL,"rs1, rs2",rd,,
+SLT,"rs1, rs2",rd,,
+SLTU,"rs1, rs2",rd,,
+XOR,"rs1, rs2",rd,,
+SRL,"rs1, rs2",rd,,
+SRA,"rs1, rs2",rd,,
+OR,"rs1, rs2",rd,,
+AND,"rs1, rs2",rd,,
+FENCE,,,,
+FENCE.I,,,,
+ECALL,,,,
+EBREAK,,,,
+CSRRW‡,"rs1, csr*","rd, csr",,*unless rd=x0
+‡ carries a d,ependency from rs1 t,o csr and from csr to rd,,
+CSRRS‡,"rs1, csr","rd, csr*",,*unless rs1=x0
+CSRRC‡,"rs1, csr","rd, csr*",,*unless rs1=x0
+‡ carries a d,ependency from csr a,nd rs1 to csr and from csr,to rd,
+CSRRWI ‡,csr *,"rd, csr",,*unless rd=x0
+‡ carries a d,ependency from csr t,o rd,,
+CSRRSI ‡,csr,"rd, csr*",,*unless uimm[4:0]=0
+CSRRCI ‡,csr,"rd, csr*",,*unless uimm[4:0]=0
+‡ carries a d,ependency from csr t,o rd and csr,,

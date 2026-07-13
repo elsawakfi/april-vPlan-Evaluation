@@ -1,0 +1,4 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,sm4ed,SM4 Encrypt/Decrypt Instruction
+✓,✓,sm4ks,SM4 Key Schedule Instruction

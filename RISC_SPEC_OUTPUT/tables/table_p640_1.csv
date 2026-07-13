@@ -1,0 +1,38 @@
+0,1
+C/C++ Construct,RVWMO Mapping
+Non-atomic load,l{b|h|w|d}
+"atomic load(memory order relaxed)
+_ _ _",l{b|h|w|d}
+"atomic load(memory order acquire)
+_ _ _","l{b|h|w|d}; fence r,rw"
+"atomic load(memory order seq cst)
+_ _ _ _","fence rw,rw; l{b|h|w|d}; fence r,rw"
+Non-atomic store,s{b|h|w|d}
+"atomic store(memory order relaxed)
+_ _ _",s{b|h|w|d}
+"atomic store(memory order release)
+_ _ _","fence rw,w; s{b|h|w|d}"
+"atomic store(memory order seq cst)
+_ _ _ _","fence rw,w; s{b|h|w|d}"
+"atomic thread fence(memory order acquire)
+_ _ _ _","fence r,rw"
+"atomic thread fence(memory order release)
+_ _ _ _","fence rw,w"
+"atomic thread fence(memory order acq rel)
+_ _ _ _ _",fence.tso
+"atomic thread fence(memory order seq cst)
+_ _ _ _ _","fence rw,rw"
+C/C++ Construct,RVWMO AMO Mapping
+"atomic <op>(memory order relaxed)
+_ _ _",amo<op>.{w|d}
+"atomic <op>(memory order acquire)
+_ _ _",amo<op>.{w|d}.aq
+"atomic <op>(memory order release)
+_ _ _",amo<op>.{w|d}.rl
+"atomic <op>(memory order acq rel)
+_ _ _ _",amo<op>.{w|d}.aqrl
+"atomic <op>(memory order seq cst)
+_ _ _ _",amo<op>.{w|d}.aqrl
+C/C++ Construct,RVWMO LR/SC Mapping
+"atomic <op>(memory order relaxed)
+_ _ _",loop:lr.{w|d}; <op>; sc.{w|d};

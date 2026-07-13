@@ -1,0 +1,6 @@
+0,1,2,3
+Input (x),Rounding Mode,Output (y ≈ 1/x),Exceptions raised
+-∞,any,-0.0,
+-2B+1 < x ≤ -2B (normal),any,"-2-(B+1) ≥ y > -2-B (subnormal, sig=01…)",
+-2B < x ≤ -2B-1 (normal),any,"-2-B ≥ y > -2-B+1 (subnormal, sig=1…)",
+-2B-1 < x ≤ -2-B+1 (normal),any,-2-B+1 ≥ y > -2B-1 (normal),

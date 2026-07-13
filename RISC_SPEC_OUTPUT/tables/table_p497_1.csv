@@ -1,0 +1,7 @@
+0,1
+Mnemonic,Instruction
+"vandn.[vv,vx]",Vector And-Not
+vbrev8.v,Vector Reverse Bits in Bytes
+vrev8.v,Vector Reverse Bytes
+"vrol.[vv,vx]",Vector Rotate Left
+"vror.[vv,vx,vi]",Vector Rotate Right

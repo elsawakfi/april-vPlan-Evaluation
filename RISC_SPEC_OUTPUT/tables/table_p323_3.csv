@@ -1,0 +1,6 @@
+0,1,2,3,4,5
+sumop,[4:0],,,,Description
+0,0,0,0,0,unit-stride store
+0,1,0,0,0,"unit-stride, whole register store"
+0,1,0,1,1,"unit-stride, mask store, EEW=8"
+x,x,x,x,x,other encodings reserved

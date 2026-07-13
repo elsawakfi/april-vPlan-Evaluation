@@ -1,0 +1,13 @@
+0,1
+Field,Description
+rs1[4:0],specifies x register holding base address
+rs2[4:0],specifies x register holding stride
+vs2[4:0],specifies v register holding address offsets
+vs3[4:0],specifies v register holding store data
+vd[4:0],specifies v register destination of load
+vm,"specifies whether vector masking is enabled (0 = mask enabled, 1 = mask disabled)"
+width[2:0],"specifies size of memory elements, and distinguishes from FP scalar"
+mew,extended memory element width. See Section 31.7.3
+mop[1:0],specifies memory addressing mode
+nf[2:0],"specifies the number of fields in each segment, for segment load/stores"
+lumop[4:0]/sumop[4:0],are additional fields encoding variants of unit-stride instructions

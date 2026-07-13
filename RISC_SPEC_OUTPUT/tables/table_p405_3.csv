@@ -1,0 +1,8 @@
+0,1
+Included Extension,Description
+Zbkb,Bitmanipulation instructions for cryptography.
+Zbkc,Carry-less multiply instructions.
+Zbkx,Cross-bar Permutation instructions.
+Zkne,AES encryption instructions.
+Zknd,AES decryption instructions.
+Zknh,SHA2 hash function instructions.

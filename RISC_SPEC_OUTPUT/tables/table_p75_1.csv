@@ -1,0 +1,3 @@
+0,1
+Scenario,Recommended NTL variant
+Access to a contended synchronization variable,NTL.PALL

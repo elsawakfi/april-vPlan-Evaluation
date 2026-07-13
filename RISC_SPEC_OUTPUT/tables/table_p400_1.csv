@@ -1,0 +1,14 @@
+0,1
+vs1,name
+01110,vfwcvt.rtz.xu.f.v
+01111,vfwcvt.rtz.x.f.v
+,
+narrowing con,verts
+10000,vfncvt.xu.f.w
+10001,vfncvt.x.f.w
+10010,vfncvt.f.xu.w
+10011,vfncvt.f.x.w
+10100,vfncvt.f.f.w
+10101,vfncvt.rod.f.f.w
+10110,vfncvt.rtz.xu.f.w
+10111,vfncvt.rtz.x.f.w

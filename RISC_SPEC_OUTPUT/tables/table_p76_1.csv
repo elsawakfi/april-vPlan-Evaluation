@@ -1,0 +1,24 @@
+0,1,2,3,4,5,6,7,8
+Memory hierarchy,"Recom
+varia","mended
+nt to act","mapping
+ual cache","of NTL
+level","Recom
+expl","mended
+icit cache","NTL vari
+manage","ant for
+ment"
+,P1,PALL,S1,ALL,L1,L2,L3,L4/L5
+,,Common,Scenario,s,,,,
+No caches,,-,--,,,no,ne,
+Private L1 only,L1,L1,L1,L1,ALL,---,---,---
+Private L1; shared L2,L1,L1,L2,L2,P1,ALL,---,---
+Private L1; shared L2/L3,L1,L1,L2,L3,P1,S1,ALL,---
+Private L1/L2,L1,L2,L2,L2,P1,ALL,---,---
+Private L1/L2; shared L3,L1,L2,L3,L3,P1,PALL,ALL,---
+Private L1/L2; shared L3/L4,L1,L2,L3,L4,P1,PALL,S1,ALL
+,U,ncommo,n Scenari,os,,,,
+Private L1/L2/L3; shared L4,L1,L3,L4,L4,P1,P1,PALL,ALL
+Private L1; shared L2/L3/L4,L1,L1,L2,L4,P1,S1,ALL,ALL
+Private L1/L2; shared L3/L4/L5,L1,L2,L3,L5,P1,PALL,S1,ALL
+Private L1/L2/L3; shared L4/L5,L1,L3,L4,L5,P1,P1,PALL,ALL

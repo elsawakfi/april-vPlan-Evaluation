@@ -1,0 +1,7 @@
+0,1,2,3,4,5,6,7,8
+inst[4:2],,,,,,,,
+inst[6:5],000,001,010,011,100,101,110,111 (>32b)
+00,LOAD,LOAD-FP,custom-0,MISC-MEM,OP-IMM,AUIPC,OP-IMM-32,reserved
+01,STORE,STORE-FP,custom-1,AMO,OP,LUI,OP-32,reserved
+10,MADD,MSUB,NMSUB,NMADD,OP-FP,OP-V,custom-2,reserved
+11,BRANCH,JALR,reserved,JAL,SYSTEM,OP-VE,custom-3,reserved

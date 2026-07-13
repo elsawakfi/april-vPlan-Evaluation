@@ -1,0 +1,6 @@
+0,1,2
+fm field,Mnemonic suffix,Meaning
+0000,none,Normal Fence
+1000,.TSO,"With FENCE RW,RW: exclude write-to-read ordering; otherwise:
+Reserved for future use."
+other,other,Reserved for future use.

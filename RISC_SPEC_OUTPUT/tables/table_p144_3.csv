@@ -1,0 +1,6 @@
+0,1,2
+fmt field,Mnemonic,Meaning
+00,S,32-bit single-precision
+01,D,64-bit double-precision
+10,H,16-bit half-precision
+11,Q,128-bit quad-precision

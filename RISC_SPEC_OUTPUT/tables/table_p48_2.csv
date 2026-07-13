@@ -1,0 +1,2 @@
+0,1,2,3,4
+imm[11:0],rs1,funct3,rd,opcode

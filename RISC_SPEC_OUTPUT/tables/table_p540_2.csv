@@ -1,0 +1,5 @@
+0,1,2,3,4,5
+Register,Direction,EGW,EGS,SEW,Definition
+Vd,input,128,4,32,Multiplier
+Vs2,input,128,4,32,Multiplicand
+Vd,output,128,4,32,Product

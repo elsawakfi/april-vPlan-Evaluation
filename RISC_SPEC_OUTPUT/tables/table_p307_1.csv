@@ -1,0 +1,5 @@
+0,1,2
+Bits,Name,Description
+XLEN-1:3,,Reserved
+2:1,vxrm[1:0],Fixed-point rounding mode
+0,vxsat,Fixed-point accrued saturation flag

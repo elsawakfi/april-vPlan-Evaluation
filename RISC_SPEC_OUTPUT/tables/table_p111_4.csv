@@ -1,0 +1,13 @@
+0,1,2,3,4
+,Source Registers,Destination Registers,Accumulating CSRs,
+LR.W†,rs1 A,rd,,
+SC.W†,"rs1 A, rs2 D",rd *,,* if successful
+AMOSWAP.W†,"rs1 A, rs2 D",rd,,
+AMOADD.W†,"rs1 A, rs2 D",rd,,
+AMOXOR.W†,"rs1 A, rs2 D",rd,,
+AMOAND.W†,"rs1 A, rs2 D",rd,,
+AMOOR.W†,"rs1 A, rs2D",rd,,
+AMOMIN.W†,"rs1 A, rs2 D",rd,,
+AMOMAX.W†,"rs1 A, rs2 D",rd,,
+AMOMINU.W†,"rs1 A, rs2 D",rd,,
+AMOMAXU.W†,"rs1 A, rs2 D",rd,,

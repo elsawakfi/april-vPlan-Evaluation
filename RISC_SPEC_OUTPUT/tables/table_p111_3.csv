@@ -1,0 +1,7 @@
+0,1,2,3,4
+,Source Registers,Destination Registers,Accumulating CSRs,
+MULW,"rs1, rs2",rd,,
+DIVW,"rs1, rs2",rd,,
+DIVUW,"rs1, rs2",rd,,
+REMW,"rs1, rs2",rd,,
+REMUW,"rs1, rs2",rd,,

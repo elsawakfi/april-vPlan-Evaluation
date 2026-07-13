@@ -1,0 +1,28 @@
+0,1,2,3,4
+,Source Registers,Destination Registers,Accumulating CSRs,
+FLD†,rs1 A,rd,,
+FSD,"rs1 A, rs2D",,,
+FMADD.D,"rs1, rs2, rs3, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FMSUB.D,"rs1, rs2, rs3, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FNMSUB.D,"rs1, rs2, rs3, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FNMADD.D,"rs1, rs2, rs3, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FADD.D,"rs1, rs2, frm*",rd,"NV, OF, NX",*if rm=111
+FSUB.D,"rs1, rs2, frm*",rd,"NV, OF, NX",*if rm=111
+FMUL.D,"rs1, rs2, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FDIV.D,"rs1, rs2, frm*",rd,"NV, DZ, OF, UF, NX",*if rm=111
+FSQRT.D,"rs1, frm*",rd,"NV, NX",*if rm=111
+FSGNJ.D,"rs1, rs2",rd,,
+FSGNJN.D,"rs1, rs2",rd,,
+FSGNJX.D,"rs1, rs2",rd,,
+FMIN.D,"rs1, rs2",rd,NV,
+FMAX.D,"rs1, rs2",rd,NV,
+FCVT.S.D,"rs1, frm*",rd,"NV, OF, UF, NX",*if rm=111
+FCVT.D.S,rs1,rd,NV,
+FEQ.D,"rs1, rs2",rd,NV,
+FLT.D,"rs1, rs2",rd,NV,
+FLE.D,"rs1, rs2",rd,NV,
+FCLASS.D,rs1,rd,,
+FCVT.W.D,"rs1, frm*",rd,"NV, NX",*if rm=111
+FCVT.WU.D,"rs1, frm*",rd,"NV, NX",*if rm=111
+FCVT.D.W,rs1,rd,,
+FCVT.D.WU,rs1,rd,,

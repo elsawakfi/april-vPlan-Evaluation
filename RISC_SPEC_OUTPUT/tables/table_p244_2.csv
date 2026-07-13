@@ -1,0 +1,8 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,"rol rd, rs1, rs2",Rotate left (Register)
+,✓,"rolw rd, rs1, rs2",Rotate Left Word (Register)
+✓,✓,"ror rd, rs1, rs2",Rotate right (Register)
+✓,✓,"rori rd, rs1, shamt",Rotate right (Immediate)
+,✓,"roriw rd, rs1, shamt",Rotate right Word (Immediate)
+,✓,"rorw rd, rs1, rs2",Rotate right Word (Register)

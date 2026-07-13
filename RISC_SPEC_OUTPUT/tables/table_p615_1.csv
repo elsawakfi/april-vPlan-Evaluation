@@ -1,0 +1,6 @@
+0,1,2,3,4,5,6,7
+,,RV64Zfh,Standard Ext,ension (in ad,dition to RV,32Zfh),
+110,0010,00010,rs1,rm,rd,1010011,FCVT.L.H
+110,0010,00011,rs1,rm,rd,1010011,FCVT.LU.H
+110,1010,00010,rs1,rm,rd,1010011,FCVT.H.L
+110,1010,00011,rs1,rm,rd,1010011,FCVT.H.LU

@@ -1,0 +1,5 @@
+0,1,2
+Register,Direction,Definition
+Rs1/imm,input,Rotate amount
+Vs2,input,Data
+Vd,output,Rotated data

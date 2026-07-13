@@ -1,0 +1,6 @@
+0,1,2,3
+vta,vma,Tail Elements,Inactive Elements
+0,0,undisturbed,undisturbed
+0,1,undisturbed,agnostic
+1,0,agnostic,undisturbed
+1,1,agnostic,agnostic

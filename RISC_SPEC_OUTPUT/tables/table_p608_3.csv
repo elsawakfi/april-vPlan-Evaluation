@@ -1,0 +1,13 @@
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+,,,,RV64A,Stan,dard E,xtens,ion (i,n add,ition,to RV,32A),,
+000,10,aq,rl,00,000,r,s1,0,11,r,d,010,1111,LR.D
+000,11,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,SC.D
+000,01,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOSWAP.D
+000,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOADD.D
+001,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOXOR.D
+011,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOAND.D
+010,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOOR.D
+100,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOMIN.D
+101,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOMAX.D
+110,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOMINU.D
+111,00,aq,rl,r,s2,r,s1,0,11,r,d,010,1111,AMOMAXU.D

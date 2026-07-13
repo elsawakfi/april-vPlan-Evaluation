@@ -1,0 +1,7 @@
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+,,,,,,,,,,,,,,
+31,27,26,25,24,20,19,15,14,12,11,7,6,0,
+,fu,nct7,,r,s2,rs,1,fun,ct3,r,d,opc,ode,R-type
+r,s3,fun,ct2,r,s2,rs,1,fun,ct3,r,d,opc,ode,R4-type
+,,imm[,11:0],,,rs,1,fun,ct3,r,d,opc,ode,I-type
+,imm[,11:5],,r,s2,rs,1,fun,ct3,imm[,4:0],opc,ode,S-type

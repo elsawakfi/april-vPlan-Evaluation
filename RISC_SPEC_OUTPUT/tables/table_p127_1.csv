@@ -1,0 +1,5 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,prefetch.i offset(base),Cache Block Prefetch for Instruction Fetch
+✓,✓,prefetch.r offset(base),Cache Block Prefetch for Data Read
+✓,✓,prefetch.w offset(base),Cache Block Prefetch for Data Write

@@ -1,0 +1,13 @@
+0,1,2,3
+Number,Privilege,Name,Description
+,,Floating-Po,int Control and Status Registers
+0x001,Read write,fflags,Floating-Point Accrued Exceptions.
+0x002,Read write,frm,Floating-Point Dynamic Rounding Mode.
+0x003,Read write,fcsr,Floating-Point Control and Status Register (frm + fflags).
+,,,Counters and Timers
+0xC00,Read-only,cycle,Cycle counter for RDCYCLE instruction.
+0xC01,Read-only,time,Timer for RDTIME instruction.
+0xC02,Read-only,instret,Instructions-retired counter for RDINSTRET instruction.
+0xC80,Read-only,cycleh,"Upper 32 bits of cycle, RV32I only."
+0xC81,Read-only,timeh,"Upper 32 bits of time, RV32I only."
+0xC82,Read-only,instreth,"Upper 32 bits of instret, RV32I only."

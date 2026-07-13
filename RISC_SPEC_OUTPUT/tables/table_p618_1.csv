@@ -1,0 +1,22 @@
+0,1,2
+Subset,Name,Implies
+Base ISA,,
+Integer,I,
+Reduced Integer,E,
+Standard Unprivileged Extensions,,
+Integer Multiplication and Division,M,Zmmul
+Atomics,A,
+Single-Precision Floating-Point,F,Zicsr
+Double-Precision Floating-Point,D,F
+General,G,"IMAFDZicsr Zifencei
+_"
+Quad-Precision Floating-Point,Q,D
+16-bit Compressed Instructions,C,
+B Extension,B,
+Packed-SIMD Extensions,P,
+Vector Extension,V,D
+Hypervisor Extension,H,
+Additional Standard Unprivileged Extensions,,
+"Additional Standard unprivileged extensions ""abc""",Zabc,
+Standard Supervisor-Level Extensions,,
+"Supervisor-level extension ""def""",Ssdef,

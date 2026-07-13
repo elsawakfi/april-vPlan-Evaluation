@@ -1,0 +1,4 @@
+0,1,2,3
+SEW,EGW,Mnemonic,Instruction
+32,128,vsm4k.vi,Vector SM4 Key Expansion
+32,128,"vsm4r.[vv,vs]",SM4 Block Cipher Rounds

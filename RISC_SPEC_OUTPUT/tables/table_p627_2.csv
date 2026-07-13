@@ -1,0 +1,10 @@
+0,1,2,3
+,Hart 0,,Hart 1
+,"li t1, 1",,"li t2, 2"
+(a),"sw t1,0(s0)",(d),"lw a0,0(s1)"
+(b),"fence w, w",(e),"sw t2,0(s1)"
+(c),"sw t1,0(s1)",(f),"lw a1,0(s1)"
+,,(g),"xor t3,a1,a1"
+,,(h),"add s0,s0,t3"
+,,(i),"lw a2,0(s0)"
+,Outcome: a0,"=1, a","1=2, a2=0"

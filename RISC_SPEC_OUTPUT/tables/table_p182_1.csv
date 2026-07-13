@@ -1,0 +1,8 @@
+0,1,2,3
+Instruction,Constraints,Code Points,Purpose
+C.NOP,imm≠0,63,
+C.ADDI,"rd≠x0, imm=0",31,
+C.LI,rd=x0,64,Designated for future
+C.LUI,"rd=x0, imm≠0",63,standard use
+C.MV,"rd=x0, rs2≠x0",31,
+C.ADD,"rd=x0, rs2≠x0, rs2≠x2-x5",27,

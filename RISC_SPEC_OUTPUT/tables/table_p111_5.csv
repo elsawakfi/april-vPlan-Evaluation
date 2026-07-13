@@ -1,0 +1,5 @@
+0,1,2,3,4
+,Source Registers,Destination Registers,Accumulating CSRs,
+LR.D†,rs1 A,rd,,
+SC.D†,"rs1 A, rs2 D",rd *,,*if successful
+AMOSWAP.D†,"rs1 A, rs2 D",rd,,

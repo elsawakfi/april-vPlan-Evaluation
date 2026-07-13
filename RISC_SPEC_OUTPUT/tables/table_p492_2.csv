@@ -1,0 +1,8 @@
+0,1,2
+Instructions,SEW,EGW
+vaes*,32,128
+vsha2*,32,128
+vsha2*,64,256
+vg*,32,128
+vsm3*,32,256
+vsm4*,32,128

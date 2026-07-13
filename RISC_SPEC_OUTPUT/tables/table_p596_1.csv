@@ -1,0 +1,8 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+yes,no,"c.ldsp rd, offset(sp)","Stack-pointer based load doubleword to register pair, 16-bit
+encoding"
+yes,no,"c.sdsp rs2, offset(sp)","Stack-pointer based store doubleword from register pair, 16-bit
+encoding"
+yes,no,"c.ld rd', offset(rs1')","Load doubleword to register pair, 16-bit encoding"
+yes,no,"c.sd rs2', offset(rs1')","Store doubleword from register pair, 16-bit encoding"

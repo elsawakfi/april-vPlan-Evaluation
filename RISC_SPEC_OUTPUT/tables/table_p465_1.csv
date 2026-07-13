@@ -1,0 +1,22 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,clmul,Carry-less multiply (low-part)
+✓,✓,clmulh,Carry-less multiply (high-part)
+✓,✓,xperm4,Crossbar permutation (nibbles)
+✓,✓,xperm8,Crossbar permutation (bytes)
+✓,✓,ror,Rotate right (Register)
+✓,✓,rol,Rotate left (Register)
+✓,✓,rori,Rotate right (Immediate)
+,✓,rorw,Rotate right Word (Register)
+,✓,rolw,Rotate Left Word (Register)
+,✓,roriw,Rotate right Word (Immediate)
+✓,✓,andn,AND with inverted operand
+✓,✓,orn,OR with inverted operand
+✓,✓,xnor,Exclusive NOR
+✓,✓,pack,Pack low halves of registers
+✓,✓,packh,Pack low bytes of registers
+,✓,packw,Pack low 16-bits of registers (RV64)
+✓,✓,brev8,Reverse bits in bytes
+✓,✓,rev8,Byte-reverse register
+✓,,zip,Bit interleave
+✓,,unzip,Bit deinterleave

@@ -1,0 +1,13 @@
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+,,,,,R,V32A,Stand,ard E,xtens,ion,,,,
+00,010,aq,rl,00,000,r,s1,0,10,r,d,010,1111,LR.W
+00,011,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,SC.W
+00,001,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOSWAP.W
+00,000,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOADD.W
+00,100,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOXOR.W
+01,100,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOAND.W
+01,000,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOOR.W
+10,000,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOMIN.W
+10,100,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOMAX.W
+11,000,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOMINU.W
+11,100,aq,rl,r,s2,r,s1,0,10,r,d,010,1111,AMOMAXU.W

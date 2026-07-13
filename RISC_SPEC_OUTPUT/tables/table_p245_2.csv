@@ -1,0 +1,10 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,"bclr rd, rs1, rs2",Single-Bit Clear (Register)
+✓,✓,"bclri rd, rs1, imm",Single-Bit Clear (Immediate)
+✓,✓,"bext rd, rs1, rs2",Single-Bit Extract (Register)
+✓,✓,"bexti rd, rs1, imm",Single-Bit Extract (Immediate)
+✓,✓,"binv rd, rs1, rs2",Single-Bit Invert (Register)
+✓,✓,"binvi rd, rs1, imm",Single-Bit Invert (Immediate)
+✓,✓,"bset rd, rs1, rs2",Single-Bit Set (Register)
+✓,✓,"bseti rd, rs1, imm",Single-Bit Set (Immediate)

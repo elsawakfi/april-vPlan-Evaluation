@@ -1,0 +1,6 @@
+0,1,2,3
+Register,Direction,EEW,Definition
+Vd,input,32,FP32 Accumulate
+Vs1/rs1,input,16,BF16 Source
+Vs2,input,16,BF16 Source
+Vd,output,32,FP32 Result

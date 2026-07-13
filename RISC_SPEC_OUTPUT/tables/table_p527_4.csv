@@ -1,0 +1,5 @@
+0,1,2
+Register,Direction,Definition
+Rs1,input,Op1 (to be inverted)
+Vs2,input,Op2
+Vd,output,Result

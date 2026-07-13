@@ -1,0 +1,3 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,c.zext.b,"Zero extend byte, 16-bit encoding"

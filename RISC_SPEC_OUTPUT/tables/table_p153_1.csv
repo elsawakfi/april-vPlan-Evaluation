@@ -1,0 +1,4 @@
+0,1,2,3,4,5,6,7
+Format,Sign Bits,Expo Bits,fraction bits,padded 0s,encoding bits,expo max/bias,expo min
+FP64,1,11,52,0,64,1023,-1022
+FP128,1,15,112,0,128,"16,383","-16,382"

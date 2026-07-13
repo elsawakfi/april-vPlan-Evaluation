@@ -1,0 +1,8 @@
+0,1,2,3,4,5
+funct3,[2:0],,Category,Operands,Type of scalar operand
+0,1,0,OPMVV,vector-vector,N/A
+0,1,1,OPIVI,vector-immediate,imm[4:0]
+1,0,0,OPIVX,vector-scalar,GPR x register rs1
+1,0,1,OPFVF,vector-scalar,FP f register rs1
+1,1,0,OPMVX,vector-scalar,GPR x register rs1
+1,1,1,OPCFG,scalars-imms,GPR x register rs1 & rs2/imm

@@ -1,0 +1,5 @@
+0,1,2,3,4,5
+Register,Direction,EGW,EGS,EEW,Definition
+uimm,input,-,-,-,Round Number (rnd)
+Vs2,input,128,4,32,Current round key
+Vd,output,128,4,32,Next round key

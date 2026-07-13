@@ -1,0 +1,5 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,"clmul rd, rs1, rs2",Carry-less multiply (low-part)
+✓,✓,"clmulh rd, rs1, rs2",Carry-less multiply (high-part)
+✓,✓,"clmulr rd, rs1, rs2",Carry-less multiply (reversed)

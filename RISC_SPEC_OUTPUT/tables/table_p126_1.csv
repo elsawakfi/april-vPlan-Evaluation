@@ -1,0 +1,5 @@
+0,1,2,3
+RV32,RV64,Mnemonic,Instruction
+✓,✓,cbo.clean base,Cache Block Clean
+✓,✓,cbo.flush base,Cache Block Flush
+✓,✓,cbo.inval base,Cache Block Invalidate
