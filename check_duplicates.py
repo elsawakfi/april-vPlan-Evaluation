@@ -60,7 +60,7 @@ def write_duplicate_report(
 
 if __name__ == "__main__":
     # Replace this with the path to your JSON file.
-    JSON_FILE = "/home/eng-6899/Downloads/project/AXI_SPEC_OUTPUT/document.json"
+    JSON_FILE = "/home/eng-6899/Downloads/project/RISC_SPEC_OUTPUT/document.json"
     OUTPUT_FILE = "duplicate_requirement_ids.txt"
 
     try:

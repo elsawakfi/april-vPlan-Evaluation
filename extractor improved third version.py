@@ -49,13 +49,13 @@ from regex_patterns import (
 # CONFIGURATION
 # ==========================================================
 
-FILE_NAME = "amba_axi_protocol_spec.pdf"
-PDF_PATH = r"IHI0022L_amba_axi_protocol_spec.pdf"
-OUTPUT_DIR = "AXI_SPEC_OUTPUT"
+# FILE_NAME = "amba_axi_protocol_spec.pdf"
+# PDF_PATH = r"IHI0022L_amba_axi_protocol_spec.pdf"
+# OUTPUT_DIR = "AXI_SPEC_OUTPUT"
 
-# FILE_NAME = "riscv_protocol_spec.pdf"
-# PDF_PATH = r"riscv-unprivileged.pdf"
-# OUTPUT_DIR = "RISC_SPEC_OUTPUT"
+FILE_NAME = "riscv_protocol_spec.pdf"
+PDF_PATH = r"riscv-unprivileged.pdf"
+OUTPUT_DIR = "RISC_SPEC_OUTPUT"
 
 PAGE_FOLDER   = os.path.join(OUTPUT_DIR, "pages")
 IMAGE_FOLDER  = os.path.join(OUTPUT_DIR, "images")
@@ -379,6 +379,35 @@ def assign_unique_requirement_ids(requirements):
 
     return requirements
 
+def is_vplan_relevant(line):
+    line = " ".join(line.split()).strip()
+
+    if not line:
+        return False
+
+    if re.search(
+        r'\b(?:Figure|Fig\.?)\s+[A-Za-z]?\d+(?:\.\d+)*',
+        line,
+        re.IGNORECASE
+    ):
+        return False
+
+    if re.match(
+        r'^(?:'
+        r'In Figure|'
+        r'As shown in Figure|'
+        r'The figure shows|'
+        r'This assertion indicates|'
+        r'In this case|'
+        r'For example'
+        r')\b',
+        line,
+        re.IGNORECASE
+    ):
+        return False
+
+    return REQUIREMENT_REGEX.search(line) is not None
+
 def extract_requirements(text, section_id=None):
     requirements = []
 
@@ -553,7 +582,8 @@ def extract_requirements(text, section_id=None):
         if line.lower().startswith("however,"):
             continue
 
-        if REQUIREMENT_REGEX.search(line) or FEATURE_REGEX.search(line):
+        # if REQUIREMENT_REGEX.search(line) or FEATURE_REGEX.search(line):
+        if is_vplan_relevant(line):
             req_match = REQ_ID_REGEX.search(line)
             # req_id = req_match.group(1) if req_match else None
 
@@ -756,7 +786,7 @@ def parse_pdf(pdf_path):
     current_section = None
     seen_requirement_texts = set()
     
-    for page_num in range(20, len(pdf)):
+    for page_num in range(len(pdf)):
 
         page   = pdf[page_num]
         layout = page.get_text("dict")
@@ -769,9 +799,6 @@ def parse_pdf(pdf_path):
         if text_heading:
             headings = [text_heading]
 
-        # Fallback: detect section heading directly from page text
-
-        
         if not headings:
             for line in text.splitlines()[:20]:
                 line = line.strip()
@@ -857,6 +884,9 @@ def parse_pdf(pdf_path):
             "tables":        extracted_tables,
             # "images":        page_images
         }
+
+        for req in requirements:
+            req["source_page"] = page_num + 1
 
         document["requirements"].extend(requirements)
         document["notes"].extend(notes)
