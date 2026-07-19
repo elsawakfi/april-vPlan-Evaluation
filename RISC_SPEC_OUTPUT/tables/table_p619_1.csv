@@ -1,8 +1,0 @@
-0,1,2
-Subset,Name,Implies
-Standard Hypervisor-Level Extensions,,
-"Hypervisor-level extension ""ghi""",Shghi,
-Standard Machine-Level Extensions,,
-"Machine-level extension ""jkl""",Smjkl,
-Non-Standard Extensions,,
-"Non-standard extension ""mno""",Xmno,

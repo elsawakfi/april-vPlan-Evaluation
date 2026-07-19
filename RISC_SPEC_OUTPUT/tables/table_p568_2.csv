@@ -1,6 +1,0 @@
-0,1,2,3,4,5,6,7,8,9,10,11,12
-Integer,,,,,Integer,,,,FP,,,
-funct3,,,,,funct3,,,,funct3,,,
-OPIVV,V,,,,OPMVV,V,,,OPFVV,V,,
-OPIVX,,X,,,OPMVX,,X,,OPFVF,,F,
-OPIVI,,,I,,,,,,,,,

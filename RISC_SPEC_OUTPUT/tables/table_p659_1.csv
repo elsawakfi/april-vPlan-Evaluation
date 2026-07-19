@@ -1,7 +1,0 @@
-0,1
-"Plain(isa state)
-_",- ready to make a pseudocode transition
-"Pending mem loads(load continuation)
-_ _ _",- requesting memory load operation(s)
-"Pending mem stores(store continuation)
-_ _ _",- requesting memory store operation(s)

@@ -1,6 +1,0 @@
-0,1,2,3
-mop [1:,0],Description,Opcodes
-0,0,unit-stride,VLE<EEW>
-0,1,indexed-unordered,VLUXEI<EEW>
-1,0,constant-stride,VLSE<EEW>
-1,1,indexed-ordered,VLOXEI<EEW>

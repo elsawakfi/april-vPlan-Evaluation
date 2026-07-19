@@ -1,7 +1,0 @@
-0,1,2,3,4,5
-lumop,[4:0],,,,Description
-0,0,0,0,0,unit-stride load
-0,1,0,0,0,"unit-stride, whole register load"
-0,1,0,1,1,"unit-stride, mask load, EEW=8"
-1,0,0,0,0,unit-stride fault-only-first
-x,x,x,x,x,other encodings reserved

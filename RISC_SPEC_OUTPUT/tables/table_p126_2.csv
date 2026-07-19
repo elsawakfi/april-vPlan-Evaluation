@@ -1,3 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,cbo.zero base,Cache Block Zero

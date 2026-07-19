@@ -1,4 +1,0 @@
-0,1
-vm,Description
-0,"vector result, only where v0.mask[i] = 1"
-1,unmasked

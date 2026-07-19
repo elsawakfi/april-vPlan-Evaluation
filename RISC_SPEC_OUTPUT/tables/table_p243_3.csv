@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"cpop rd, rs",Count set bits
-,✓,"cpopw rd, rs",Count set bits in word

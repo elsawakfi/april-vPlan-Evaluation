@@ -1,9 +1,0 @@
-0,1,2,3
-SEW,EGW,Mnemonic,Instruction
-32,128,"vaesef.[vv,vs]",Vector AES encrypt final round
-32,128,"vaesem.[vv,vs]",Vector AES encrypt middle round
-32,128,"vaesdf.[vv,vs]",Vector AES decrypt final round
-32,128,"vaesdm.[vv,vs]",Vector AES decrypt middle round
-32,128,vaeskf1.vi,Vector AES-128 Forward KeySchedule
-32,128,vaeskf2.vi,Vector AES-256 Forward KeySchedule
-32,128,vaesz.vs,Vector AES round zero

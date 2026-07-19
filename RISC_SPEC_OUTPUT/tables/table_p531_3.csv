@@ -1,5 +1,0 @@
-0,1,2
-Register,Direction,Definition
-Vs1/Rs1,input,multiplier
-Vs2,input,multiplicand
-Vd,output,carry-less product low

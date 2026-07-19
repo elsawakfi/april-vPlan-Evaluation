@@ -1,5 +1,0 @@
-0,1,2,3
-Register,Direction,EEW,Definition
-Rs1/imm,input,SEW,Shift amount
-Vs2,input,SEW,Data
-Vd,output,2*SEW,Shifted data

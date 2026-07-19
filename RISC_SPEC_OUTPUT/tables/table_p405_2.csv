@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,sm3p0,SM3 P0 transform
-✓,✓,sm3p1,SM3 P1 transform

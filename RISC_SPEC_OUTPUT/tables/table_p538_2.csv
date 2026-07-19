@@ -1,9 +1,0 @@
-0,1,2,3,4,5
-Register,Direction,EGW,EGS,SEW,Definition
-Vd,input,128,4,32,"Partial hash (Y)
-i"
-Vs1,input,128,4,32,"Cipher text (X)
-i"
-Vs2,input,128,4,32,Hash Subkey (H)
-Vd,output,128,4,32,"Partial-hash (Y )
-i+1"

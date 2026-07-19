@@ -1,7 +1,0 @@
-0,1
-Flag Mnemonic,Flag Meaning
-NV,Invalid Operation
-DZ,Divide by Zero
-OF,Overflow
-UF,Underflow
-NX,Inexact

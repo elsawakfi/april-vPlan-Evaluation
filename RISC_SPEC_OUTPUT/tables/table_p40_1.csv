@@ -1,5 +1,0 @@
-0,1,2,3,4
-,Contained,Requested,Invisible,Fatal
-Execution terminates,No,No1,No,Yes
-Software is oblivious,No,No,Yes,Yes2
-Handled by environment,No,Yes,Yes,Yes

@@ -1,5 +1,0 @@
-0,1,2,3,4,5
-Register,Direction,EGW,EGS,EEW,Definition
-Vd,input,128,4,32,round state
-Vs2,input,128,4,32,Round key
-Vd,output,128,4,32,new round state

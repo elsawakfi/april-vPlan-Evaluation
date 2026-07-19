@@ -1,8 +1,0 @@
-0,1
-Mnemonic,Instruction
-FCVT.BF16.S,Convert FP32 to BF16
-FCVT.S.BF16,Convert BF16 to FP32
-FLH,
-FSH,
-FMV.H.X,
-FMV.X.H,

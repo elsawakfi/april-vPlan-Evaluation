@@ -1,3 +1,0 @@
-0,1,2
-RV32,RV64,Mnemonic
-,✓,"sraw rd, rs1, rs2"

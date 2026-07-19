@@ -1,6 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"max rd, rs1, rs2",Maximum
-✓,✓,"maxu rd, rs1, rs2",Unsigned maximum
-✓,✓,"min rd, rs1, rs2",Minimum
-✓,✓,"minu rd, rs1, rs2",Unsigned minimum

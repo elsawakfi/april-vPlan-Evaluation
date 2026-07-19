@@ -1,4 +1,0 @@
-0,1,2,3
-SEW,EGW,Mnemonic,Instruction
-32,256,vsm3me.vv,SM3 Message Expansion
-32,256,vsm3c.vi,SM3 Compression

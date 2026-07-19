@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,c.mul,"Multiply, 16-bit encoding"
-✓,✓,c.not,"Bitwise not, 16-bit encoding"

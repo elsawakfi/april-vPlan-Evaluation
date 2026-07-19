@@ -1,5 +1,0 @@
-0,1,2,3,4,5
-Register,Direction,EGW,EGS,EEW,Definition
-Vs1,input,256,8,32,Message words W[7:0]
-Vs2,input,256,8,32,Message words W[15:8]
-Vd,output,256,8,32,Message words W[23:16]

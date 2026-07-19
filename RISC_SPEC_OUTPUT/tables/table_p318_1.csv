@@ -1,5 +1,0 @@
-0,1,2,3
-rd,rs1,AVL value,Effect on vl
--,!x0,Value in x[rs1],Normal strip mining
-!x0,x0,~0,Set vl to VLMAX
-x0,x0,Value in vl register,"Keep existing vl (of course, vtype may change)"

@@ -1,6 +1,0 @@
-0,1,2,3,4,5
-Register,Direction,EGW,EGS,EEW,Definition
-Vd,input,256,8,32,"Current state {H,G.F,E,D,C,B,A}"
-uimm,input,-,-,-,round number (rnds)
-Vs2,input,256,8,32,"Message words {-,-,w[5],w[4],-,-,w[1],w[0]}"
-Vd,output,256,8,32,"Next state {H,G.F,E,D,C,B,A}"

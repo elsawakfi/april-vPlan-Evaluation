@@ -1,9 +1,0 @@
-0,1,2,3
-Instruction,Constraints,Code Points,Purpose
-C.ADD,"rd=x0, rs2=x2-x5",4,"(rs2=x2) C.NTL.P1 (rs2=x3)
-C.NTL.PALL (rs2=x4)
-C.NTL.S1 (rs2=x5)
-C.NTL.ALL"
-C.SLLI,rd=x0 or imm=0,"63 (RV32), 95 (RV64)",
-C.SRLI,imm=0,8,Designated for custom use
-C.SRAI,imm=0,8,

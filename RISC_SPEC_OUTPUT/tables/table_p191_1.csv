@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-yes,yes,cm.jt index,Jump via table
-yes,yes,cm.jalt index,Jump and link via table

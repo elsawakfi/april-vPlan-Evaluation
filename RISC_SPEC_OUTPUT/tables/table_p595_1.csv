@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-yes,no,"ld rd, offset(rs1)","Load doubleword to register pair, 32-bit encoding"
-yes,no,"sd rs2, offset(rs1)","Store doubleword from register pair, 32-bit encoding"

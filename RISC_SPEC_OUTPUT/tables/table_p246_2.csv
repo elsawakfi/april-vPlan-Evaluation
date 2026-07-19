@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"xperm4 rd, rs1, rs2",Crossbar permutation (nibbles)
-✓,✓,"xperm8 rd, rs1, rs2",Crossbar permutation (bytes)

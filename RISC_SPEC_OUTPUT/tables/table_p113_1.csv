@@ -1,6 +1,0 @@
-0,1,2,3,4
-,Source Registers,Destination Registers,Accumulating CSRs,
-FCVT.L.S,"rs1, frm*",rd,"NV, NX",*if rm=111
-FCVT.LU.S,"rs1, frm*",rd,"NV, NX",*if rm=111
-FCVT.S.L,"rs1, frm*",rd,NX,*if rm=111
-FCVT.S.LU,"rs1, frm*",rd,NX,*if rm=111

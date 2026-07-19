@@ -1,3 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-yes,yes,"c.lbu rd', uimm(rs1')","Load unsigned byte, 16-bit encoding"

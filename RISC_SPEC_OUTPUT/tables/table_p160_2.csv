@@ -1,4 +1,0 @@
-0,1,2,3
-Register,Direction,EEW,Definition
-Vs2,input,32,FP32 Source
-Vd,output,16,BF16 Result

@@ -1,6 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"clz rd, rs",Count leading zero bits
-,✓,"clzw rd, rs",Count leading zero bits in word
-✓,✓,"ctz rd, rs",Count trailing zero bits
-,✓,"ctzw rd, rs",Count trailing zero bits in word

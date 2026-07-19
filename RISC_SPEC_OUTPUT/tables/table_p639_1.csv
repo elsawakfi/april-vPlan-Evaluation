@@ -1,9 +1,0 @@
-0,1
-Linux Operation,RVWMO Mapping
-atomic <op>,amo <op>.{w|d}.aqrl
-Linux Construct,RVWMO LR/SC Mapping
-atomic <op> relaxed,loop:lr.{w|d}; <op>; sc.{w|d}; bnez loop
-atomic <op> acquire,loop:lr.{w|d}.aq; <op>; sc.{w|d}; bnez loop
-atomic <op> release,loop:lr.{w|d}; <op>; sc.{w|d}.aqrl*; bnez loop OR
-,fence.tso; loop:lr.{w|d}; <op >; sc.{w|d}*; bnez loop
-atomic <op>,loop:lr.{w|d}.aq; <op>; sc.{w|d}.aqrl; bnez loop

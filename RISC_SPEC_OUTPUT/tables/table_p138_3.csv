@@ -1,8 +1,0 @@
-0,1
-rd bit,Meaning
-0,rs1 is −∞.
-1,rs1 is a negative normal number.
-2,rs1 is a negative subnormal number.
-3,rs1 is −0.
-4,rs1 is +0.
-5,rs1 is a positive subnormal number.

@@ -1,7 +1,0 @@
-0,1,2,3,4
-Extension,Minimum VLEN,Supported EEW,FP32,FP64
-Zve32x,32,"8, 16, 32",N,N
-Zve32f,32,"8, 16, 32",Y,N
-Zve64x,64,"8, 16, 32, 64",N,N
-Zve64f,64,"8, 16, 32, 64",Y,N
-Zve64d,64,"8, 16, 32, 64",Y,Y

@@ -1,6 +1,0 @@
-0,1,2,3,4
-,FCVT.W.S,FCVT.WU.S,FCVT.L.S,FCVT.LU.S
-Minimum valid input (after rounding),−231,0,−263,0
-Maximum valid input (after rounding),231−1,232−1,263−1,264−1
-Output for out-of-range negative input,−231,0,−263,0
-Output for -∞,−231,0,−263,0

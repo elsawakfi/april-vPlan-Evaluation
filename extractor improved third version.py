@@ -18,6 +18,7 @@ Document
     semantic_chunks
     pages
 """
+from ast import pattern
 from email.mime import text
 import random as rand
 import os
@@ -32,6 +33,7 @@ from PIL import Image
 
 
 from regex_patterns import (
+    DECLARATIVE_BEHAVIOUR_REGEX,
     SECTION_REGEX,
     VALID_VPLAN_SECTION_REGEX,
     TABLE_REGEX,
@@ -49,13 +51,13 @@ from regex_patterns import (
 # CONFIGURATION
 # ==========================================================
 
-# FILE_NAME = "amba_axi_protocol_spec.pdf"
-# PDF_PATH = r"IHI0022L_amba_axi_protocol_spec.pdf"
-# OUTPUT_DIR = "AXI_SPEC_OUTPUT"
+FILE_NAME = "amba_axi_protocol_spec.pdf"
+PDF_PATH = r"IHI0022L_amba_axi_protocol_spec.pdf"
+OUTPUT_DIR = "AXI_SPEC_OUTPUT"
 
-FILE_NAME = "riscv_protocol_spec.pdf"
-PDF_PATH = r"riscv-unprivileged.pdf"
-OUTPUT_DIR = "RISC_SPEC_OUTPUT"
+# FILE_NAME = "riscv_protocol_spec.pdf"
+# PDF_PATH = r"riscv-unprivileged.pdf"
+# OUTPUT_DIR = "RISC_SPEC_OUTPUT"
 
 PAGE_FOLDER   = os.path.join(OUTPUT_DIR, "pages")
 IMAGE_FOLDER  = os.path.join(OUTPUT_DIR, "images")
@@ -128,6 +130,17 @@ def remove_detected_headings(text, headings):
 
     return clean_text
 
+def normalize_header(cell):
+    if cell is None:
+        return ""
+
+    return re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        str(cell).lower()
+    ).strip()
+
+
 def extract_tables(page, page_num, section_id=None):
     tables_found = []
     table_requirements = []
@@ -148,19 +161,74 @@ def extract_tables(page, page_num, section_id=None):
                     "csv_file": csv_path
                 })
                 
-                for row in extracted:
-                    cells = [
-                        str(cell).replace("\n", " ").strip()
-                        for cell in row
-                        if cell and str(cell).strip()
-                    ]
+                # ----------------------------------------------
+                # Detect table columns from the header
+                # ----------------------------------------------
 
-                    if len(cells) < 2:
+                header = [
+                    normalize_header(cell)
+                    for cell in extracted[0]
+                ]
+
+                description_index = None
+
+                description_names = {
+                    "description",
+                    "meaning",
+                    "behavior",
+                    "behaviour",
+                    "function",
+                    "definition",
+                    "operation",
+                    "effect"
+                }
+
+                for column_index, column_name in enumerate(header):
+                    if column_name in description_names:
+                        description_index = column_index
+                        break
+
+                # If no recognised semantic column exists,
+                # use the final column as the likely description.
+                if description_index is None:
+                    description_index = len(header) - 1
+
+                # ----------------------------------------------
+                # Process data rows
+                # ----------------------------------------------
+
+                for row in extracted[1:]:
+                    if not row:
                         continue
 
-                    row_text = " ".join(cells)
-    
-                    if REQUIREMENT_REGEX.search(row_text) or FEATURE_REGEX.search(row_text):
+                    cells = [
+                        str(cell).replace("\n", " ").strip()
+                        if cell is not None
+                        else ""
+                        for cell in row
+                    ]
+
+                    if description_index >= len(cells):
+                        continue
+
+                    description = cells[description_index]
+
+                    if not description:
+                        continue
+
+                    if not re.search(r"[A-Za-z]", description):
+                        continue
+
+                    # Keep non-empty cells in the final requirement text
+                    row_text = " | ".join(
+                        cell for cell in cells if cell
+                    )
+
+                    if (
+                        REQUIREMENT_REGEX.search(description)
+                        or FEATURE_REGEX.search(description)
+                        or DECLARATIVE_BEHAVIOUR_REGEX.search(description)
+                    ):
                         table_requirements.append(
                             make_requirement(
                                 None,
@@ -171,50 +239,36 @@ def extract_tables(page, page_num, section_id=None):
                         )
 
             except Exception as e:
-                print(f"Table extraction error page {page_num+1}:", e)
-    except Exception:
-        pass
+                print(
+                    f"Table extraction error page "
+                    f"{page_num + 1}, table {idx + 1}: {e}"
+                )
+
+    except Exception as e:
+        print(
+            f"Table detection error page {page_num + 1}: {e}"
+        )
     return tables_found, table_requirements
-
-
-# def extract_encoding_table_requirements(text, section_id=None):
-#     requirements = []
-
-#     pattern = re.compile(
-#     r'(0b[01]+)\s+'
-#     r'([A-Za-z][A-Za-z0-9_-]*)\s+'
-#     r'(.*?)'
-#     r'(?='
-#         r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
-#         r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
-#         r'|\s+[A-C]\d+(?:\.\d+)+\s+[A-Za-z]'
-#         r'|\s+Table\s+[A-Za-z]?\d+(?:\.\d+)*'
-#         r'|\s+ARM IHI'
-#         r'|$'
-#     r')',
-#     re.DOTALL
-#     )
-
 
 def extract_encoding_table_requirements(text, section_id=None):
     requirements = []
 
-    pattern = re.compile(
-        r'(0b[01]+)\s+'
-        r'([A-Za-z][A-Za-z0-9_-]*)\s+'
-        r'(.*?)'
-        r'(?='
-            r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
-            r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
-            r'|\s+[A-C]\d+(?:\.\d+)+\s+[A-Za-z]'
-            r'|\s+Table\s+[A-Za-z]?\d+(?:\.\d+)*'
-            r'|\s+ARM IHI'
-            r'|$'
-        r')',
-        re.DOTALL
-    )
+    # pattern = re.compile(
+    #     r'(0b[01]+)\s+'
+    #     r'([A-Za-z][A-Za-z0-9_-]*)\s+'
+    #     r'(.*?)'
+    #     r'(?='
+    #         r'\s+0b[01]+\s+[A-Za-z][A-Za-z0-9_-]*\s+'
+    #         r'|\s+(?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*)\s+'
+    #         r'|\s+[A-C]\d+(?:\.\d+)+\s+[A-Za-z]'
+    #         r'|\s+Table\s+[A-Za-z]?\d+(?:\.\d+)*'
+    #         r'|\s+ARM IHI'
+    #         r'|$'
+    #     r')',
+    #     re.DOTALL
+    # )
 
-    for code, operation, meaning in pattern.findall(text):
+    for code, operation, meaning in ENCODING_TABLE_REGEX.findall(text):
         meaning = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', meaning)
         meaning = re.sub(r'\s+', ' ', meaning).strip()
 
@@ -229,29 +283,6 @@ def extract_encoding_table_requirements(text, section_id=None):
             )
 
     return requirements
-
-
-    # for code, operation, meaning in pattern.findall(text):
-    #     # meaning = " ".join(meaning.split())
-
-    #     meaning = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', meaning)
-    #     meaning = re.sub(r'\s+', ' ', meaning).strip()
-
-    #     if REQUIREMENT_REGEX.search(meaning) or FEATURE_REGEX.search(meaning):
- 
-    #         # section = str(section_id).replace(".", "_")
-    #         # req_id = f"REQ_{section}_{len(requirements)+1:03}"
-
-    #         requirements.append(
-    #             make_requirement(
-    #                 # req_id,
-    #                 None,
-    #                 f"{code} | {operation} | {meaning}",
-    #                 section_id,
-    #                 "encoding_rule"
-    #             )
-    #         )
-    # return requirements
 
 # ==========================================================
 # TEXT ANALYSIS
@@ -300,7 +331,7 @@ def extract_headings_from_layout(layout):
             if match:
                 sid = match.group(1)
 
-                if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+                if not VALID_VPLAN_SECTION_REGEX.fullmatch(sid):
                     continue
 
                 headings.append({
@@ -405,8 +436,17 @@ def is_vplan_relevant(line):
         re.IGNORECASE
     ):
         return False
+    
+     # Existing high-confidence requirement detection
+    if REQUIREMENT_REGEX.search(line):
+        return True
+    
+    if DECLARATIVE_BEHAVIOUR_REGEX.search(line):
+        return True
+    
+    return False
 
-    return REQUIREMENT_REGEX.search(line) is not None
+    # return REQUIREMENT_REGEX.search(line) is not None
 
 def extract_requirements(text, section_id=None):
     requirements = []
@@ -435,7 +475,8 @@ def extract_requirements(text, section_id=None):
     )
 
     clean_text = re.sub(
-        r'(?:\b\d+\s+){3,}[A-Z][A-Z\s]{10,}',
+        r'(?:\b\d+\s+){3,}'
+        r'(?:[A-Z][A-Z0-9_-]*(?:\s+|$)){2,}',
         '',
         clean_text
     )
@@ -488,7 +529,8 @@ def extract_requirements(text, section_id=None):
         line = line.strip()
 
         line = re.sub(
-            r'^[A-Z][A-Za-z0-9\- ]{2,80}\s*[–-]\s*(?=(If|When|The|A|An|For|It)\b)',
+            r'^[A-Z][A-Za-z0-9\- ]{2,80}\s+[–-]\s+'
+            r'(?=(?:If|When|The|A|An|For|It)\b)',
             '',
             line
         ).strip()
@@ -507,7 +549,6 @@ def extract_requirements(text, section_id=None):
         ):
             continue
 
-        # line = re.sub(r'^•\s*', '', line)
         line = re.sub(r'•\s*', '', line)
 
         line = re.sub(
@@ -698,9 +739,6 @@ def build_semantic_chunks(pages):
 # ==========================================================
 # CAPTION EXTRACTORS
 # ==========================================================
-VALID_VPLAN_SECTION_REGEX = re.compile(
-    r'^(?:[A-C]\d+(?:\.\d+)*)$'
-)
 
 def is_valid_vplan_section(section):
     if section is None:
@@ -737,7 +775,10 @@ def extract_heading_from_text(text):
             sid = match.group(1)
             title = match.group(2).strip()
 
-            if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+            # if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+            #     continue
+
+            if not VALID_VPLAN_SECTION_REGEX.fullmatch(sid):
                 continue
 
             if len(title) < 3:
@@ -760,11 +801,6 @@ def normalize(text):
 def parse_pdf(pdf_path):
 
     pdf = fitz.open(pdf_path)
-
-    # Uncomment to also render full-page PNGs:
-    # save_page_screenshots(pdf_path, PAGE_FOLDER)
-
-    # image_records = extract_images(pdf)
 
     document = {
         "document_name":    os.path.basename(pdf_path),
@@ -811,7 +847,7 @@ def parse_pdf(pdf_path):
                 if match:
                     sid = match.group(1)
 
-                    if not re.match(r'^[A-C]\d+(?:\.\d+)*$', sid):
+                    if not VALID_VPLAN_SECTION_REGEX.fullmatch(sid):
                         continue
 
                     headings = [{
@@ -831,11 +867,14 @@ def parse_pdf(pdf_path):
         if is_cover:
             requirements = []
             table_reqs = []
+            table_requirements = []
+            extracted_tables = []
+
         else:
-            # requirements = extract_requirements(text, current_section)
             clean_text = remove_detected_headings(text, headings)
             requirements = extract_requirements(clean_text, current_section)
             table_reqs = extract_encoding_table_requirements(clean_text, current_section)
+            extracted_tables, table_requirements = extract_tables(page, page_num, current_section)
 
         if table_reqs:
             requirements = [
@@ -853,6 +892,7 @@ def parse_pdf(pdf_path):
             ]
 
         requirements.extend(table_reqs)
+        requirements.extend(table_requirements)
 
 
         unique_page_requirements = []
@@ -872,17 +912,13 @@ def parse_pdf(pdf_path):
         acronyms      = extract_acronyms(text)
         cross_refs    = extract_cross_references(text)
         table_captions = extract_table_captions(text)
-        extracted_tables, table_requirements = extract_tables(page, page_num, current_section)
 
         page_json = {
             "page_number":   page_num + 1,
             "text":          text,
             "headings":      headings,
-            # "requirements":  requirements,
-            # "figures":       figures,          # now includes "file" key
             "table_captions": table_captions,
             "tables":        extracted_tables,
-            # "images":        page_images
         }
 
         for req in requirements:

@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"sext.h rd, rs",Sign-extend halfword
-✓,✓,"zext.h rd, rs",Zero-extend halfword

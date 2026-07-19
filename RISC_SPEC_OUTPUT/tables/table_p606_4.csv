@@ -1,8 +1,0 @@
-0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-,,,,,RV32,/RV64,Zicsr,Stan,dard E,xtens,ion,,,
-,,cs,r,,,r,s1,0,01,,rd,111,0011,CSRRW
-,,cs,r,,,r,s1,0,10,,rd,111,0011,CSRRS
-,,cs,r,,,r,s1,0,11,,rd,111,0011,CSRRC
-,,cs,r,,,ui,mm,1,01,,rd,111,0011,CSRRWI
-,,cs,r,,,ui,mm,1,10,,rd,111,0011,CSRRSI
-,,cs,r,,,ui,mm,1,11,,rd,111,0011,CSRRCI

@@ -1,6 +1,0 @@
-0,1,2,3,4,5
-Register,Direction,EGW,EGS,EEW,Definition
-Vd,input,4*SEW,4,SEW,"current state {c, d, g, h}"
-Vs1,input,4*SEW,4,SEW,MessageSched plus constant[3:0]
-Vs2,input,4*SEW,4,SEW,"current state {a, b, e, f}"
-Vd,output,4*SEW,4,SEW,"next state {a, b, e, f}"

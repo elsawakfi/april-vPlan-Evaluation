@@ -1,7 +1,0 @@
-0,1,2,3,4,5,6
-vlm,ul[2,:0],LMUL,#groups,VLMAX,Registers grouped with register n
-1,1,1,1/2,32,VLEN/SEW/2,v n (single register in group)
-0,0,0,1,32,VLEN/SEW,v n (single register in group)
-0,0,1,2,16,2*VLEN/SEW,"v n, v n+1"
-0,1,0,4,8,4*VLEN/SEW,"v n, …, v n+3"
-0,1,1,8,4,8*VLEN/SEW,"v n, …, v n+7"

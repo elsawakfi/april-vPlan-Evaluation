@@ -1,9 +1,0 @@
-0,1
-"Hart 0 Hart 1
-li t1, 1 (d) lw a0, 0(s1)
-(a) sw t1,0(s0) (e) sw a0, 0(s2)
-(b) fence w, w (f) lw a1, 0(s2)
-(c) sw t1,0(s1) xor a2,a1,a1
-add s0,s0,a2
-(g) lw a3,0(s0)
-Outcome: a0=1, a3=0",

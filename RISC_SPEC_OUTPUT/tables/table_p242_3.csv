@@ -1,4 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"andn rd, rs1, rs2",AND with inverted operand
-✓,✓,"orn rd, rs1, rs2",OR with inverted operand

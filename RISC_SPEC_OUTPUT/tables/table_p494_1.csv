@@ -1,4 +1,0 @@
-0,1,2,3
-Algorithm,Instructions,VLEN,LMUL
-SHA-512,vsha2*,64,vl/2
-SM3,vsm3*,32,vl/4

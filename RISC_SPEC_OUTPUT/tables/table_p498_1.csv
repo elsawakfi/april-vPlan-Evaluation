@@ -1,4 +1,0 @@
-0,1,2,3
-SEW,EGW,Mnemonic,Instruction
-32,128,vghsh.vv,Vector GHASH Add-Multiply
-32,128,vgmul.vv,Vector GHASH Multiply

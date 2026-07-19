@@ -1,9 +1,0 @@
-0,1,2,3
-I,nitial values: 0(,s0),=1; 0(s2)=1
-,,,
-,Hart 0,,Hart 1
-(a),"ld a0,0(s0)",(e),"ld a3,0(s2)"
-(b),"lr a1,0(s1)",(f),"sd a3,0(s0)"
-(c),"sc a2,a0,0(s1)",,
-(d),"sd a2,0(s2)",,
-,Outcome: a,"0=0,",a3=0

@@ -1,7 +1,0 @@
-0,1
-Included Extension,Description
-Zbkb,Bitmanipulation instructions for cryptography.
-Zbkc,Carry-less multiply instructions.
-Zbkx,Cross-bar Permutation instructions.
-Zksed,SM4 block cipher instructions.
-Zksh,SM3 hash function instructions.

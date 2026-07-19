@@ -1,8 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,,aes32dsi,AES final round decrypt (RV32)
-✓,,aes32dsmi,AES middle round decrypt (RV32)
-,✓,aes64ds,AES decrypt final round (RV64)
-,✓,aes64dsm,AES decrypt middle round (RV64)
-,✓,aes64im,AES Decrypt KeySchedule MixColumns (RV64)
-,✓,aes64ks1i,AES Key Schedule Instruction 1 (RV64)

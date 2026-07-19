@@ -9,8 +9,12 @@ SECTION_REGEX = re.compile(
     r'^((?:\d+(?:\.\d+)*|[A-C]\d+(?:\.\d+)*))\s+(.+)$'
 )
 
+# VALID_VPLAN_SECTION_REGEX = re.compile(
+#     r'^(?:[A-C]\d+(?:\.\d+)*)$'
+# )
+
 VALID_VPLAN_SECTION_REGEX = re.compile(
-    r'^(?:[A-C]\d+(?:\.\d+)*)$'
+    r'^(?:\d+(?:\.\d+)*|[A-Z]\d+(?:\.\d+)*)$'
 )
 
 # ==========================================================
@@ -102,6 +106,7 @@ REQUIREMENT_REGEX = re.compile(
     # Optional and supported behaviour
     r'is not supported|are not supported|'
     r'is optional|are optional|'
+    r'it is recommended to|'
 
     # Legal values and bounds
     r'length can be|'
@@ -140,7 +145,7 @@ REQUIREMENT_REGEX = re.compile(
 #     r'is not permitted to|are not permitted to|not permitted to|'
 #     r'are non-modifiable| is non-modifiable|'
 #     r'are nonmodifiable| is nonmodifiable|'
-#     r'is not present|are not present|'
+#     r'is not present|are not present|'``
 #     r'must be able to|must be given|'
 #     r'is indicated|are indicated|'
 #     r'is issued|are issued|'
@@ -197,6 +202,62 @@ REQUIREMENT_REGEX = re.compile(
 #     re.IGNORECASE
 # )
 
+CONDITIONAL_BEHAVIOUR_REGEX = re.compile(
+        r'\b(?:when|if)\b.+\b(?:'
+        r'asserts?|deasserts?|'
+        r'uses?|transfers?|'
+        r'accepts?|rejects?|'
+        r'generates?|returns?|'
+        r'occurs?|completes?|'
+        r'indicates?|encodes?|'
+        r'enables?|disables?|'
+        r'gives?|receives?'
+        r')\b',
+        re.IGNORECASE
+    )
+
+
+# ==========================================================
+# DECLARATIVE BEHAVIOUR PATTERNS
+# ==========================================================
+DECLARATIVE_BEHAVIOUR_REGEX = re.compile(
+    r'\b(?:'
+
+    # Behavioural consequences
+    r'causes?\s+(?:an?\s+|the\s+)?'
+    r'[A-Za-z0-9_-]+\s+to|'
+
+    # Passive sentence form:
+    # "The signal is asserted"
+    r'(?:is|are)\s+'
+    r'(?:set|cleared|asserted|deasserted|'
+    r'updated|written|read|returned|'
+    r'terminated|handled|ignored|reserved|'
+    r'preserved|discarded|completed|'
+    r'accepted|rejected|generated)|'
+
+    # Table-description form:
+    # "Asserted high to indicate..."
+    r'(?:set|cleared|asserted|deasserted|'
+    r'updated|written|read|returned|'
+    r'terminated|handled|ignored|reserved|'
+    r'preserved|discarded|completed|'
+    r'accepted|rejected|generated)\b|'
+
+    # Active architectural behaviour
+    r'(?:resumes?|terminates?|'
+    r'asserts?|deasserts?|'
+    r'updates?|returns?|'
+    r'generates?|produces?|'
+    r'accepts?|rejects?|'
+    r'completes?|discards?)\s+|'
+    r'can\s+be\s+either\s+'
+    r'[A-Za-z0-9_-]+\s+or\s+[A-Za-z0-9_-]+|'
+
+    r')',
+    re.IGNORECASE
+)
+
 # ==========================================================
 # NOTE AND ACRONYM PATTERNS
 # ==========================================================
@@ -238,4 +299,20 @@ ENCODING_TABLE_REGEX = re.compile(
         r'|$'
     r')',
     re.DOTALL
+)
+
+'''Excluding the following patterns from the regex to avoid false positives:'''
+DESCRIPTIVE_SENTENCE_REGEX = re.compile(
+    r'\b(?:'
+    r'this section describes|'
+    r'this chapter describes|'
+    r'this document describes|'
+    r'provides information|'
+    r'is shown in|'
+    r'is illustrated in|'
+    r'for example|'
+    r'the following example|'
+    r'the purpose of'
+    r')\b',
+    re.IGNORECASE
 )

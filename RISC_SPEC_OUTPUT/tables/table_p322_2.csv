@@ -1,5 +1,0 @@
-0,1,2,3
-mop [1:,0],Description,Opcodes
-0,0,unit-stride,VSE<EEW>
-0,1,indexed-unordered,VSUXEI<EEW>
-1,0,constant-stride,VSSE<EEW>

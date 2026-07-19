@@ -1,3 +1,0 @@
-0,1,2,3
-RV32,RV64,Mnemonic,Instruction
-✓,✓,"sext.b rd, rs",Sign-extend byte
