@@ -25,12 +25,7 @@ The repository prepares verification-ready datasets from structured semiconducto
 
 ## Processing Pipeline
 
-1. Read structured specification data
-2. Identify verification-relevant content
-3. Remove duplicate requirements
-4. Generate unique requirement IDs
-5. Preserve source metadata
-6. Export structured JSON
+<img src="workflow.png" width="350">
 
 ## Output
 
