@@ -63,6 +63,65 @@ Each requirement contains:
 }
 ```
 
+## Requirements & Setup (Linux)
+
+### System Requirements
+
+- Python 3.10+
+- Git
+- Tesseract OCR
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd project
+```
+
+### 2. Create a virtual environment
+
+```bash
+sudo apt update
+sudo apt install python3-venv
+
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install the required Python packages
+
+```bash
+python -m pip install --upgrade pip
+
+pip install \
+    pymupdf \
+    pandas \
+    pypdfium2 \
+    pytesseract \
+    pillow
+```
+
+### 4. Install Tesseract OCR
+
+```bash
+sudo apt install tesseract-ocr
+```
+
+### 5. Run the extractor
+
+For AMBA AXI:
+
+```bash
+python3 "extractor improved third version.py"
+```
+
+The generated output will be saved to:
+
+```
+AXI_SPEC_OUTPUT/
+```
+
+
 ## Current Improvements
 
 - Improved protocol requirement extraction
